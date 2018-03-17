@@ -1,138 +1,138 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-54:12
-INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-54:12
-INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-54:12
-MERGED from [com.android.support:support-v13:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-v13-27.0.2.aar\d0a582e5de449c4cfa759b7c9baa0e65\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-v4:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\de5291a1a54a29c482fd57fe581d2958\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\ac8c46bc50e22d68b781677f188e0869\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\2d695f706ed79ec4be5704c138ef8f24\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\5da4cc6e768ddb188db12759c7e9c1a7\AndroidManifest.xml:2:1-11:12
-MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\04d2e7a8e3383a03e55ea99eae27dd26\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\306d9ea5d84d7094697dc2a1701eac76\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\5aa6f59de71869410693c9af1388a51a\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\6dafcd6267c583a0d6fc554744019016\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\2c56001cd4b3684f22e499342a94fa6f\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\b4019cb450abd692d02bb66bd0f2a9f8\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\6c4cf2539dbc50c9cee2d3a06b0bf759\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\961566fd33ddc19895d3ddbd753d65dd\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-54:12
-INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-54:12
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-54:12
+INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-54:12
+INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-54:12
+MERGED from [com.android.support:support-v13:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-v13-27.0.2.aar\92b51171313eb0affbaf0c173c651f1e\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\a5a9bcd50bb3e7cfd53182f694259b78\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\764cc3e601892fe3706cceab08d75d9f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\0b956ce167264db434eec3dafec44e4c\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\f32d93126c8e5937321c0a35aa1abe18\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\88845975dc2aa067848d77ddd00c8659\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\166a99c41415ac4ec90327d81a2cf28b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\ffd7c46e64decdb56fb32fc57deb9676\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\a6739981604a0258f13c0d8ca6b2ae9e\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\543c4e6d452f3a8a8828cb1058c39e70\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\50362197aa1ac80902e595005c60aef9\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\b21a1d85a1392930c87f22982196a63c\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\a1d38ccb5339ba0e2fc374f74173a1cb\AndroidManifest.xml:17:1-24:12
+INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-54:12
+INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-54:12
 	package
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:21:5-50
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:21:5-50
 	android:versionName
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:23:5-30
-		INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:23:5-30
+		INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:20:11-69
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:20:11-69
 	android:versionCode
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:22:5-28
-		INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:22:5-28
+		INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
 uses-feature#android.hardware.bluetooth_le
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:31:5-89
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:31:5-89
 	android:required
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:31:64-87
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:31:64-87
 	android:name
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:31:19-63
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:31:19-63
 uses-permission#android.permission.BLUETOOTH
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:33:5-67
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:33:5-67
 	android:name
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:33:22-65
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:33:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:34:5-73
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:34:5-73
 	android:name
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:34:22-71
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:34:22-71
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:35:5-80
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:35:5-80
 	android:name
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:35:22-78
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:35:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:36:5-78
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:36:5-78
 	android:name
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:36:22-76
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:36:22-76
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:37:5-80
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:37:5-80
 	android:name
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:37:22-78
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:37:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:38:5-79
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:38:5-79
 	android:name
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:38:22-77
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:38:22-77
 application
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:40:5-52:19
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\5da4cc6e768ddb188db12759c7e9c1a7\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\5da4cc6e768ddb188db12759c7e9c1a7\AndroidManifest.xml:9:5-20
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:40:5-52:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\f32d93126c8e5937321c0a35aa1abe18\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\f32d93126c8e5937321c0a35aa1abe18\AndroidManifest.xml:9:5-20
 	android:label
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:40:18-50
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:40:18-45
 	android:icon
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:41:9-45
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:41:9-45
 	android:theme
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:42:9-56
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:42:9-56
 activity#com.example.android.bluetoothlegatt.DeviceScanActivity
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:43:9-49:20
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:43:9-49:20
 	android:label
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:44:13-45
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:44:13-40
 	android:name
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:43:19-53
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:43:19-53
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:45:13-48:29
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:45:13-48:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:46:17-68
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:46:17-68
 	android:name
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:46:25-66
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:46:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:47:17-76
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:47:17-76
 	android:name
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:47:27-74
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:47:27-74
 activity#com.example.android.bluetoothlegatt.DeviceControlActivity
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:50:9-58
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:50:9-58
 	android:name
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:50:19-56
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:50:19-56
 service#com.example.android.bluetoothlegatt.BluetoothLeService
-ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:51:9-77
+ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:51:9-77
 	android:enabled
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:51:53-75
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:51:53-75
 	android:name
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:51:18-52
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml:51:18-52
 uses-sdk
-INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
-INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
-MERGED from [com.android.support:support-v13:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-v13-27.0.2.aar\d0a582e5de449c4cfa759b7c9baa0e65\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v13:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-v13-27.0.2.aar\d0a582e5de449c4cfa759b7c9baa0e65\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\de5291a1a54a29c482fd57fe581d2958\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\de5291a1a54a29c482fd57fe581d2958\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\ac8c46bc50e22d68b781677f188e0869\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\ac8c46bc50e22d68b781677f188e0869\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\2d695f706ed79ec4be5704c138ef8f24\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\2d695f706ed79ec4be5704c138ef8f24\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\5da4cc6e768ddb188db12759c7e9c1a7\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\5da4cc6e768ddb188db12759c7e9c1a7\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\04d2e7a8e3383a03e55ea99eae27dd26\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\04d2e7a8e3383a03e55ea99eae27dd26\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\306d9ea5d84d7094697dc2a1701eac76\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\306d9ea5d84d7094697dc2a1701eac76\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\5aa6f59de71869410693c9af1388a51a\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\5aa6f59de71869410693c9af1388a51a\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\6dafcd6267c583a0d6fc554744019016\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\6dafcd6267c583a0d6fc554744019016\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\2c56001cd4b3684f22e499342a94fa6f\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\2c56001cd4b3684f22e499342a94fa6f\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\b4019cb450abd692d02bb66bd0f2a9f8\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\b4019cb450abd692d02bb66bd0f2a9f8\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\6c4cf2539dbc50c9cee2d3a06b0bf759\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\6c4cf2539dbc50c9cee2d3a06b0bf759\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\961566fd33ddc19895d3ddbd753d65dd\AndroidManifest.xml:20:5-22:41
-MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\961566fd33ddc19895d3ddbd753d65dd\AndroidManifest.xml:20:5-22:41
-INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
-INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+MERGED from [com.android.support:support-v13:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-v13-27.0.2.aar\92b51171313eb0affbaf0c173c651f1e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v13:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-v13-27.0.2.aar\92b51171313eb0affbaf0c173c651f1e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\a5a9bcd50bb3e7cfd53182f694259b78\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\a5a9bcd50bb3e7cfd53182f694259b78\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\764cc3e601892fe3706cceab08d75d9f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\764cc3e601892fe3706cceab08d75d9f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\0b956ce167264db434eec3dafec44e4c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\0b956ce167264db434eec3dafec44e4c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\f32d93126c8e5937321c0a35aa1abe18\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\f32d93126c8e5937321c0a35aa1abe18\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\88845975dc2aa067848d77ddd00c8659\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\88845975dc2aa067848d77ddd00c8659\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\166a99c41415ac4ec90327d81a2cf28b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\166a99c41415ac4ec90327d81a2cf28b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\ffd7c46e64decdb56fb32fc57deb9676\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\ffd7c46e64decdb56fb32fc57deb9676\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\a6739981604a0258f13c0d8ca6b2ae9e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\a6739981604a0258f13c0d8ca6b2ae9e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\543c4e6d452f3a8a8828cb1058c39e70\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\543c4e6d452f3a8a8828cb1058c39e70\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\50362197aa1ac80902e595005c60aef9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\50362197aa1ac80902e595005c60aef9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\b21a1d85a1392930c87f22982196a63c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\b21a1d85a1392930c87f22982196a63c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\a1d38ccb5339ba0e2fc374f74173a1cb\AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\Bao\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\a1d38ccb5339ba0e2fc374f74173a1cb\AndroidManifest.xml:20:5-22:41
+INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Lab70826\AndroidStudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Bao\StudioProjects\BLE_FSR\Application\src\main\AndroidManifest.xml
