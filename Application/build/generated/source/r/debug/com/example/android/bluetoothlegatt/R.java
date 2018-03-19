@@ -3045,12 +3045,13 @@ public final class R {
     public static final int topPanel=0x7f07009e;
     public static final int uniform=0x7f07009f;
     public static final int up=0x7f0700a0;
-    public static final int upload_progress=0x7f0700a1;
-    public static final int useLogo=0x7f0700a2;
-    public static final int wide=0x7f0700a3;
-    public static final int withText=0x7f0700a4;
-    public static final int wrap=0x7f0700a5;
-    public static final int wrap_content=0x7f0700a6;
+    public static final int uploadInfoText=0x7f0700a1;
+    public static final int upload_progress=0x7f0700a2;
+    public static final int useLogo=0x7f0700a3;
+    public static final int wide=0x7f0700a4;
+    public static final int withText=0x7f0700a5;
+    public static final int wrap=0x7f0700a6;
+    public static final int wrap_content=0x7f0700a7;
   }
   public static final class integer {
     public static final int abc_config_activityDefaultDur=0x7f080000;
@@ -3203,6 +3204,7 @@ public final class R {
     public static final int unknown_characteristic=0x7f0b0053;
     public static final int unknown_device=0x7f0b0054;
     public static final int unknown_service=0x7f0b0055;
+    public static final int up_load_success=0x7f0b0056;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0c0000;

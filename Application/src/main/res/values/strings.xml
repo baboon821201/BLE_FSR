@@ -44,6 +44,7 @@
     <string name="s4">s4</string>
     <string name="avg">avg</string>
     <string name="fsr">FSR</string>
+    <string name="up_load_success">Up Load Success</string>
 
 
 </resources>

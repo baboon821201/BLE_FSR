@@ -25,9 +25,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,8 +42,13 @@ import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -69,9 +76,10 @@ public class DeviceControlActivity extends Activity {
     boolean stop=true;
     boolean clear=false;
     ScrollView scrollView;
-    String time;
+    String time, filename;
     String[] dataArray;
     StringBuilder s = new StringBuilder();
+    File path, file;
 
     private Button btnScan, btnClear, btnSave;
     private TextView mConnectionState, test;
@@ -79,6 +87,7 @@ public class DeviceControlActivity extends Activity {
     private String mDeviceName;
     private String mDeviceAddress;
     private ProgressBar DataUploadProgress;
+    private TextView uploadInfoText;
 
     private ExpandableListView mGattServicesList;
     private BluetoothLeService mBluetoothLeService;
@@ -91,7 +100,7 @@ public class DeviceControlActivity extends Activity {
     private final String LIST_UUID = "UUID";
     private BluetoothGattCharacteristic FSR;
 
-    private StorageReference mStorageRef;
+    private StorageReference mStorageRef, dataRef;
 
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -240,6 +249,8 @@ public class DeviceControlActivity extends Activity {
         btnClear.setOnClickListener(ClearClickListener);
 
         DataUploadProgress = (ProgressBar) findViewById(R.id.upload_progress);
+        uploadInfoText = (TextView)findViewById(R.id.uploadInfoText);
+
 
     }
 
@@ -469,6 +480,8 @@ public class DeviceControlActivity extends Activity {
                 btnScan.setEnabled(true);
                 btnSave.setEnabled(false);
                 btnClear.setEnabled(false);
+
+                uploadInfoText.setText("");
             }
         }
     };
@@ -481,11 +494,11 @@ public class DeviceControlActivity extends Activity {
             if(b.getText().equals("Save Data")){
                 boolean hasExternalStorage = isExternalStorageWritable();
                 if(hasExternalStorage){
-                    String filename = time + ".csv";
+                    filename = time + ".csv";
                     Log.d(TAG, "filename = " + filename);
 
-                    File path = Environment.getExternalStoragePublicDirectory("/FSR/Test/");
-                    File file = new File(path, filename);
+                    path = Environment.getExternalStoragePublicDirectory("/FSR/Test/");
+                    file = new File(path, filename);
                     Log.d(TAG, "path = " + path);
 
                     try {
@@ -502,7 +515,11 @@ public class DeviceControlActivity extends Activity {
                     } catch (IOException e) {
                         Log.w("ExternalStorage", "Error writing " + file, e);
                     }
-                    Toast.makeText(DeviceControlActivity.this, "Save in:" + path  + "/"+ filename, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(DeviceControlActivity.this, "Save in:" + path  + "/"+ filename, Toast.LENGTH_LONG).show();
+
+
+
+
                 }
                 else{
                     Toast.makeText(DeviceControlActivity.this, "no storage", Toast.LENGTH_LONG).show();
@@ -513,7 +530,13 @@ public class DeviceControlActivity extends Activity {
                 String s2 = mTime + "\t" + mS1 + "\t" + mS2 + "\t" + mS3 + "\t" + mS4 + "\t" + mAvg;
                 String all = s1 + s2;
                             */
+                String name = filename.toString();
+                String filePath = Environment.getExternalStorageDirectory().toString() + "/FSR/Test/" + name;
 
+                uploadData(filePath);
+
+                Toast.makeText(DeviceControlActivity.this, "Save in:" + filePath, Toast.LENGTH_LONG).show();
+                DataUploadProgress.setVisibility(View.VISIBLE);
                 btnSave.setEnabled(false);
             }
         }
@@ -526,5 +549,34 @@ public class DeviceControlActivity extends Activity {
             return true;
         }
         return false;
+    }
+
+    private void uploadData(String path){
+        Uri file = Uri.fromFile(new File(path));
+        StorageMetadata metadata = new StorageMetadata.Builder()
+                .setContentType("data/csv")
+                .build();
+        dataRef = mStorageRef.child(file.getLastPathSegment());
+        UploadTask uploadTask = dataRef.putFile(file, metadata);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                uploadInfoText.setText(exception.getMessage());
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                uploadInfoText.setText(R.string.up_load_success);
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                int progress = (int)((100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount());
+                DataUploadProgress.setProgress(progress);
+                if(progress >= 100){
+                    DataUploadProgress.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 }

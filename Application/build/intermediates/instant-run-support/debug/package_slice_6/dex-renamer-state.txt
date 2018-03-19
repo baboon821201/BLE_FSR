@@ -1,4 +1,4 @@
-#Sun Mar 18 20:49:05 GMT+08:00 2018
-base.0=C\:\\Users\\Bao\\StudioProjects\\BLE_FSR\\Application\\build\\intermediates\\transforms\\dexMerger\\debug\\6
+#Mon Mar 19 13:02:38 CST 2018
+base.0=C\:\\Users\\Lab70826\\StudioProjects\\BLE_FSR\\Application\\build\\intermediates\\transforms\\dexMerger\\debug\\6
 path.0=classes.dex
 renamed.0=classes.dex

@@ -833,12 +833,13 @@ int id top 0x7f07009d
 int id topPanel 0x7f07009e
 int id uniform 0x7f07009f
 int id up 0x7f0700a0
-int id upload_progress 0x7f0700a1
-int id useLogo 0x7f0700a2
-int id wide 0x7f0700a3
-int id withText 0x7f0700a4
-int id wrap 0x7f0700a5
-int id wrap_content 0x7f0700a6
+int id uploadInfoText 0x7f0700a1
+int id upload_progress 0x7f0700a2
+int id useLogo 0x7f0700a3
+int id wide 0x7f0700a4
+int id withText 0x7f0700a5
+int id wrap 0x7f0700a6
+int id wrap_content 0x7f0700a7
 int integer abc_config_activityDefaultDur 0x7f080000
 int integer abc_config_activityShortDur 0x7f080001
 int integer cancel_button_image_alpha 0x7f080002
@@ -983,6 +984,7 @@ int string title_devices 0x7f0b0052
 int string unknown_characteristic 0x7f0b0053
 int string unknown_device 0x7f0b0054
 int string unknown_service 0x7f0b0055
+int string up_load_success 0x7f0b0056
 int style AlertDialog_AppCompat 0x7f0c0000
 int style AlertDialog_AppCompat_Light 0x7f0c0001
 int style Animation_AppCompat_Dialog 0x7f0c0002
