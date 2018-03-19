@@ -73,7 +73,8 @@ public class DeviceScanActivity extends ListActivity {
         String[] Permissions = {Manifest.permission.ACCESS_COARSE_LOCATION,
                                 Manifest.permission.ACCESS_FINE_LOCATION,
                                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                                Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.INTERNET};
         if (!hasPermissions(this, Permissions)){
             ActivityCompat.requestPermissions(this, Permissions, Permission_All);
         }

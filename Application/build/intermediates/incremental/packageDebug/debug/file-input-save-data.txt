@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Mar 17 13:24:47 GMT+08:00 2018
+#Sun Mar 18 20:49:22 GMT+08:00 2018
 2.base=C\:\\Users\\Bao\\StudioProjects\\BLE_FSR\\Application\\build\\intermediates\\transforms\\dexMerger\\debug\\12
 5.set=DEX
 0.path=classes.dex

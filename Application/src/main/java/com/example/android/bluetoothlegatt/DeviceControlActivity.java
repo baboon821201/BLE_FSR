@@ -34,10 +34,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -65,14 +69,16 @@ public class DeviceControlActivity extends Activity {
     boolean stop=true;
     boolean clear=false;
     ScrollView scrollView;
-    Button btnScan, btnClear, btnSave;
     String time;
     String[] dataArray;
     StringBuilder s = new StringBuilder();
+
+    private Button btnScan, btnClear, btnSave;
     private TextView mConnectionState, test;
     private TextView mTime, mS1, mS2, mS3, mS4, mAvg, mDataField;
     private String mDeviceName;
     private String mDeviceAddress;
+    private ProgressBar DataUploadProgress;
 
     private ExpandableListView mGattServicesList;
     private BluetoothLeService mBluetoothLeService;
@@ -84,6 +90,8 @@ public class DeviceControlActivity extends Activity {
     private final String LIST_NAME = "NAME";
     private final String LIST_UUID = "UUID";
     private BluetoothGattCharacteristic FSR;
+
+    private StorageReference mStorageRef;
 
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -196,17 +204,32 @@ public class DeviceControlActivity extends Activity {
         //mGattServicesList = (ExpandableListView) findViewById(R.id.gatt_services_list);
         //mGattServicesList.setOnChildClickListener(servicesListClickListner);
         //mConnectionState = (TextView) findViewById(R.id.connection_state);
-
         //mDataField = (TextView)findViewById(R.id.alldata);
+        // scrollView = (ScrollView)findViewById(R.id.sv1);
+        //test=(TextView)findViewById(R.id.TextView0);
+
+        initData();
+        initView();
+
+        getActionBar().setTitle(mDeviceName);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
+        bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+    }
+
+    private void initData(){
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+    }
+
+
+    private void initView(){
         mTime = (TextView) findViewById(R.id.showTime);
         mS1 = (TextView)findViewById(R.id.showS1);
         mS2 = (TextView)findViewById(R.id.showS2);
         mS3 = (TextView)findViewById(R.id.showS3);
         mS4 = (TextView)findViewById(R.id.showS4);
         mAvg = (TextView)findViewById(R.id.showAvg);
-        //scrollView = (ScrollView)findViewById(R.id.sv1);
 
-        //test=(TextView)findViewById(R.id.TextView0);
         btnScan=(Button)findViewById(R.id.scan);
         btnScan.setOnClickListener(StartScanClickListener);
         btnSave=(Button)findViewById(R.id.save);
@@ -216,12 +239,8 @@ public class DeviceControlActivity extends Activity {
         btnClear.setEnabled(false);
         btnClear.setOnClickListener(ClearClickListener);
 
+        DataUploadProgress = (ProgressBar) findViewById(R.id.upload_progress);
 
-
-        getActionBar().setTitle(mDeviceName);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
-        bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
     }
 
     @Override
@@ -483,6 +502,7 @@ public class DeviceControlActivity extends Activity {
                     } catch (IOException e) {
                         Log.w("ExternalStorage", "Error writing " + file, e);
                     }
+                    Toast.makeText(DeviceControlActivity.this, "Save in:" + path  + "/"+ filename, Toast.LENGTH_LONG).show();
                 }
                 else{
                     Toast.makeText(DeviceControlActivity.this, "no storage", Toast.LENGTH_LONG).show();
