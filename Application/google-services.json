@@ -15,6 +15,30 @@
       },
       "oauth_client": [
         {
+          "client_id": "491278514480-23ogqlu1e226n8vgpibbkqi15ngmh8cp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.bluetoothlegatt",
+            "certificate_hash": "76c8e422f037f0a67579fa20824bc0b54b712f97"
+          }
+        },
+        {
+          "client_id": "491278514480-5eef7uf7c7vbh1eji7clsjod2kkf6vij.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.bluetoothlegatt",
+            "certificate_hash": "149b36eec2a63bb2cb8c211767ab72d91fe12afe"
+          }
+        },
+        {
+          "client_id": "491278514480-h7vnkrfqlusbgfkno2vkr0jnq5bgcofk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.bluetoothlegatt",
+            "certificate_hash": "aa3fdbc6f2b6052e2a57a6c5583c1165349baba4"
+          }
+        },
+        {
           "client_id": "491278514480-a1kb55ekci5aabr017lu5rsuo9jice3l.apps.googleusercontent.com",
           "client_type": 3
         }
