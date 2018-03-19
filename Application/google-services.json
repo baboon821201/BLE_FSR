@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "491278514480",
+    "firebase_url": "https://blefsr.firebaseio.com",
+    "project_id": "blefsr",
+    "storage_bucket": "blefsr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:491278514480:android:057e92167ca9714a",
+        "android_client_info": {
+          "package_name": "com.example.android.bluetoothlegatt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "491278514480-a1kb55ekci5aabr017lu5rsuo9jice3l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU_qfRjyv7j12U_MJeRitdSQ6_HFlQSi0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "491278514480-a1kb55ekci5aabr017lu5rsuo9jice3l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
