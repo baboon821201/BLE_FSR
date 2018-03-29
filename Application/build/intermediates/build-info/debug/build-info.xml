@@ -2,55 +2,91 @@
 <instant-run
     abi="arm64-v8a,armeabi-v7a,armeabi"
     api-level="26"
-    build-mode="HOT_WARM"
+    build-mode="FULL"
     density="xxhdpi"
     format="10"
-    plugin-version="3.0.1"
-    timestamp="1521449768161"
+    plugin-version="3.1.0"
+    timestamp="1522299969366"
     token="5780833417105277415"
-    verifier="COMPATIBLE" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="2838" />
+        duration="1255" />
     <task
         name="instant-run-dex"
-        duration="443" />
+        duration="0" />
     <task
         name="instant-run-transform"
-        duration="49" />
+        duration="26" />
     <task
         name="verifier"
-        duration="13" />
+        duration="3" />
 
     <artifact
-        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\reload-dex\debug\classes.dex"
-        type="RELOAD_DEX" />
+        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_7.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_2.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_1.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_0.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_4.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\dep\dependencies.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_3.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_8.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\instant-run-apk\debug\Application-debug.apk"
+        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1521449371728"
+        timestamp="1522299969366"
         verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
         <artifact
             location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\outputs\apk\debug\Application-debug.apk"
-            type="SPLIT_MAIN" />
-        <artifact
             location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
         <artifact
+            location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+            type="SPLIT" />
+        <artifact
             location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\dep\dependencies.apk"
@@ -67,22 +103,9 @@
         <artifact
             location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1521449514912"
-        verifier="METHOD_DELETED" >
         <artifact
-            location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
-            type="SPLIT" />
-    </build>
-    <build
-        build-mode="HOT_WARM"
-        timestamp="1521449768161"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\reload-dex\debug\classes.dex"
-            type="RELOAD_DEX" />
+            location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\instant-run-apk\debug\Application-debug.apk"
+            type="SPLIT_MAIN" />
     </build>
 
 </instant-run>

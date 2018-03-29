@@ -37,14 +37,18 @@
     <string name="start_scan">Start Scan</string>
     <string name="clear_previous_data">Clear Previous Data</string>
     <string name="save_data">Save Data</string>
-    <string name="time">time</string>
-    <string name="s1">s1</string>
-    <string name="s2">s2</string>
-    <string name="s3">s3</string>
-    <string name="s4">s4</string>
-    <string name="avg">avg</string>
+
     <string name="fsr">FSR</string>
     <string name="up_load_success">Up Load Success</string>
+    <string name="time">Time:</string>
+
+    <string name="average">Average:</string>
+    <string name="right_front">Right Front:</string>
+    <string name="right_rear">Right Rear:</string>
+    <string name="left_rear">Left Rear:</string>
+    <string name="left_front">Left Front:</string>
+    <string name="general_scan_mode">General Scan Mode</string>
+    <string name="_30_second_test_mode">30 Second Test Mode</string>
 
 
 </resources>

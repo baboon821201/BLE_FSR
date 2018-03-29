@@ -44,11 +44,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -60,6 +63,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * For a given BLE device, this Activity provides the user interface to connect, display data,
@@ -451,8 +455,18 @@ public class DeviceControlActivity extends Activity {
                                 characteristic, true);
                     }
                 }
+
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                Map<String, Object> user = new HashMap<>();
+
+
                 b.setText("Stop Scan");
                 stop = false;
+
+
+
+
             }else{
                 //mDataField.setText("No Pressure");
                 stop = true;
@@ -497,14 +511,15 @@ public class DeviceControlActivity extends Activity {
                     filename = time + ".csv";
                     Log.d(TAG, "filename = " + filename);
 
-                    path = Environment.getExternalStoragePublicDirectory("/FSR/Test/");
+                    path = Environment.getExternalStoragePublicDirectory("/FSR/General Scan Mode/");
                     file = new File(path, filename);
                     Log.d(TAG, "path = " + path);
 
                     try {
                         path.mkdirs();
                         OutputStream outputStream = new FileOutputStream(file, true);
-                        String s1 = "Time" + ",\t\t" + "sensor1" + ",\t" + "sensor2" + ",\t" + "sensor3" + ",\t" + "sensor4" + ",\t" + "Average" + ",\n";
+                        //String s1 = "Time" + ",\t\t" + "sensor1" + ",\t" + "sensor2" + ",\t" + "sensor3" + ",\t" + "sensor4" + ",\t" + "Average" + ",\n";
+                        String s1 = "Time" + "," + "Right Front" + "," + "Right Rear"+ "," + "Left Rear"+ "," + "Left Front"+ "," + "Average" + "\n";
                         s.toString();
                         //String dataArrayString = saveData;
                         String all = s1 + s;
@@ -516,10 +531,6 @@ public class DeviceControlActivity extends Activity {
                         Log.w("ExternalStorage", "Error writing " + file, e);
                     }
                     //Toast.makeText(DeviceControlActivity.this, "Save in:" + path  + "/"+ filename, Toast.LENGTH_LONG).show();
-
-
-
-
                 }
                 else{
                     Toast.makeText(DeviceControlActivity.this, "no storage", Toast.LENGTH_LONG).show();
@@ -531,7 +542,7 @@ public class DeviceControlActivity extends Activity {
                 String all = s1 + s2;
                             */
                 String name = filename.toString();
-                String filePath = Environment.getExternalStorageDirectory().toString() + "/FSR/Test/" + name;
+                String filePath = Environment.getExternalStorageDirectory().toString() + "/FSR/General Scan Mode/" + name;
 
                 uploadData(filePath);
 

@@ -52,6 +52,7 @@
         android:protectionLevel="signature" />
 
     <uses-permission android:name="com.example.android.bluetoothlegatt.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:debuggable="true"
@@ -68,6 +69,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.android.bluetoothlegatt.ChooseMode" />
+        <activity android:name="com.example.android.bluetoothlegatt.ThirtySecondMode" />
         <activity android:name="com.example.android.bluetoothlegatt.DeviceControlActivity" />
 
         <service
