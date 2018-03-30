@@ -78,11 +78,15 @@ public class ThirtySecondMode extends Activity {
     boolean stop=true;
     boolean clear=false;
     ScrollView scrollView;
-    String time, filename;
+    String time, filename, l;
     String[] dataArray;
     StringBuilder s = new StringBuilder();
     File path1, file1;
 
+    float i1, i2, i3, i4, iAvg;
+    int j = 0;
+    int k = 0;
+    int m = 0;
     private Button btnScan, btnClear, btnSave;
     private TextView mConnectionState, test;
     private TextView mTime, mS1, mS2, mS3, mS4, mAvg, mDataField;
@@ -327,7 +331,8 @@ public class ThirtySecondMode extends Activity {
                 mS2.setText(dataArray[2]);
                 mS3.setText(dataArray[3]);
                 mS4.setText(dataArray[4]);
-                mAvg.setText(dataArray[5]);
+                //mAvg.setText(dataArray[5]);
+
                 /*
                 mTime.append(dataArray[0]+"\n");
                 mS1.append(dataArray[1]+"\n");
@@ -345,7 +350,35 @@ public class ThirtySecondMode extends Activity {
                     }
                 });
 */
+
+                /*
+                l = Integer.toString(j);
+                Log.d(TAG, l);
+                mAvg.setText(l);
+                */
             }
+            i1 = Float.valueOf(dataArray[1]);
+            i2 = Float.valueOf(dataArray[2]);
+            i3 = Float.valueOf(dataArray[3]);
+            i4 = Float.valueOf(dataArray[4]);
+            iAvg = Float.valueOf(dataArray[5]);
+            if(iAvg>50.0){
+                j=1;
+            }
+            if(iAvg==0.0){
+                if(j==1){
+                    k++;
+                    j = 0;
+                }
+            }
+
+            m=m+k;
+
+
+            l = Integer.toString(m);
+            Log.d(TAG, l);
+            mAvg.setText(l);
+            k=0;
         }
     }
 
@@ -455,6 +488,8 @@ public class ThirtySecondMode extends Activity {
                 }
 
 
+
+
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 Map<String, Object> user = new HashMap<>();
 
@@ -488,6 +523,9 @@ public class ThirtySecondMode extends Activity {
                 mS4.setText("");
                 mAvg.setText("");
                 s.setLength(0);
+                j = 0;
+                k = 0;
+                m = 0;
                 clear=true;
                 btnScan.setEnabled(true);
                 btnSave.setEnabled(false);
