@@ -27,6 +27,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
@@ -89,7 +90,7 @@ public class ThirtySecondMode extends Activity {
     int m = 0;
     private Button btnScan, btnClear, btnSave;
     private TextView mConnectionState, test;
-    private TextView mTime, mS1, mS2, mS3, mS4, mAvg, mDataField;
+    private TextView mTimer, mCounter;
     private String mDeviceName;
     private String mDeviceAddress;
     private ProgressBar DataUploadProgress;
@@ -238,12 +239,15 @@ public class ThirtySecondMode extends Activity {
 
 
     private void initView(){
-        mTime = (TextView) findViewById(R.id.showTime);
-        mS1 = (TextView)findViewById(R.id.showS1);
-        mS2 = (TextView)findViewById(R.id.showS2);
-        mS3 = (TextView)findViewById(R.id.showS3);
-        mS4 = (TextView)findViewById(R.id.showS4);
-        mAvg = (TextView)findViewById(R.id.showAvg);
+        //mTime = (TextView) findViewById(R.id.showTime);
+        //mS1 = (TextView)findViewById(R.id.showS1);
+        //mS2 = (TextView)findViewById(R.id.showS2);
+        //mS3 = (TextView)findViewById(R.id.showS3);
+        //mS4 = (TextView)findViewById(R.id.showS4);
+        //mAvg = (TextView)findViewById(R.id.showAvg);
+
+        mTimer = (TextView)findViewById(R.id.timer);
+        mCounter = (TextView)findViewById(R.id.counter);
 
         btnScan=(Button)findViewById(R.id.scan1);
         btnScan.setOnClickListener(StartScanClickListener);
@@ -326,11 +330,11 @@ public class ThirtySecondMode extends Activity {
             if (data != null) {
                 dataArray = data.split(",");
 
-                mTime.setText(dataArray[0]);
-                mS1.setText(dataArray[1]);
-                mS2.setText(dataArray[2]);
-                mS3.setText(dataArray[3]);
-                mS4.setText(dataArray[4]);
+                //mTime.setText(dataArray[0]);
+                //mS1.setText(dataArray[1]);
+                //mS2.setText(dataArray[2]);
+                //mS3.setText(dataArray[3]);
+                //mS4.setText(dataArray[4]);
                 //mAvg.setText(dataArray[5]);
 
                 /*
@@ -376,8 +380,8 @@ public class ThirtySecondMode extends Activity {
 
 
             l = Integer.toString(m);
-            Log.d(TAG, l);
-            mAvg.setText(l);
+            //Log.d(TAG, l);
+            mCounter.setText(l);
             k=0;
         }
     }
@@ -457,6 +461,23 @@ public class ThirtySecondMode extends Activity {
         return intentFilter;
     }
 
+    private CountDownTimer timer = new CountDownTimer(30000, 1)
+     {
+         @Override
+        public void onTick(long millisUntilFinished) {
+             mTimer.setText( String.valueOf(millisUntilFinished / 1000));
+        }
+         @Override
+        public void onFinish() {
+            //mTimer.setText("0.000");
+             btnScan.setText("Start Scan");
+             btnScan.setEnabled(false);
+             btnClear.setEnabled(true);
+             btnSave.setEnabled(true);
+             stop = true;
+        }
+    };
+
     //按下button時要做的事情
     public Button.OnClickListener StartScanClickListener = new Button.OnClickListener() {
         @Override
@@ -487,21 +508,14 @@ public class ThirtySecondMode extends Activity {
                     }
                 }
 
-
-
-
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                Map<String, Object> user = new HashMap<>();
-
+                timer.start();
 
                 b.setText("Stop Scan");
                 stop = false;
 
-
-
-
             }else{
                 //mDataField.setText("No Pressure");
+                timer.cancel();
                 stop = true;
                 b.setText("Start Scan");
                 btnScan.setEnabled(false);
@@ -516,13 +530,15 @@ public class ThirtySecondMode extends Activity {
         public void onClick(View v) {
             Button b = (Button) v;
             if(b.getText().equals("Clear Previous Data")){
-                mTime.setText("");
-                mS1.setText("");
-                mS2.setText("");
-                mS3.setText("");
-                mS4.setText("");
-                mAvg.setText("");
-                s.setLength(0);
+                //mTime.setText("");
+                //mS1.setText("");
+                //mS2.setText("");
+                //mS3.setText("");
+                //mS4.setText("");
+                //mAvg.setText("");
+                mTimer.setText("30");
+                mCounter.setText("0");
+                //s.setLength(0);
                 j = 0;
                 k = 0;
                 m = 0;
