@@ -3349,21 +3349,22 @@ public final class R {
     public static final int project_id=0x7f0b004e;
     public static final int right_front=0x7f0b004f;
     public static final int right_rear=0x7f0b0050;
-    public static final int save_data=0x7f0b0051;
-    public static final int search_menu_title=0x7f0b0052;
-    public static final int seconds=0x7f0b0053;
-    public static final int start_scan=0x7f0b0054;
-    public static final int status_bar_notification_info_overflow=0x7f0b0055;
-    public static final int time=0x7f0b0056;
-    public static final int timer=0x7f0b0057;
-    public static final int timer_text=0x7f0b0058;
-    public static final int times=0x7f0b0059;
-    public static final int times_text=0x7f0b005a;
-    public static final int title_devices=0x7f0b005b;
-    public static final int unknown_characteristic=0x7f0b005c;
-    public static final int unknown_device=0x7f0b005d;
-    public static final int unknown_service=0x7f0b005e;
-    public static final int up_load_success=0x7f0b005f;
+    public static final int s=0x7f0b0051;
+    public static final int save_data=0x7f0b0052;
+    public static final int search_menu_title=0x7f0b0053;
+    public static final int seconds=0x7f0b0054;
+    public static final int start_scan=0x7f0b0055;
+    public static final int status_bar_notification_info_overflow=0x7f0b0056;
+    public static final int time=0x7f0b0057;
+    public static final int timer=0x7f0b0058;
+    public static final int timer_text=0x7f0b0059;
+    public static final int times=0x7f0b005a;
+    public static final int times_text=0x7f0b005b;
+    public static final int title_devices=0x7f0b005c;
+    public static final int unknown_characteristic=0x7f0b005d;
+    public static final int unknown_device=0x7f0b005e;
+    public static final int unknown_service=0x7f0b005f;
+    public static final int up_load_success=0x7f0b0060;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0c0000;

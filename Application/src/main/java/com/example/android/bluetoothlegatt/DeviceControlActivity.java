@@ -567,7 +567,7 @@ public class DeviceControlActivity extends Activity {
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("data/csv")
                 .build();
-        dataRef = mStorageRef.child(file.getLastPathSegment());
+        dataRef = mStorageRef.child("General Mode/" + filename);
         UploadTask uploadTask = dataRef.putFile(file, metadata);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override

@@ -57,12 +57,15 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * For a given BLE device, this Activity provides the user interface to connect, display data,
@@ -83,11 +86,15 @@ public class ThirtySecondMode extends Activity {
     String[] dataArray;
     StringBuilder s = new StringBuilder();
     File path1, file1;
-
+    Long tsLong1, tsLong2, timeP;
     float i1, i2, i3, i4, iAvg;
     int j = 0;
     int k = 0;
     int m = 0;
+    int a = 1;
+    float t1 = 0;
+    float t2 = 0;
+    float timeDiff = 0;
     private Button btnScan, btnClear, btnSave;
     private TextView mConnectionState, test;
     private TextView mTimer, mCounter;
@@ -330,6 +337,8 @@ public class ThirtySecondMode extends Activity {
             if (data != null) {
                 dataArray = data.split(",");
 
+                //Log.d("xxxxx", dataArray[0]);
+
                 //mTime.setText(dataArray[0]);
                 //mS1.setText(dataArray[1]);
                 //mS2.setText(dataArray[2]);
@@ -361,23 +370,50 @@ public class ThirtySecondMode extends Activity {
                 mAvg.setText(l);
                 */
             }
+
+
+            //long timeStamp1 = 0, timeStamp2 = 0;
             i1 = Float.valueOf(dataArray[1]);
             i2 = Float.valueOf(dataArray[2]);
             i3 = Float.valueOf(dataArray[3]);
             i4 = Float.valueOf(dataArray[4]);
             iAvg = Float.valueOf(dataArray[5]);
-            if(iAvg>50.0){
+            if((i1>i2) && (i4>i3)){
                 j=1;
+                if (a == 1) {
+                    tsLong1 = System.currentTimeMillis();
+                    t1 = tsLong1.intValue();
+                    String ts = tsLong1.toString();
+                    Log.d(TAG, ts);
+                    a=0;
+                }
+
             }
             if(iAvg==0.0){
                 if(j==1){
                     k++;
                     j = 0;
+                    tsLong2 = System.currentTimeMillis();
+                    t2 = tsLong2.intValue();
+                    String ts = tsLong2.toString();
+                    Log.d(TAG, ts);
+                    a=1;
+
+                    timeDiff = (t2 - t1)/1000;
+                    String ts1 = Float.toString(timeDiff);
+                    //DecimalFormat mDecimalFormat = new DecimalFormat("#.###");
+                    //String ts2 = mDecimalFormat.format(Double.parseDouble(ts1));
+                    Log.d(TAG, ts1);
+
                 }
             }
 
-            m=m+k;
 
+
+            //timeP = (tsLong2 - tsLong1);
+
+            m=m+k;
+            //Long tsLong = System.currentTimeMillis();
 
             l = Integer.toString(m);
             //Log.d(TAG, l);
@@ -619,7 +655,7 @@ public class ThirtySecondMode extends Activity {
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("data/csv")
                 .build();
-        dataRef = mStorageRef.child(file.getLastPathSegment());
+        dataRef = mStorageRef.child("Thirty Second Mode/" + filename);
         UploadTask uploadTask = dataRef.putFile(file, metadata);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -641,5 +677,11 @@ public class ThirtySecondMode extends Activity {
                 }
             }
         });
+    }
+
+    public String stampToDate(long timeMillis){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(timeMillis);
+        return simpleDateFormat.format(date);
     }
 }
