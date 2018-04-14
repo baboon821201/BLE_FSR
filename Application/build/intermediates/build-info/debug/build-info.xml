@@ -6,22 +6,22 @@
     density="xxhdpi"
     format="10"
     plugin-version="3.1.0"
-    timestamp="1523603355441"
+    timestamp="1523685372496"
     token="5780833417105277415"
     verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="1145" />
+        duration="1062" />
     <task
         name="instant-run-dex"
-        duration="508" />
+        duration="515" />
     <task
         name="instant-run-transform"
-        duration="65" />
+        duration="122" />
     <task
         name="verifier"
-        duration="10" />
+        duration="11" />
 
     <artifact
         location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\reload-dex\debug\classes.dex"
@@ -29,7 +29,7 @@
 
     <build
         build-mode="FULL"
-        timestamp="1523603210871"
+        timestamp="1523684817491"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
@@ -73,15 +73,15 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1523603291569"
-        verifier="FIELD_TYPE_CHANGE" >
+        timestamp="1523685293861"
+        verifier="FIELD_ADDED" >
         <artifact
             location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
     </build>
     <build
         build-mode="HOT_WARM"
-        timestamp="1523603355441"
+        timestamp="1523685372496"
         verifier="COMPATIBLE" >
         <artifact
             location="C:\Users\Lab70826\StudioProjects\BLE_FSR\Application\build\intermediates\reload-dex\debug\classes.dex"

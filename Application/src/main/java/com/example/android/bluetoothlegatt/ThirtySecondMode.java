@@ -82,22 +82,25 @@ public class ThirtySecondMode extends Activity {
     boolean stop=true;
     boolean clear=false;
     ScrollView scrollView;
-    String time, filename, l;
+    String time, filename, l, ts1;
     String[] dataArray;
     StringBuilder s = new StringBuilder();
     File path1, file1;
     Long tsLong1, tsLong2, timeP;
+    long timeDelay;
+    Date startTime ,endTime;
     float i1, i2, i3, i4, iAvg;
     int j = 0;
     int k = 0;
     int m = 0;
     int a = 1;
+    float x = 0;
     float t1 = 0;
     float t2 = 0;
     float timeDiff = 0;
     private Button btnScan, btnClear, btnSave;
     private TextView mConnectionState, test;
-    private TextView mTimer, mCounter;
+    private TextView mTimer, mCounter, mDelay;
     private String mDeviceName;
     private String mDeviceAddress;
     private ProgressBar DataUploadProgress;
@@ -255,6 +258,8 @@ public class ThirtySecondMode extends Activity {
 
         mTimer = (TextView)findViewById(R.id.timer);
         mCounter = (TextView)findViewById(R.id.counter);
+        mDelay = (TextView)findViewById(R.id.time_delay);
+        scrollView = (ScrollView)findViewById(R.id.sv1);
 
         btnScan=(Button)findViewById(R.id.scan1);
         btnScan.setOnClickListener(StartScanClickListener);
@@ -381,10 +386,16 @@ public class ThirtySecondMode extends Activity {
             if((i1>i2) && (i4>i3)){
                 j=1;
                 if (a == 1) {
+                    startTime = new Date(System.currentTimeMillis());
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+                    String dateString = sdf.format(startTime);
+                    Log.d(TAG, dateString);
+
+
                     tsLong1 = System.currentTimeMillis();
                     t1 = tsLong1.intValue();
                     String ts = tsLong1.toString();
-                    Log.d(TAG, ts);
+                    //Log.d(TAG, ts);
                     a=0;
                 }
 
@@ -393,18 +404,43 @@ public class ThirtySecondMode extends Activity {
                 if(j==1){
                     k++;
                     j = 0;
+                    endTime = new Date(System.currentTimeMillis());
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+                    String dateString = sdf.format(endTime);
+                    Log.d(TAG, dateString);
+
+                    timeDelay = endTime.getTime() - startTime.getTime();
+
+                    x = (float)timeDelay / 1000;
+
+                    String diff = String.valueOf(x);
+                    Log.d(TAG, diff);
+
+                    //String str = String.valueOf(timeDelay);
                     tsLong2 = System.currentTimeMillis();
                     t2 = tsLong2.intValue();
                     String ts = tsLong2.toString();
-                    Log.d(TAG, ts);
+                    //Log.d(TAG, ts);
                     a=1;
 
                     timeDiff = (t2 - t1)/1000;
-                    String ts1 = Float.toString(timeDiff);
+                    ts1 = Float.toString(timeDiff);
                     //DecimalFormat mDecimalFormat = new DecimalFormat("#.###");
                     //String ts2 = mDecimalFormat.format(Double.parseDouble(ts1));
-                    Log.d(TAG, ts1);
+                    //Log.d(TAG, ts1);
 
+                    m=m+k;
+                    l = Integer.toString(m);
+                    mCounter.append(l + "\n");
+                    mDelay.append(diff + "\n");
+                    scrollView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            scrollView.fullScroll(View.FOCUS_DOWN);
+                        }
+                    });
+
+                    k=0;
                 }
             }
 
@@ -412,13 +448,25 @@ public class ThirtySecondMode extends Activity {
 
             //timeP = (tsLong2 - tsLong1);
 
-            m=m+k;
+            //m=m+k;
             //Long tsLong = System.currentTimeMillis();
 
-            l = Integer.toString(m);
+            //l = Integer.toString(m);
             //Log.d(TAG, l);
-            mCounter.setText(l);
-            k=0;
+            //mCounter.setText(l);
+            //mDelay.setText(ts1);
+
+            //mCounter.append(l+"\n");
+            //mCounter.append(ts1+"\n");
+            //scrollView.post(new Runnable() {
+            //    @Override
+            //    public void run() {
+            //        scrollView.fullScroll(View.FOCUS_DOWN);
+            //    }
+            //});
+
+
+            //k=0;
         }
     }
 
@@ -573,7 +621,8 @@ public class ThirtySecondMode extends Activity {
                 //mS4.setText("");
                 //mAvg.setText("");
                 mTimer.setText("30");
-                mCounter.setText("0");
+                mCounter.setText("");
+                mDelay.setText("");
                 //s.setLength(0);
                 j = 0;
                 k = 0;
