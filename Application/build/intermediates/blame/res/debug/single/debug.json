@@ -1436,6 +1436,10 @@
         "source": "C:\\Users\\Lab70826\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\be540d40b5374ea8e15b541b67e185eb\\res\\drawable\\abc_seekbar_track_material.xml"
     },
     {
+        "merged": "C:\\Users\\Lab70826\\StudioProjects\\BLE_FSR\\Application\\build\\intermediates\\res\\merged\\debug\\drawable_line.xml.flat",
+        "source": "C:\\Users\\Lab70826\\StudioProjects\\BLE_FSR\\Application\\src\\main\\res\\drawable\\line.xml"
+    },
+    {
         "merged": "C:\\Users\\Lab70826\\StudioProjects\\BLE_FSR\\Application\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_voice_search_api_material.xml.flat",
         "source": "C:\\Users\\Lab70826\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\be540d40b5374ea8e15b541b67e185eb\\res\\drawable\\abc_ic_voice_search_api_material.xml"
     },

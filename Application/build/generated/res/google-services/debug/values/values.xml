@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">491278514480-a1kb55ekci5aabr017lu5rsuo9jice3l.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://blefsr.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">491278514480</string>
+    <string name="google_api_key" translatable="false">AIzaSyCU_qfRjyv7j12U_MJeRitdSQ6_HFlQSi0</string>
+    <string name="google_app_id" translatable="false">1:491278514480:android:057e92167ca9714a</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCU_qfRjyv7j12U_MJeRitdSQ6_HFlQSi0</string>
+    <string name="google_storage_bucket" translatable="false">blefsr.appspot.com</string>
+    <string name="project_id" translatable="false">blefsr</string>
+</resources>

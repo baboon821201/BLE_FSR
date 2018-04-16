@@ -387,7 +387,7 @@ public class ThirtySecondMode extends Activity {
                 j=1;
                 if (a == 1) {
                     startTime = new Date(System.currentTimeMillis());
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
                     String dateString = sdf.format(startTime);
                     Log.d(TAG, dateString);
 
@@ -405,7 +405,7 @@ public class ThirtySecondMode extends Activity {
                     k++;
                     j = 0;
                     endTime = new Date(System.currentTimeMillis());
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
                     String dateString = sdf.format(endTime);
                     Log.d(TAG, dateString);
 

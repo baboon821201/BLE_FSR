@@ -34,6 +34,7 @@ import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -159,9 +160,12 @@ public class BluetoothLeService extends Service {
                     i3 = data[4]*256 + (data[5] & 0xff);
                     i4 = data[6]*256 + (data[7] & 0xff);
                     i5 = (i1+i2+i3+i4)/4;
-                    SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss.SSS");
-                    Calendar c = Calendar.getInstance();
-                    String t = df.format(c.getTime());
+                    //SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss.SSS");
+                    //Calendar c = Calendar.getInstance();
+                    //String t = df.format(c.getTime());
+                    Date startTime = new Date(System.currentTimeMillis());
+                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
+                    String t = sdf.format(startTime);
                     /*
                     String s1 = String.valueOf(i1);
                     String s2 = String.valueOf(i2);

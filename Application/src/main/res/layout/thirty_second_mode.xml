@@ -142,6 +142,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
+        android:background="@drawable/line"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -152,26 +153,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/line">
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/times"
-                android:textAlignment="center"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="131dp"
                 tools:layout_editor_absoluteY="81dp" />
 
             <TextView
                 android:id="@+id/td"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/line"
+                android:gravity="center"
                 android:text="@string/time_delay_s"
-                android:textAlignment="center"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -183,14 +186,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/line">
 
                 <TextView
                     android:id="@+id/counter"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text=""
                     android:textAllCaps="false"
                     android:textSize="18sp"
@@ -199,10 +204,12 @@
 
                 <TextView
                     android:id="@+id/time_delay"
-                    android:layout_width="66dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
+                    android:background="@drawable/line"
+                    android:gravity="center"
                     android:textSize="18sp" />
             </LinearLayout>
         </ScrollView>
