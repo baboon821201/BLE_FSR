@@ -45,6 +45,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -118,6 +119,8 @@ public class ThirtySecondMode extends Activity {
     private BluetoothGattCharacteristic FSR;
 
     private StorageReference mStorageRef, dataRef;
+
+    //private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -383,6 +386,37 @@ public class ThirtySecondMode extends Activity {
             i3 = Float.valueOf(dataArray[3]);
             i4 = Float.valueOf(dataArray[4]);
             iAvg = Float.valueOf(dataArray[5]);
+
+
+
+           // FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            //Map<String, Object> thirtySecond = new HashMap<>();
+            //thirtySecond.put("Time", dataArray[0]);
+            //thirtySecond.put("右上", dataArray[1]);
+            //thirtySecond.put("右下", dataArray[2]);
+            //thirtySecond.put("左下", dataArray[3]);
+            //thirtySecond.put("左上", dataArray[4]);
+            //thirtySecond.put("平均", dataArray[5]);
+            ////thirtySecond.put("born", 1815);
+//
+            //// Add a new document with a generated ID
+            //db.collection("thirtySecond").document(time).collection(dataArray[0])
+            //        .add(thirtySecond)
+            //        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            //            @Override
+            //            public void onSuccess(DocumentReference documentReference) {
+            //                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+            //            }
+            //        })
+            //        .addOnFailureListener(new OnFailureListener() {
+            //            @Override
+            //            public void onFailure(@NonNull Exception e) {
+            //                Log.w(TAG, "Error adding document", e);
+            //            }
+            //        });
+
+
             if((i1>i2) && (i4>i3)){
                 j=1;
                 if (a == 1) {
@@ -415,7 +449,7 @@ public class ThirtySecondMode extends Activity {
 
                     String diff = String.valueOf(x);
                     Log.d(TAG, diff);
-
+/*
                     //String str = String.valueOf(timeDelay);
                     tsLong2 = System.currentTimeMillis();
                     t2 = tsLong2.intValue();
@@ -428,7 +462,7 @@ public class ThirtySecondMode extends Activity {
                     //DecimalFormat mDecimalFormat = new DecimalFormat("#.###");
                     //String ts2 = mDecimalFormat.format(Double.parseDouble(ts1));
                     //Log.d(TAG, ts1);
-
+*/
                     m=m+k;
                     l = Integer.toString(m);
                     mCounter.append(l + "\n");
@@ -726,11 +760,5 @@ public class ThirtySecondMode extends Activity {
                 }
             }
         });
-    }
-
-    public String stampToDate(long timeMillis){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date(timeMillis);
-        return simpleDateFormat.format(date);
     }
 }
