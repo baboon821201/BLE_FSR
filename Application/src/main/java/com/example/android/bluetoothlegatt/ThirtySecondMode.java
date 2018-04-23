@@ -25,6 +25,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -43,6 +45,15 @@ import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -119,6 +130,12 @@ public class ThirtySecondMode extends Activity {
     private BluetoothGattCharacteristic FSR;
 
     private StorageReference mStorageRef, dataRef;
+
+    private LineChart mChart;
+    private Thread thread;
+    private boolean plotData = true;
+    protected Typeface mTfRegular;
+    protected Typeface mTfLight;
 
     //private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -273,6 +290,58 @@ public class ThirtySecondMode extends Activity {
         btnClear.setEnabled(false);
         btnClear.setOnClickListener(ClearClickListener);
 
+
+        mChart = (LineChart)findViewById(R.id.chart1);
+
+        // enable description text
+        mChart.getDescription().setEnabled(true);
+        mChart.getDescription().setText("Real Time Pressure");
+
+        // enable touch gestures
+        mChart.setTouchEnabled(true);
+
+        // enable scaling and dragging
+        mChart.setDragEnabled(true);
+        mChart.setScaleEnabled(true);
+        mChart.setDrawGridBackground(false);
+
+        // if disabled, scaling can be done on x- and y-axis separately
+        mChart.setPinchZoom(true);
+
+        // set an alternative background color
+        mChart.setBackgroundColor(Color.LTGRAY);
+
+        LineData data = new LineData();
+        data.setValueTextColor(Color.WHITE);
+
+        // add empty data
+        mChart.setData(data);
+
+        // get the legend (only possible after setting data)
+        Legend l = mChart.getLegend();
+
+        // modify the legend ...
+        l.setForm(Legend.LegendForm.LINE);
+        l.setTypeface(mTfLight);
+        l.setTextColor(Color.WHITE);
+
+        XAxis xl = mChart.getXAxis();
+        xl.setTypeface(mTfLight);
+        xl.setTextColor(Color.WHITE);
+        xl.setDrawGridLines(false);
+        xl.setAvoidFirstLastClipping(true);
+        xl.setEnabled(true);
+
+        YAxis leftAxis = mChart.getAxisLeft();
+        leftAxis.setTypeface(mTfLight);
+        leftAxis.setTextColor(Color.WHITE);
+        leftAxis.setAxisMaximum(1000f);
+        leftAxis.setAxisMinimum(0f);
+        leftAxis.setDrawGridLines(true);
+
+        YAxis rightAxis = mChart.getAxisRight();
+        rightAxis.setEnabled(false);
+
         DataUploadProgress = (ProgressBar) findViewById(R.id.upload_progress);
         uploadInfoText = (TextView)findViewById(R.id.uploadInfoText);
 
@@ -339,6 +408,54 @@ public class ThirtySecondMode extends Activity {
             }
         });
     }
+    private void addEntry() {
+        LineData data = mChart.getData();
+        if (data != null) {
+
+            ILineDataSet set = data.getDataSetByIndex(0);
+            // set.addEntry(...); // can be called as well
+
+            if (set == null) {
+                set = createSet();
+                data.addDataSet(set);
+            }
+
+            data.addEntry(new Entry(set.getEntryCount(), iAvg), 0);
+            data.notifyDataChanged();
+
+            // let the chart know it's data has changed
+            mChart.notifyDataSetChanged();
+
+            // limit the number of visible entries
+            mChart.setVisibleXRangeMaximum(120);
+            // mChart.setVisibleYRange(30, AxisDependency.LEFT);
+
+            // move to the latest entry
+            mChart.moveViewToX(data.getEntryCount());
+
+            // this automatically refreshes the chart (calls invalidate())
+            // mChart.moveViewTo(data.getXValCount()-7, 55f,
+            // AxisDependency.LEFT);
+        }
+    }
+
+    private LineDataSet createSet() {
+        LineDataSet set = new LineDataSet(null, "Dynamic Data");
+        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+        set.setColor(ColorTemplate.getHoloBlue());
+        set.setCircleColor(Color.WHITE);
+        set.setLineWidth(2f);
+        set.setCircleRadius(4f);
+        set.setFillAlpha(65);
+        set.setFillColor(ColorTemplate.getHoloBlue());
+        set.setHighLightColor(Color.rgb(244, 117, 117));
+        set.setValueTextColor(Color.WHITE);
+        set.setValueTextSize(9f);
+        set.setDrawValues(false);
+        return set;
+    }
+
+
 
     private void displayData(String data) {
         if(!stop) {
@@ -379,15 +496,12 @@ public class ThirtySecondMode extends Activity {
                 */
             }
 
-
             //long timeStamp1 = 0, timeStamp2 = 0;
             i1 = Float.valueOf(dataArray[1]);
             i2 = Float.valueOf(dataArray[2]);
             i3 = Float.valueOf(dataArray[3]);
             i4 = Float.valueOf(dataArray[4]);
             iAvg = Float.valueOf(dataArray[5]);
-
-
 
            // FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -475,6 +589,7 @@ public class ThirtySecondMode extends Activity {
                     });
 
                     k=0;
+                    a=1;
                 }
             }
 
@@ -627,6 +742,34 @@ public class ThirtySecondMode extends Activity {
                 }
 
                 timer.start();
+                //feedMultiple();
+
+                if (thread != null)
+                    thread.interrupt();
+                final Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        addEntry();
+                    }
+                };
+
+                thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        do {
+                            // Don't generate garbage runnables inside the loop.
+                            runOnUiThread(runnable);
+                            try {
+                                Thread.sleep(10);
+                            } catch (InterruptedException e) {
+                                //  Auto-generated catch block
+                                e.printStackTrace();
+                            }
+
+                        }while (!stop);
+                    }
+                });
+                thread.start();
 
                 b.setText("Stop Scan");
                 stop = false;
@@ -665,6 +808,8 @@ public class ThirtySecondMode extends Activity {
                 btnScan.setEnabled(true);
                 btnSave.setEnabled(false);
                 btnClear.setEnabled(false);
+
+                mChart.clearValues();
 
                 uploadInfoText.setText("");
             }
