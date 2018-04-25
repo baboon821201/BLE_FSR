@@ -50,7 +50,6 @@
     <string name="general_scan_mode">General Scan Mode</string>
     <string name="_30_second_test_mode">30 Second Test Mode</string>
     <string name="timer">Timer:</string>
-    <string name="_30">30</string>
     <string name="times_text">times_text</string>
     <string name="timer_text">timer_text</string>
     <string name="_0">0</string>
@@ -58,6 +57,8 @@
     <string name="s">s</string>
     <string name="times">Times</string>
     <string name="time_delay_s">Time Delay (s)</string>
+    <string name="_30">30</string>
+    <string name="_30_000">30.000</string>
 
 
 </resources>

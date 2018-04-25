@@ -343,7 +343,7 @@ public class ThirtySecondMode extends Activity {
         rightAxis.setEnabled(false);
 
         DataUploadProgress = (ProgressBar) findViewById(R.id.upload_progress);
-        uploadInfoText = (TextView)findViewById(R.id.uploadInfoText);
+        //uploadInfoText = (TextView)findViewById(R.id.uploadInfoText);
 
 
     }
@@ -698,11 +698,11 @@ public class ThirtySecondMode extends Activity {
      {
          @Override
         public void onTick(long millisUntilFinished) {
-             mTimer.setText( String.valueOf(millisUntilFinished / 1000));
+             mTimer.setText(String.valueOf(millisUntilFinished / 1000) + "." + String.valueOf(millisUntilFinished % 1000));
         }
          @Override
         public void onFinish() {
-            //mTimer.setText("0.000");
+             mTimer.setText("0.000");
              btnScan.setText("Start Scan");
              btnScan.setEnabled(false);
              btnClear.setEnabled(true);
@@ -797,7 +797,7 @@ public class ThirtySecondMode extends Activity {
                 //mS3.setText("");
                 //mS4.setText("");
                 //mAvg.setText("");
-                mTimer.setText("30");
+                mTimer.setText("30.000");
                 mCounter.setText("");
                 mDelay.setText("");
                 //s.setLength(0);
@@ -811,7 +811,7 @@ public class ThirtySecondMode extends Activity {
 
                 mChart.clearValues();
 
-                uploadInfoText.setText("");
+                //uploadInfoText.setText("");
             }
         }
     };
@@ -888,12 +888,14 @@ public class ThirtySecondMode extends Activity {
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                uploadInfoText.setText(exception.getMessage());
+                //uploadInfoText.setText(exception.getMessage());
+                Toast.makeText(ThirtySecondMode.this, exception.getMessage(), Toast.LENGTH_LONG).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                uploadInfoText.setText(R.string.up_load_success);
+                //uploadInfoText.setText(R.string.up_load_success);
+                Toast.makeText(ThirtySecondMode.this, R.string.up_load_success, Toast.LENGTH_LONG).show();
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
