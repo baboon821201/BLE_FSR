@@ -26,8 +26,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -50,6 +52,8 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.ubidots.ApiClient;
+import com.ubidots.Variable;
 
 import org.w3c.dom.Text;
 
@@ -64,6 +68,9 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 /**
  * For a given BLE device, this Activity provides the user interface to connect, display data,
@@ -74,6 +81,8 @@ import java.util.Map;
 public class DeviceControlActivity extends Activity {
     private final static String TAG = DeviceControlActivity.class.getSimpleName();
 
+    private final String API_KEY = "A1E-a681b156def69c266fdfa1a95e82c6a67c6b";
+    private final String VARIABLE_ID = "5ae97900c03f973cd554f1b9";
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
 
@@ -84,7 +93,7 @@ public class DeviceControlActivity extends Activity {
     String[] dataArray;
     StringBuilder s = new StringBuilder();
     File path, file;
-
+    float avg;
     private Button btnScan, btnClear, btnSave;
     private TextView mConnectionState, test;
     private TextView mTime, mS1, mS2, mS3, mS4, mAvg, mDataField;
@@ -92,6 +101,10 @@ public class DeviceControlActivity extends Activity {
     private String mDeviceAddress;
     private ProgressBar DataUploadProgress;
     private TextView uploadInfoText;
+
+    TimerTask doAsynchronousTask;
+    Timer timer;
+    final Handler handler = new Handler();
 
     private ExpandableListView mGattServicesList;
     private BluetoothLeService mBluetoothLeService;
@@ -347,7 +360,15 @@ public class DeviceControlActivity extends Activity {
                     }
                 });
 */
+
+                //avg = Float.valueOf(dataArray[5]);
+                //new ApiUbidots().execute(avg);
+
+
+
             }
+
+
         }
     }
 
@@ -455,21 +476,16 @@ public class DeviceControlActivity extends Activity {
                                 characteristic, true);
                     }
                 }
-
-
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                Map<String, Object> user = new HashMap<>();
-
+                callAsynchronousTask();
 
                 b.setText("Stop Scan");
                 stop = false;
-
-
-
-
             }else{
                 //mDataField.setText("No Pressure");
                 stop = true;
+                timer.cancel();
+                timer.purge();
+                handler.removeCallbacksAndMessages(null);
                 b.setText("Start Scan");
                 btnScan.setEnabled(false);
                 btnClear.setEnabled(true);
@@ -589,5 +605,41 @@ public class DeviceControlActivity extends Activity {
                 }
             }
         });
+    }
+
+   public class ApiUbidots extends AsyncTask<Float, Void, Void> {
+       @Override
+       protected Void doInBackground(Float... params) {
+           ApiClient apiClient = new ApiClient(API_KEY);
+           Variable pressure = apiClient.getVariable(VARIABLE_ID);
+///
+           pressure.saveValue(params[0]);
+           return null;
+       }
+   }
+
+    public void callAsynchronousTask() {
+        final Handler handler = new Handler();
+        timer = new Timer();
+        doAsynchronousTask = new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+                        try {
+                            ApiUbidots apiUbidots = new ApiUbidots();
+                            avg = Float.valueOf(dataArray[5]);
+                            apiUbidots.execute(avg);
+
+
+                        } catch (Exception e) {
+                            android.util.Log.i("Error", "Error");
+                            // TODO Auto-generated catch block
+                        }
+                    }
+                });
+            }
+        };
+        timer.schedule(doAsynchronousTask, 0, 2000);
     }
 }

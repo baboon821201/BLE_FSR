@@ -93,7 +93,7 @@ public class ThirtySecondMode extends Activity {
 
     boolean stop=true;
     boolean clear=false;
-    ScrollView scrollView;
+    ScrollView scrollView1, scrollView2;
     String time, filename, l, ts1;
     String[] dataArray;
     StringBuilder s = new StringBuilder();
@@ -102,11 +102,11 @@ public class ThirtySecondMode extends Activity {
     long timeDelay;
     Date startTime ,endTime;
     float i1, i2, i3, i4, iAvg;
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    int a = 1;
-    float x = 0;
+    int start = 0;
+    int plus_1 = 0;
+    int count = 0;
+    int catch_time = 1;
+    float timeDelay_in_ms = 0;
     float t1 = 0;
     float t2 = 0;
     float timeDiff = 0;
@@ -131,7 +131,7 @@ public class ThirtySecondMode extends Activity {
 
     private StorageReference mStorageRef, dataRef;
 
-    private LineChart mChart;
+    private LineChart mChart1, mChart2, mChart3, mChart4, mChart5;
     private Thread thread;
     private boolean plotData = true;
     protected Typeface mTfRegular;
@@ -256,6 +256,11 @@ public class ThirtySecondMode extends Activity {
 
         initData();
         initView();
+        initChart1();
+        initChart2();
+        initChart3();
+        initChart4();
+        initChart5();
 
         getActionBar().setTitle(mDeviceName);
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -279,7 +284,7 @@ public class ThirtySecondMode extends Activity {
         mTimer = (TextView)findViewById(R.id.timer);
         mCounter = (TextView)findViewById(R.id.counter);
         mDelay = (TextView)findViewById(R.id.time_delay);
-        scrollView = (ScrollView)findViewById(R.id.sv1);
+        scrollView1 = (ScrollView)findViewById(R.id.sv1);
 
         btnScan=(Button)findViewById(R.id.scan1);
         btnScan.setOnClickListener(StartScanClickListener);
@@ -290,62 +295,212 @@ public class ThirtySecondMode extends Activity {
         btnClear.setEnabled(false);
         btnClear.setOnClickListener(ClearClickListener);
 
+        //uploadInfoText = (TextView)findViewById(R.id.uploadInfoText);
+    }
 
-        mChart = (LineChart)findViewById(R.id.chart1);
-
+    private void initChart1(){
+        mChart1 = (LineChart)findViewById(R.id.chart1);
         // enable description text
-        mChart.getDescription().setEnabled(true);
-        mChart.getDescription().setText("Real Time Pressure");
-
+        mChart1.getDescription().setEnabled(true);
+        mChart1.getDescription().setText("Real Time Pressure");
         // enable touch gestures
-        mChart.setTouchEnabled(true);
-
+        mChart1.setTouchEnabled(true);
         // enable scaling and dragging
-        mChart.setDragEnabled(true);
-        mChart.setScaleEnabled(true);
-        mChart.setDrawGridBackground(false);
-
+        mChart1.setDragEnabled(true);
+        mChart1.setScaleEnabled(true);
+        mChart1.setDrawGridBackground(false);
         // if disabled, scaling can be done on x- and y-axis separately
-        mChart.setPinchZoom(true);
-
+        mChart1.setPinchZoom(true);
         // set an alternative background color
-        mChart.setBackgroundColor(Color.LTGRAY);
-
+        mChart1.setBackgroundColor(Color.LTGRAY);
         LineData data = new LineData();
         data.setValueTextColor(Color.WHITE);
-
         // add empty data
-        mChart.setData(data);
-
+        mChart1.setData(data);
         // get the legend (only possible after setting data)
-        Legend l = mChart.getLegend();
-
+        Legend l = mChart1.getLegend();
         // modify the legend ...
         l.setForm(Legend.LegendForm.LINE);
         l.setTypeface(mTfLight);
         l.setTextColor(Color.WHITE);
-
-        XAxis xl = mChart.getXAxis();
+        XAxis xl = mChart1.getXAxis();
         xl.setTypeface(mTfLight);
         xl.setTextColor(Color.WHITE);
         xl.setDrawGridLines(false);
         xl.setAvoidFirstLastClipping(true);
         xl.setEnabled(true);
-
-        YAxis leftAxis = mChart.getAxisLeft();
+        YAxis leftAxis = mChart1.getAxisLeft();
         leftAxis.setTypeface(mTfLight);
         leftAxis.setTextColor(Color.WHITE);
         leftAxis.setAxisMaximum(1000f);
         leftAxis.setAxisMinimum(0f);
         leftAxis.setDrawGridLines(true);
-
-        YAxis rightAxis = mChart.getAxisRight();
+        YAxis rightAxis = mChart1.getAxisRight();
         rightAxis.setEnabled(false);
+    }
 
-        DataUploadProgress = (ProgressBar) findViewById(R.id.upload_progress);
-        //uploadInfoText = (TextView)findViewById(R.id.uploadInfoText);
+    private void initChart2(){
+        mChart2 = (LineChart)findViewById(R.id.chart2);
+        // enable description text
+        mChart2.getDescription().setEnabled(true);
+        mChart2.getDescription().setText("Real Time Pressure");
+        // enable touch gestures
+        mChart2.setTouchEnabled(true);
+        // enable scaling and dragging
+        mChart2.setDragEnabled(true);
+        mChart2.setScaleEnabled(true);
+        mChart2.setDrawGridBackground(false);
+        // if disabled, scaling can be done on x- and y-axis separately
+        mChart2.setPinchZoom(true);
+        // set an alternative background color
+        mChart2.setBackgroundColor(Color.LTGRAY);
+        LineData data = new LineData();
+        data.setValueTextColor(Color.WHITE);
+        // add empty data
+        mChart2.setData(data);
+        // get the legend (only possible after setting data)
+        Legend l = mChart2.getLegend();
+        // modify the legend ...
+        l.setForm(Legend.LegendForm.LINE);
+        l.setTypeface(mTfLight);
+        l.setTextColor(Color.WHITE);
+        XAxis xl = mChart2.getXAxis();
+        xl.setTypeface(mTfLight);
+        xl.setTextColor(Color.WHITE);
+        xl.setDrawGridLines(false);
+        xl.setAvoidFirstLastClipping(true);
+        xl.setEnabled(true);
+        YAxis leftAxis = mChart2.getAxisLeft();
+        leftAxis.setTypeface(mTfLight);
+        leftAxis.setTextColor(Color.WHITE);
+        leftAxis.setAxisMaximum(1000f);
+        leftAxis.setAxisMinimum(0f);
+        leftAxis.setDrawGridLines(true);
+        YAxis rightAxis = mChart2.getAxisRight();
+        rightAxis.setEnabled(false);
+    }
 
+    private void initChart3(){
+        mChart3 = (LineChart)findViewById(R.id.chart3);
+        // enable description text
+        mChart3.getDescription().setEnabled(true);
+        mChart3.getDescription().setText("Real Time Pressure");
+        // enable touch gestures
+        mChart3.setTouchEnabled(true);
+        // enable scaling and dragging
+        mChart3.setDragEnabled(true);
+        mChart3.setScaleEnabled(true);
+        mChart3.setDrawGridBackground(false);
+        // if disabled, scaling can be done on x- and y-axis separately
+        mChart3.setPinchZoom(true);
+        // set an alternative background color
+        mChart3.setBackgroundColor(Color.LTGRAY);
+        LineData data = new LineData();
+        data.setValueTextColor(Color.WHITE);
+        // add empty data
+        mChart3.setData(data);
+        // get the legend (only possible after setting data)
+        Legend l = mChart3.getLegend();
+        // modify the legend ...
+        l.setForm(Legend.LegendForm.LINE);
+        l.setTypeface(mTfLight);
+        l.setTextColor(Color.WHITE);
+        XAxis xl = mChart3.getXAxis();
+        xl.setTypeface(mTfLight);
+        xl.setTextColor(Color.WHITE);
+        xl.setDrawGridLines(false);
+        xl.setAvoidFirstLastClipping(true);
+        xl.setEnabled(true);
+        YAxis leftAxis = mChart3.getAxisLeft();
+        leftAxis.setTypeface(mTfLight);
+        leftAxis.setTextColor(Color.WHITE);
+        leftAxis.setAxisMaximum(1000f);
+        leftAxis.setAxisMinimum(0f);
+        leftAxis.setDrawGridLines(true);
+        YAxis rightAxis = mChart3.getAxisRight();
+        rightAxis.setEnabled(false);
+    }
 
+    private void initChart4(){
+        mChart4 = (LineChart)findViewById(R.id.chart4);
+        // enable description text
+        mChart4.getDescription().setEnabled(true);
+        mChart4.getDescription().setText("Real Time Pressure");
+        // enable touch gestures
+        mChart4.setTouchEnabled(true);
+        // enable scaling and dragging
+        mChart4.setDragEnabled(true);
+        mChart4.setScaleEnabled(true);
+        mChart4.setDrawGridBackground(false);
+        // if disabled, scaling can be done on x- and y-axis separately
+        mChart4.setPinchZoom(true);
+        // set an alternative background color
+        mChart4.setBackgroundColor(Color.LTGRAY);
+        LineData data = new LineData();
+        data.setValueTextColor(Color.WHITE);
+        // add empty data
+        mChart4.setData(data);
+        // get the legend (only possible after setting data)
+        Legend l = mChart4.getLegend();
+        // modify the legend ...
+        l.setForm(Legend.LegendForm.LINE);
+        l.setTypeface(mTfLight);
+        l.setTextColor(Color.WHITE);
+        XAxis xl = mChart4.getXAxis();
+        xl.setTypeface(mTfLight);
+        xl.setTextColor(Color.WHITE);
+        xl.setDrawGridLines(false);
+        xl.setAvoidFirstLastClipping(true);
+        xl.setEnabled(true);
+        YAxis leftAxis = mChart4.getAxisLeft();
+        leftAxis.setTypeface(mTfLight);
+        leftAxis.setTextColor(Color.WHITE);
+        leftAxis.setAxisMaximum(1000f);
+        leftAxis.setAxisMinimum(0f);
+        leftAxis.setDrawGridLines(true);
+        YAxis rightAxis = mChart4.getAxisRight();
+        rightAxis.setEnabled(false);
+    }
+
+    private void initChart5(){
+        mChart5 = (LineChart)findViewById(R.id.chart5);
+        // enable description text
+        mChart5.getDescription().setEnabled(true);
+        mChart5.getDescription().setText("Real Time Pressure");
+        // enable touch gestures
+        mChart5.setTouchEnabled(true);
+        // enable scaling and dragging
+        mChart5.setDragEnabled(true);
+        mChart5.setScaleEnabled(true);
+        mChart5.setDrawGridBackground(false);
+        // if disabled, scaling can be done on x- and y-axis separately
+        mChart5.setPinchZoom(true);
+        // set an alternative background color
+        mChart5.setBackgroundColor(Color.LTGRAY);
+        LineData data = new LineData();
+        data.setValueTextColor(Color.WHITE);
+        // add empty data
+        mChart5.setData(data);
+        // get the legend (only possible after setting data)
+        Legend l = mChart5.getLegend();
+        // modify the legend ...
+        l.setForm(Legend.LegendForm.LINE);
+        l.setTypeface(mTfLight);
+        l.setTextColor(Color.WHITE);
+        XAxis xl = mChart5.getXAxis();
+        xl.setTypeface(mTfLight);
+        xl.setTextColor(Color.WHITE);
+        xl.setDrawGridLines(false);
+        xl.setAvoidFirstLastClipping(true);
+        xl.setEnabled(true);
+        YAxis leftAxis = mChart5.getAxisLeft();
+        leftAxis.setTypeface(mTfLight);
+        leftAxis.setTextColor(Color.WHITE);
+        leftAxis.setAxisMaximum(1000f);
+        leftAxis.setAxisMinimum(0f);
+        leftAxis.setDrawGridLines(true);
+        YAxis rightAxis = mChart5.getAxisRight();
+        rightAxis.setEnabled(false);
     }
 
     @Override
@@ -409,48 +564,209 @@ public class ThirtySecondMode extends Activity {
         });
     }
     private void addEntry() {
-        LineData data = mChart.getData();
-        if (data != null) {
-
-            ILineDataSet set = data.getDataSetByIndex(0);
+        LineData data1 = mChart1.getData();
+        LineData data2 = mChart2.getData();
+        LineData data3 = mChart3.getData();
+        LineData data4 = mChart4.getData();
+        LineData data5 = mChart5.getData();
+        if (data1 != null) {
+            ILineDataSet L1 = data1.getDataSetByIndex(0);
             // set.addEntry(...); // can be called as well
-
-            if (set == null) {
-                set = createSet();
-                data.addDataSet(set);
+            if (L1 == null) {
+                L1 = set_L1();
+                data1.addDataSet(L1);
             }
-
-            data.addEntry(new Entry(set.getEntryCount(), iAvg), 0);
-            data.notifyDataChanged();
+            data1.addEntry(new Entry(L1.getEntryCount(), i1), 0);
+            data1.notifyDataChanged();
 
             // let the chart know it's data has changed
-            mChart.notifyDataSetChanged();
+            mChart1.notifyDataSetChanged();
 
             // limit the number of visible entries
-            mChart.setVisibleXRangeMaximum(120);
+            mChart1.setVisibleXRangeMaximum(120);
             // mChart.setVisibleYRange(30, AxisDependency.LEFT);
 
             // move to the latest entry
-            mChart.moveViewToX(data.getEntryCount());
-
+            mChart1.moveViewToX(data1.getEntryCount());
             // this automatically refreshes the chart (calls invalidate())
             // mChart.moveViewTo(data.getXValCount()-7, 55f,
             // AxisDependency.LEFT);
         }
+
+        if (data2 != null) {
+            ILineDataSet L2 = data2.getDataSetByIndex(0);
+            // set.addEntry(...); // can be called as well
+            if (L2 == null) {
+                L2 = set_L2();
+                data2.addDataSet(L2);
+            }
+            data2.addEntry(new Entry(L2.getEntryCount(), i2), 0);
+            data2.notifyDataChanged();
+
+            // let the chart know it's data has changed
+            mChart2.notifyDataSetChanged();
+
+            // limit the number of visible entries
+            mChart2.setVisibleXRangeMaximum(120);
+            // mChart.setVisibleYRange(30, AxisDependency.LEFT);
+
+            // move to the latest entry
+            mChart2.moveViewToX(data2.getEntryCount());
+            // this automatically refreshes the chart (calls invalidate())
+            // mChart.moveViewTo(data.getXValCount()-7, 55f,
+            // AxisDependency.LEFT);
+        }
+
+        if (data3 != null) {
+            ILineDataSet L3 = data3.getDataSetByIndex(0);
+            // set.addEntry(...); // can be called as well
+            if (L3 == null) {
+                L3 = set_L3();
+                data3.addDataSet(L3);
+            }
+            data3.addEntry(new Entry(L3.getEntryCount(), i3), 0);
+            data3.notifyDataChanged();
+
+            // let the chart know it's data has changed
+            mChart3.notifyDataSetChanged();
+
+            // limit the number of visible entries
+            mChart3.setVisibleXRangeMaximum(120);
+            // mChart.setVisibleYRange(30, AxisDependency.LEFT);
+
+            // move to the latest entry
+            mChart3.moveViewToX(data3.getEntryCount());
+            // this automatically refreshes the chart (calls invalidate())
+            // mChart.moveViewTo(data.getXValCount()-7, 55f,
+            // AxisDependency.LEFT);
+        }
+
+        if (data4 != null) {
+            ILineDataSet L4 = data4.getDataSetByIndex(0);
+            // set.addEntry(...); // can be called as well
+            if (L4 == null) {
+                L4 = set_L4();
+                data4.addDataSet(L4);
+            }
+            data4.addEntry(new Entry(L4.getEntryCount(), i4), 0);
+            data4.notifyDataChanged();
+
+            // let the chart know it's data has changed
+            mChart4.notifyDataSetChanged();
+
+            // limit the number of visible entries
+            mChart4.setVisibleXRangeMaximum(120);
+            // mChart.setVisibleYRange(30, AxisDependency.LEFT);
+
+            // move to the latest entry
+            mChart4.moveViewToX(data4.getEntryCount());
+            // this automatically refreshes the chart (calls invalidate())
+            // mChart.moveViewTo(data.getXValCount()-7, 55f,
+            // AxisDependency.LEFT);
+        }
+
+        if (data5 != null) {
+            ILineDataSet L5 = data5.getDataSetByIndex(0);
+            // set.addEntry(...); // can be called as well
+            if (L5 == null) {
+                L5 = set_L5();
+                data5.addDataSet(L5);
+            }
+            data5.addEntry(new Entry(L5.getEntryCount(), iAvg), 0);
+            data5.notifyDataChanged();
+
+            // let the chart know it's data has changed
+            mChart5.notifyDataSetChanged();
+
+            // limit the number of visible entries
+            mChart5.setVisibleXRangeMaximum(120);
+            // mChart.setVisibleYRange(30, AxisDependency.LEFT);
+
+            // move to the latest entry
+            mChart5.moveViewToX(data5.getEntryCount());
+            // this automatically refreshes the chart (calls invalidate())
+            // mChart.moveViewTo(data.getXValCount()-7, 55f,
+            // AxisDependency.LEFT);
+        }
+
     }
 
-    private LineDataSet createSet() {
-        LineDataSet set = new LineDataSet(null, "Dynamic Data");
+    private LineDataSet set_L1() {
+        LineDataSet set = new LineDataSet(null, "Left Front");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
-        set.setColor(ColorTemplate.getHoloBlue());
+        set.setColor(Color.RED);
         set.setCircleColor(Color.WHITE);
         set.setLineWidth(2f);
-        set.setCircleRadius(4f);
+        set.setCircleRadius(2f);
         set.setFillAlpha(65);
         set.setFillColor(ColorTemplate.getHoloBlue());
-        set.setHighLightColor(Color.rgb(244, 117, 117));
+        set.setHighLightColor(Color.rgb(255, 0, 0));
         set.setValueTextColor(Color.WHITE);
-        set.setValueTextSize(9f);
+        set.setValueTextSize(6f);
+        set.setDrawValues(false);
+        return set;
+    }
+
+    private LineDataSet set_L2() {
+        LineDataSet set = new LineDataSet(null, "Left Rear");
+        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+        set.setColor(Color.BLUE);
+        set.setCircleColor(Color.WHITE);
+        set.setLineWidth(2f);
+        set.setCircleRadius(2f);
+        set.setFillAlpha(65);
+        set.setFillColor(ColorTemplate.getHoloBlue());
+        set.setHighLightColor(Color.rgb(255, 0, 0));
+        set.setValueTextColor(Color.WHITE);
+        set.setValueTextSize(6f);
+        set.setDrawValues(false);
+        return set;
+    }
+
+    private LineDataSet set_L3() {
+        LineDataSet set = new LineDataSet(null, "Right Front");
+        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+        set.setColor(Color.YELLOW);
+        set.setCircleColor(Color.WHITE);
+        set.setLineWidth(2f);
+        set.setCircleRadius(2f);
+        set.setFillAlpha(65);
+        set.setFillColor(ColorTemplate.getHoloBlue());
+        set.setHighLightColor(Color.rgb(255, 0, 0));
+        set.setValueTextColor(Color.WHITE);
+        set.setValueTextSize(6f);
+        set.setDrawValues(false);
+        return set;
+    }
+
+    private LineDataSet set_L4() {
+        LineDataSet set = new LineDataSet(null, "Right Rear");
+        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+        set.setColor(Color.GREEN);
+        set.setCircleColor(Color.WHITE);
+        set.setLineWidth(2f);
+        set.setCircleRadius(2f);
+        set.setFillAlpha(65);
+        set.setFillColor(ColorTemplate.getHoloBlue());
+        set.setHighLightColor(Color.rgb(255, 0, 0));
+        set.setValueTextColor(Color.WHITE);
+        set.setValueTextSize(6f);
+        set.setDrawValues(false);
+        return set;
+    }
+
+    private LineDataSet set_L5() {
+        LineDataSet set = new LineDataSet(null, "Average");
+        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+        set.setColor(Color.MAGENTA);
+        set.setCircleColor(Color.WHITE);
+        set.setLineWidth(2f);
+        set.setCircleRadius(2f);
+        set.setFillAlpha(65);
+        set.setFillColor(ColorTemplate.getHoloBlue());
+        set.setHighLightColor(Color.rgb(255, 0, 0));
+        set.setValueTextColor(Color.WHITE);
+        set.setValueTextSize(6f);
         set.setDrawValues(false);
         return set;
     }
@@ -497,10 +813,10 @@ public class ThirtySecondMode extends Activity {
             }
 
             //long timeStamp1 = 0, timeStamp2 = 0;
-            i1 = Float.valueOf(dataArray[1]);
-            i2 = Float.valueOf(dataArray[2]);
-            i3 = Float.valueOf(dataArray[3]);
-            i4 = Float.valueOf(dataArray[4]);
+            i2 = Float.valueOf(dataArray[1]);   //右上
+            i4 = Float.valueOf(dataArray[2]);   //右下
+            i3 = Float.valueOf(dataArray[3]);   //左下
+            i1 = Float.valueOf(dataArray[4]);   //左上
             iAvg = Float.valueOf(dataArray[5]);
 
            // FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -531,39 +847,52 @@ public class ThirtySecondMode extends Activity {
             //        });
 
 
+
+            //j=0,a=1
+
             if((i1>i2) && (i4>i3)){
-                j=1;
-                if (a == 1) {
+                start=1;
+                if (catch_time == 1) {
                     startTime = new Date(System.currentTimeMillis());
                     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
                     String dateString = sdf.format(startTime);
                     Log.d(TAG, dateString);
-
-
+                    catch_time = 0;
+/*
                     tsLong1 = System.currentTimeMillis();
                     t1 = tsLong1.intValue();
                     String ts = tsLong1.toString();
                     //Log.d(TAG, ts);
-                    a=0;
+*/
                 }
-
             }
             if(iAvg==0.0){
-                if(j==1){
-                    k++;
-                    j = 0;
+                if(start==1){
+                    plus_1++;
+                    start = 0;
                     endTime = new Date(System.currentTimeMillis());
                     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
                     String dateString = sdf.format(endTime);
                     Log.d(TAG, dateString);
 
                     timeDelay = endTime.getTime() - startTime.getTime();
-
-                    x = (float)timeDelay / 1000;
-
-                    String diff = String.valueOf(x);
+                    timeDelay_in_ms = (float)timeDelay / 1000;
+                    String diff = String.valueOf(timeDelay_in_ms);
                     Log.d(TAG, diff);
-/*
+
+                    count = count + plus_1;
+                    l = Integer.toString(count);
+                    mCounter.append(l + "\n");
+                    mDelay.append(diff + "\n");
+                    scrollView1.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            scrollView1.fullScroll(View.FOCUS_DOWN);
+                        }
+                    });
+                    plus_1 = 0;
+                    catch_time = 1;
+                    /*
                     //String str = String.valueOf(timeDelay);
                     tsLong2 = System.currentTimeMillis();
                     t2 = tsLong2.intValue();
@@ -577,23 +906,10 @@ public class ThirtySecondMode extends Activity {
                     //String ts2 = mDecimalFormat.format(Double.parseDouble(ts1));
                     //Log.d(TAG, ts1);
 */
-                    m=m+k;
-                    l = Integer.toString(m);
-                    mCounter.append(l + "\n");
-                    mDelay.append(diff + "\n");
-                    scrollView.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            scrollView.fullScroll(View.FOCUS_DOWN);
-                        }
-                    });
-
-                    k=0;
-                    a=1;
                 }
             }
-
-
+            String j1 = Integer.toString(start);
+            Log.d(TAG, j1);
 
             //timeP = (tsLong2 - tsLong1);
 
@@ -613,8 +929,6 @@ public class ThirtySecondMode extends Activity {
             //        scrollView.fullScroll(View.FOCUS_DOWN);
             //    }
             //});
-
-
             //k=0;
         }
     }
@@ -801,15 +1115,19 @@ public class ThirtySecondMode extends Activity {
                 mCounter.setText("");
                 mDelay.setText("");
                 //s.setLength(0);
-                j = 0;
-                k = 0;
-                m = 0;
+                start = 0;
+                plus_1 = 0;
+                count = 0;
                 clear=true;
                 btnScan.setEnabled(true);
                 btnSave.setEnabled(false);
                 btnClear.setEnabled(false);
 
-                mChart.clearValues();
+                mChart1.clearValues();
+                mChart2.clearValues();
+                mChart3.clearValues();
+                mChart4.clearValues();
+                mChart5.clearValues();
 
                 //uploadInfoText.setText("");
             }
@@ -900,11 +1218,13 @@ public class ThirtySecondMode extends Activity {
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                /*
                 int progress = (int)((100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount());
                 DataUploadProgress.setProgress(progress);
                 if(progress >= 100){
                     DataUploadProgress.setVisibility(View.GONE);
                 }
+                */
             }
         });
     }
