@@ -4,7 +4,7 @@
  * gradle plugin from the resource data it found. It
  * should not be modified by hand.
  */
-package com.google.firebase.firebase_firestore;
+package com.google.firebase.protolitewellknowntypes;
 
 public final class R {
 }
