@@ -119,8 +119,8 @@ public class DeviceScanActivity extends ListActivity {
             else{
                 //詢問是否要開啟手機定位功能
                 AlertDialog.Builder ad = new AlertDialog.Builder(this);
-                ad.setTitle("需要定位服務");
-                ad.setMessage("如果沒有定位的話，無法搜尋到BLE裝置");
+                ad.setTitle("Need Location Service");
+                ad.setMessage("Please make the Location enabled，otherwise you can't find any BLE device.");
                 ad.setCancelable(false); // 避免點選畫面其他地方而關閉 AlertDialog
                 ad.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
                     @Override
