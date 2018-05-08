@@ -1183,7 +1183,7 @@ public class ThirtySecondMode extends Activity {
                 uploadData(filePath);
 
                 Toast.makeText(ThirtySecondMode.this, "Save in:" + filePath, Toast.LENGTH_LONG).show();
-                DataUploadProgress.setVisibility(View.VISIBLE);
+                //DataUploadProgress.setVisibility(View.VISIBLE);
                 btnSave.setEnabled(false);
             }
         }
