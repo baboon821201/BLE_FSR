@@ -17,6 +17,7 @@
 package com.example.android.bluetoothlegatt;
 
 import android.app.Activity;
+import android.app.Service;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.content.BroadcastReceiver;
@@ -31,6 +32,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.Menu;
@@ -93,7 +95,7 @@ public class DeviceControlActivity extends Activity {
     String[] dataArray;
     StringBuilder s = new StringBuilder();
     File path, file;
-    float avg;
+    float avg, f1, f2, f3, f4, avg1;
     private Button btnScan, btnClear, btnSave;
     private TextView mConnectionState, test;
     private TextView mTime, mS1, mS2, mS3, mS4, mAvg, mDataField;
@@ -101,9 +103,10 @@ public class DeviceControlActivity extends Activity {
     private String mDeviceAddress;
     private ProgressBar DataUploadProgress;
     private TextView uploadInfoText;
+    private Thread thread;
 
     TimerTask doAsynchronousTask;
-    Timer timer;
+    Timer timer, timer1;
     final Handler handler = new Handler();
 
     private ExpandableListView mGattServicesList;
@@ -343,6 +346,13 @@ public class DeviceControlActivity extends Activity {
                 mS3.setText(dataArray[3]);
                 mS4.setText(dataArray[4]);
                 mAvg.setText(dataArray[5]);
+
+
+                f1 = Float.valueOf(dataArray[1]);
+                f2 = Float.valueOf(dataArray[2]);
+                f3 = Float.valueOf(dataArray[3]);
+                f4 = Float.valueOf(dataArray[4]);
+                avg1 = Float.valueOf(dataArray[5]);
                 /*
                 mTime.append(dataArray[0]+"\n");
                 mS1.append(dataArray[1]+"\n");
@@ -478,6 +488,34 @@ public class DeviceControlActivity extends Activity {
                 }
                 callAsynchronousTask();
 
+                //feedMultiple();
+
+
+                final Handler handler = new Handler();
+                timer1 = new Timer();
+                doAsynchronousTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                        handler.post(new Runnable() {
+                            public void run() {
+                                try {
+                                    if(avg1 == 0.0){
+                                        Toast.makeText(DeviceControlActivity.this, "No Pressure!", Toast.LENGTH_SHORT).show();
+                                        Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
+                                        myVibrator.vibrate(500);
+                                    }
+                                } catch (Exception e) {
+                                    android.util.Log.i("Error", "Error");
+                                    // TODO Auto-generated catch block
+                                }
+                            }
+                        });
+                    }
+                };
+                timer1.schedule(doAsynchronousTask, 0, 5000);
+
+
+
                 b.setText("Stop Scan");
                 stop = false;
             }else{
@@ -490,6 +528,7 @@ public class DeviceControlActivity extends Activity {
                 btnScan.setEnabled(false);
                 btnClear.setEnabled(true);
                 btnSave.setEnabled(true);
+                timer1.cancel();
             }
         }
     };

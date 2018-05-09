@@ -1,8 +1,8 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-60:12
-INJECTED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-60:12
-INJECTED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-60:12
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-61:12
+INJECTED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-61:12
+INJECTED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-61:12
 MERGED from [com.google.firebase:firebase-storage:15.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-storage-15.0.2.aar\9779a50f341a7d1168c33d7d197b022b\AndroidManifest.xml:2:1-8:12
 MERGED from [com.google.firebase:firebase-auth:15.1.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-auth-15.1.0.aar\e6f003410a6508c85f27e055cef3c8d1\AndroidManifest.xml:17:1-38:12
 MERGED from [com.google.firebase:firebase-firestore:16.0.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-firestore-16.0.0.aar\e200cbf0fc036447c9d6fe5ebd9789fe\AndroidManifest.xml:2:1-10:12
@@ -41,8 +41,8 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Lab70826\.grad
 MERGED from [android.arch.core:runtime:1.1.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\cefe8cdb9ff29dfc0951550c805ea05a\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-measurement-base:15.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-15.0.2.aar\376cadc53fdbecb46a17d6a4f4e9b3ee\AndroidManifest.xml:17:1-24:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\ed181fa6c01c13dd3f7129574e2cc27b\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-60:12
-INJECTED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-60:12
+INJECTED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-61:12
+INJECTED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:20:1-61:12
 	package
 		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:21:5-50
 	android:versionName
@@ -61,32 +61,36 @@ ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidM
 		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:31:64-87
 	android:name
 		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:31:19-63
+uses-permission#android.permission.VIBRATE
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:33:5-65
+	android:name
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:33:22-63
 uses-permission#android.permission.BLUETOOTH
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:33:5-67
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:34:5-67
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:33:22-65
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:34:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:34:5-73
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:35:5-73
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:34:22-71
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:35:22-71
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:35:5-80
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:36:5-80
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:35:22-78
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:36:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:36:5-78
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:37:5-78
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:36:22-76
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:37:22-76
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:37:5-80
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:38:5-80
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:37:22-78
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:38:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:38:5-79
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:39:5-79
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:38:22-77
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:39:22-77
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:39:5-66
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:40:5-66
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:15.0.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-15.0.0.aar\95ef6ef775b7622c9fe24bfffcfb3b4d\AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:15.0.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-15.0.0.aar\95ef6ef775b7622c9fe24bfffcfb3b4d\AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-analytics:15.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-analytics-15.0.2.aar\99fcbd392996bef66cf7ff0c0a52d22b\AndroidManifest.xml:23:5-67
@@ -96,9 +100,9 @@ MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] C:\Users\Lab708
 MERGED from [com.google.firebase:firebase-iid:15.1.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-iid-15.1.0.aar\ebb8a8453d06977ead9177c159864e23\AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-iid:15.1.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-iid-15.1.0.aar\ebb8a8453d06977ead9177c159864e23\AndroidManifest.xml:23:5-67
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:39:22-64
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:40:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:40:5-79
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:41:5-79
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:15.0.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-15.0.0.aar\95ef6ef775b7622c9fe24bfffcfb3b4d\AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:15.0.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-15.0.0.aar\95ef6ef775b7622c9fe24bfffcfb3b4d\AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-analytics:15.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-analytics-15.0.2.aar\99fcbd392996bef66cf7ff0c0a52d22b\AndroidManifest.xml:24:5-79
@@ -108,9 +112,9 @@ MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] C:\Users\Lab708
 MERGED from [com.google.firebase:firebase-iid:15.1.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-iid-15.1.0.aar\ebb8a8453d06977ead9177c159864e23\AndroidManifest.xml:22:5-79
 MERGED from [com.google.firebase:firebase-iid:15.1.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-iid-15.1.0.aar\ebb8a8453d06977ead9177c159864e23\AndroidManifest.xml:22:5-79
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:40:22-76
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:41:22-76
 application
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:42:5-58:19
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:43:5-59:19
 MERGED from [com.google.firebase:firebase-auth:15.1.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-auth-15.1.0.aar\e6f003410a6508c85f27e055cef3c8d1\AndroidManifest.xml:22:5-36:19
 MERGED from [com.google.firebase:firebase-auth:15.1.0] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-auth-15.1.0.aar\e6f003410a6508c85f27e055cef3c8d1\AndroidManifest.xml:22:5-36:19
 MERGED from [com.google.firebase:firebase-core:15.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\firebase-core-15.0.2.aar\fc0a78439f52913fe0435ad08055cc83\AndroidManifest.xml:7:5-20
@@ -146,45 +150,45 @@ MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\La
 MERGED from [com.google.android.gms:play-services-measurement-base:15.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-15.0.2.aar\376cadc53fdbecb46a17d6a4f4e9b3ee\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-measurement-base:15.0.2] C:\Users\Lab70826\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-15.0.2.aar\376cadc53fdbecb46a17d6a4f4e9b3ee\AndroidManifest.xml:22:5-20
 	android:label
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:42:18-45
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:43:18-45
 	android:icon
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:43:9-45
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:44:9-45
 	android:theme
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:44:9-56
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:45:9-56
 activity#com.example.android.bluetoothlegatt.DeviceScanActivity
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:45:9-51:20
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:46:9-52:20
 	android:label
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:46:13-40
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:47:13-40
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:45:19-53
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:46:19-53
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:47:13-50:29
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:48:13-51:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:48:17-68
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:49:17-68
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:48:25-66
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:49:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:49:17-76
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:50:17-76
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:49:27-74
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:50:27-74
 activity#com.example.android.bluetoothlegatt.ChooseMode
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:52:9-47
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:53:9-47
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:52:19-45
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:53:19-45
 activity#com.example.android.bluetoothlegatt.ThirtySecondMode
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:53:9-53
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:54:9-53
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:53:19-51
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:54:19-51
 activity#com.example.android.bluetoothlegatt.DeviceControlActivity
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:54:9-58
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:55:9-58
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:54:19-56
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:55:19-56
 service#com.example.android.bluetoothlegatt.BluetoothLeService
-ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:57:9-77
+ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:58:9-77
 	android:enabled
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:57:53-75
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:58:53-75
 	android:name
-		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:57:18-52
+		ADDED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml:58:18-52
 uses-sdk
 INJECTED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Lab70826\StudioProject\BLE_FSR\Application\src\main\AndroidManifest.xml

@@ -694,7 +694,7 @@ public class ThirtySecondMode extends Activity {
     }
 
     private LineDataSet set_L1() {
-        LineDataSet set = new LineDataSet(null, "Left Front");
+        LineDataSet set = new LineDataSet(null, "Right Front");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(Color.RED);
         set.setCircleColor(Color.WHITE);
@@ -710,7 +710,7 @@ public class ThirtySecondMode extends Activity {
     }
 
     private LineDataSet set_L2() {
-        LineDataSet set = new LineDataSet(null, "Left Rear");
+        LineDataSet set = new LineDataSet(null, "Right Rear");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(Color.BLUE);
         set.setCircleColor(Color.WHITE);
@@ -726,7 +726,7 @@ public class ThirtySecondMode extends Activity {
     }
 
     private LineDataSet set_L3() {
-        LineDataSet set = new LineDataSet(null, "Right Front");
+        LineDataSet set = new LineDataSet(null, "Left Rear");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(Color.YELLOW);
         set.setCircleColor(Color.WHITE);
@@ -742,7 +742,7 @@ public class ThirtySecondMode extends Activity {
     }
 
     private LineDataSet set_L4() {
-        LineDataSet set = new LineDataSet(null, "Right Rear");
+        LineDataSet set = new LineDataSet(null, "Left Front");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(Color.GREEN);
         set.setCircleColor(Color.WHITE);
@@ -815,10 +815,10 @@ public class ThirtySecondMode extends Activity {
             }
 
             //long timeStamp1 = 0, timeStamp2 = 0;
-            i2 = Float.valueOf(dataArray[1]);   //右上
-            i4 = Float.valueOf(dataArray[2]);   //右下
+            i1 = Float.valueOf(dataArray[1]);   //右上
+            i2 = Float.valueOf(dataArray[2]);   //右下
             i3 = Float.valueOf(dataArray[3]);   //左下
-            i1 = Float.valueOf(dataArray[4]);   //左上
+            i4 = Float.valueOf(dataArray[4]);   //左上
             iAvg = Float.valueOf(dataArray[5]);
 
            // FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -910,8 +910,12 @@ public class ThirtySecondMode extends Activity {
 */
                 }
             }
-            String j1 = Integer.toString(start);
-            Log.d(TAG, j1);
+
+
+
+
+            //String j1 = Integer.toString(start);
+            //Log.d(TAG, j1);
 
             //timeP = (tsLong2 - tsLong1);
 
@@ -1130,7 +1134,7 @@ public class ThirtySecondMode extends Activity {
                 mChart3.clearValues();
                 mChart4.clearValues();
                 mChart5.clearValues();
-
+                s.setLength(0);
                 //uploadInfoText.setText("");
             }
         }

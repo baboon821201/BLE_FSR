@@ -8,8 +8,6 @@ import android.widget.Button;
 
 public class ChooseMode extends Activity {
     private Button btnGeneral, btn30Second;
-    private String mDeviceName;
-    private String mDeviceAddress;
 
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
@@ -18,12 +16,8 @@ public class ChooseMode extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final Intent intent = getIntent();
         setContentView(R.layout.choose_mode);
         initView();
-
-        mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
-        mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 
         btnGeneral.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -50,6 +44,7 @@ public class ChooseMode extends Activity {
         Bundle bundle = getIntent().getExtras();
         Intent intent = new Intent();
         intent.setClass(this, DeviceControlActivity.class);
+        assert bundle != null;
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -58,10 +53,8 @@ public class ChooseMode extends Activity {
         Bundle bundle = getIntent().getExtras();
         Intent intent = new Intent();
         intent.setClass(this, ThirtySecondMode.class);
+        assert bundle != null;
         intent.putExtras(bundle);
         startActivity(intent);
     }
-
-
-
 }
