@@ -883,7 +883,7 @@ public class ThirtySecondMode extends Activity {
 */
                 }
             }
-            if(iAvg==0.0){
+            if(iAvg<=10.0){
                 if(start==1){
                     plus_1++;
                     start = 0;
