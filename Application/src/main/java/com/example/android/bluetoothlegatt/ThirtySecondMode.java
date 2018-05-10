@@ -72,7 +72,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -859,8 +861,17 @@ public class ThirtySecondMode extends Activity {
             if((i2>i1) && (i3>i4)){
                 start=1;
                 if (catch_time == 1) {
-                    startTime = new Date(System.currentTimeMillis());
-                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
+                    String time1 = dataArray[0];
+
+                    DateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
+                    try {
+                        startTime = sdf.parse(time1);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    //startTime = new Date(System.currentTimeMillis());
+                    //SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
                     String dateString = sdf.format(startTime);
                     Log.d(TAG, dateString);
                     catch_time = 0;
@@ -876,8 +887,18 @@ public class ThirtySecondMode extends Activity {
                 if(start==1){
                     plus_1++;
                     start = 0;
-                    endTime = new Date(System.currentTimeMillis());
-                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
+
+                    String time2 = dataArray[0];
+
+                    DateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
+                    try {
+                        endTime = sdf.parse(time2);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    //endTime = new Date(System.currentTimeMillis());
+                    //SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
                     String dateString = sdf.format(endTime);
                     Log.d(TAG, dateString);
 
