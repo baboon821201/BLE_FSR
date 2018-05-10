@@ -6,39 +6,45 @@
     density="xxhdpi"
     format="10"
     plugin-version="3.1.2"
-    timestamp="1525917622696"
+    timestamp="1525922143939"
     token="-7662299653332318984"
     verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="1099" />
+        duration="0" />
     <task
         name="instant-run-dex"
-        duration="527" />
+        duration="0" />
     <task
         name="instant-run-transform"
-        duration="57" />
+        duration="0" />
     <task
         name="verifier"
-        duration="17" />
+        duration="0" />
 
     <artifact
-        location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\reload-dex\debug\classes.dex"
-        type="RELOAD_DEX" />
+        location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+        type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1525917317434"
+        timestamp="1525921711095"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_2.apk"
@@ -47,16 +53,10 @@
             location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_5.apk"
-            type="SPLIT" />
-        <artifact
             location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\resources\instant-run\debug\resources-debug.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_6.apk"
@@ -65,7 +65,7 @@
             location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\instant-run-apk\debug\Application-debug.apk"
@@ -73,43 +73,11 @@
     </build>
     <build
         build-mode="HOT_WARM"
-        timestamp="1525917426064"
+        timestamp="1525922143939"
         verifier="COMPATIBLE" >
         <artifact
-            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\builds\debug\1525917426064\classes.dex"
-            type="RELOAD_DEX" />
-    </build>
-    <build
-        build-mode="HOT_WARM"
-        timestamp="1525917456121"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\builds\debug\1525917456121\classes.dex"
-            type="RELOAD_DEX" />
-    </build>
-    <build
-        build-mode="HOT_WARM"
-        timestamp="1525917561537"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\builds\debug\1525917561537\classes.dex"
-            type="RELOAD_DEX" />
-    </build>
-    <build
-        build-mode="HOT_WARM"
-        timestamp="1525917589209"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\builds\debug\1525917589209\classes.dex"
-            type="RELOAD_DEX" />
-    </build>
-    <build
-        build-mode="HOT_WARM"
-        timestamp="1525917622696"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\reload-dex\debug\classes.dex"
-            type="RELOAD_DEX" />
+            location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+            type="SPLIT" />
     </build>
 
 </instant-run>

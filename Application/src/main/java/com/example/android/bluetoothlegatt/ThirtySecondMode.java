@@ -99,10 +99,11 @@ public class ThirtySecondMode extends Activity {
     boolean stop=true;
     boolean clear=false;
     NestedScrollView nestedScrollView1;
-    String time, filename, l, ts1;
+    String time, filename1, filename2, l, ts1;
     String[] dataArray;
-    StringBuilder s = new StringBuilder();
-    File path1, file1;
+    StringBuilder s1 = new StringBuilder();
+    StringBuilder s2 = new StringBuilder();
+    File path1, path2, file1, file2;
     Long tsLong1, tsLong2, timeP;
     long timeDelay;
     Date startTime ,endTime;
@@ -801,7 +802,7 @@ public class ThirtySecondMode extends Activity {
                 mS4.append(dataArray[4]+"\n");
                 mAvg.append(dataArray[5]);
                 */
-                s.append(data);
+                s1.append(data);
 /*
                 scrollView.post(new Runnable() {
                     @Override
@@ -918,6 +919,10 @@ public class ThirtySecondMode extends Activity {
                             nestedScrollView1.fullScroll(View.FOCUS_DOWN);
                         }
                     });
+
+                    String times_timeDelay = l + "," +diff + "\n";
+
+                    s2.append(times_timeDelay);
 
                     plus_1 = 0;
                     catch_time = 1;
@@ -1161,7 +1166,8 @@ public class ThirtySecondMode extends Activity {
                 mChart3.clearValues();
                 mChart4.clearValues();
                 mChart5.clearValues();
-                s.setLength(0);
+                s1.setLength(0);
+                s2.setLength(0);
                 //uploadInfoText.setText("");
             }
         }
@@ -1175,22 +1181,23 @@ public class ThirtySecondMode extends Activity {
             if(b.getText().equals("Save Data")){
                 boolean hasExternalStorage = isExternalStorageWritable();
                 if(hasExternalStorage){
-                    filename = time + ".csv";
-                    Log.d(TAG, "filename = " + filename);
+                    filename1 = time + ".csv";
+                    Log.d(TAG, "filename = " + filename1);
 
-                    path1 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/");
-                    file1 = new File(path1, filename);
+                    path1 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/All Data/");
+                    file1 = new File(path1, filename1);
                     Log.d(TAG, "path = " + path1);
 
                     try {
                         path1.mkdirs();
                         OutputStream outputStream = new FileOutputStream(file1, true);
                         //String s1 = "Time" + ",\t\t" + "sensor1" + ",\t" + "sensor2" + ",\t" + "sensor3" + ",\t" + "sensor4" + ",\t" + "Average" + ",\n";
-                        String s1 = "Time" + "," + "Right Front" + "," + "Right Rear"+ "," + "Left Rear"+ "," + "Left Front"+ "," + "Average" + "\n";
-                        s.toString();
+                        String title1 = "Time" + "," + "Right Front" + "," + "Right Rear"+ "," + "Left Rear"+ "," + "Left Front"+ "," + "Average" + "\n";
+                        s1.toString();
                         //String dataArrayString = saveData;
-                        String all = s1 + s;
-                        outputStream.write(all.getBytes());
+                        String all1 = title1 + s1;
+
+                        outputStream.write(all1.getBytes());
                         outputStream.close();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -1198,6 +1205,34 @@ public class ThirtySecondMode extends Activity {
                         Log.w("ExternalStorage", "Error writing " + file1, e);
                     }
                     //Toast.makeText(DeviceControlActivity.this, "Save in:" + path  + "/"+ filename, Toast.LENGTH_LONG).show();
+
+                    filename2 = time + "_test" + ".csv";
+                    Log.d(TAG, "filename = " + filename2);
+
+                    path2 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/Test Data/");
+                    file2 = new File(path2, filename2);
+                    Log.d(TAG, "path = " + path2);
+
+                    try {
+                        path2.mkdirs();
+                        OutputStream outputStream = new FileOutputStream(file2, true);
+
+                        String title2 = "Times" + "," + "Time Delay(s)" + "\n";
+                        s2.toString();
+                        String all2 = title2 + s2;
+
+                        outputStream.write(all2.getBytes());
+                        outputStream.close();
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        Log.w("ExternalStorage", "Error writing " + file1, e);
+                    }
+                    //Toast.makeText(DeviceControlActivity.this, "Save in:" + path  + "/"+ filename, Toast.LENGTH_LONG).show();
+
+
+
                 }
                 else{
                     Toast.makeText(ThirtySecondMode.this, "no storage", Toast.LENGTH_LONG).show();
@@ -1208,12 +1243,19 @@ public class ThirtySecondMode extends Activity {
                 String s2 = mTime + "\t" + mS1 + "\t" + mS2 + "\t" + mS3 + "\t" + mS4 + "\t" + mAvg;
                 String all = s1 + s2;
                             */
-                String name = filename.toString();
-                String filePath = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/" + name;
+                String name1 = filename1.toString();
+                String filePath1 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/All Data/" + name1;
 
-                uploadData(filePath);
+                uploadData1(filePath1);
 
-                Toast.makeText(ThirtySecondMode.this, "Save in:" + filePath, Toast.LENGTH_LONG).show();
+                String name2 = filename2.toString();
+                String filePath2 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/Test Data/" + name2;
+
+                uploadData2(filePath2);
+
+                Toast.makeText(ThirtySecondMode.this, "All data save in:" + filePath1, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ThirtySecondMode.this, "Test data save in:" + filePath2, Toast.LENGTH_SHORT).show();
+
                 //DataUploadProgress.setVisibility(View.VISIBLE);
                 btnSave.setEnabled(false);
             }
@@ -1229,12 +1271,12 @@ public class ThirtySecondMode extends Activity {
         return false;
     }
 
-    private void uploadData(String path){
+    private void uploadData1(String path){
         Uri file = Uri.fromFile(new File(path));
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("data/csv")
                 .build();
-        dataRef = mStorageRef.child("Thirty Second Mode/" + filename);
+        dataRef = mStorageRef.child("Thirty Second Mode/All Data/" + filename1);
         UploadTask uploadTask = dataRef.putFile(file, metadata);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -1246,7 +1288,40 @@ public class ThirtySecondMode extends Activity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 //uploadInfoText.setText(R.string.up_load_success);
-                Toast.makeText(ThirtySecondMode.this, R.string.up_load_success, Toast.LENGTH_LONG).show();
+                Toast.makeText(ThirtySecondMode.this, "All Data Up Load Success", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                /*
+                int progress = (int)((100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount());
+                DataUploadProgress.setProgress(progress);
+                if(progress >= 100){
+                    DataUploadProgress.setVisibility(View.GONE);
+                }
+                */
+            }
+        });
+    }
+
+    private void uploadData2(String path){
+        Uri file = Uri.fromFile(new File(path));
+        StorageMetadata metadata = new StorageMetadata.Builder()
+                .setContentType("data/csv")
+                .build();
+        dataRef = mStorageRef.child("Thirty Second Mode/Test Data/" + filename2);
+        UploadTask uploadTask = dataRef.putFile(file, metadata);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                //uploadInfoText.setText(exception.getMessage());
+                Toast.makeText(ThirtySecondMode.this, exception.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                //uploadInfoText.setText(R.string.up_load_success);
+                Toast.makeText(ThirtySecondMode.this, "Test Data Up Load Success", Toast.LENGTH_SHORT).show();
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
