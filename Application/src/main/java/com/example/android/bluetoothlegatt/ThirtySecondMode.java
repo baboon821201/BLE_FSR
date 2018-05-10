@@ -33,6 +33,7 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.NestedScrollView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -95,7 +96,7 @@ public class ThirtySecondMode extends Activity {
 
     boolean stop=true;
     boolean clear=false;
-    ScrollView scrollView1, scrollView2;
+    NestedScrollView nestedScrollView1;
     String time, filename, l, ts1;
     String[] dataArray;
     StringBuilder s = new StringBuilder();
@@ -286,7 +287,8 @@ public class ThirtySecondMode extends Activity {
         mTimer = (TextView)findViewById(R.id.timer);
         mCounter = (TextView)findViewById(R.id.counter);
         mDelay = (TextView)findViewById(R.id.time_delay);
-        scrollView1 = (ScrollView)findViewById(R.id.sv1);
+        nestedScrollView1 = (NestedScrollView) findViewById(R.id.sv1);
+
 
         btnScan=(Button)findViewById(R.id.scan1);
         btnScan.setOnClickListener(StartScanClickListener);
@@ -812,6 +814,8 @@ public class ThirtySecondMode extends Activity {
                 Log.d(TAG, l);
                 mAvg.setText(l);
                 */
+
+
             }
 
             //long timeStamp1 = 0, timeStamp2 = 0;
@@ -852,7 +856,7 @@ public class ThirtySecondMode extends Activity {
 
             //j=0,a=1
 
-            if((i1>i2) && (i4>i3)){
+            if((i2>i1) && (i3>i4)){
                 start=1;
                 if (catch_time == 1) {
                     startTime = new Date(System.currentTimeMillis());
@@ -886,12 +890,14 @@ public class ThirtySecondMode extends Activity {
                     l = Integer.toString(count);
                     mCounter.append(l + "\n");
                     mDelay.append(diff + "\n");
-                    scrollView1.post(new Runnable() {
+
+                    nestedScrollView1.post(new Runnable() {
                         @Override
                         public void run() {
-                            scrollView1.fullScroll(View.FOCUS_DOWN);
+                            nestedScrollView1.fullScroll(View.FOCUS_DOWN);
                         }
                     });
+
                     plus_1 = 0;
                     catch_time = 1;
                     /*
