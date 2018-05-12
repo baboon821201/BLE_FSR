@@ -55,6 +55,7 @@ import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.ubidots.ApiClient;
+import com.ubidots.DataSource;
 import com.ubidots.Variable;
 
 import org.w3c.dom.Text;
@@ -84,7 +85,8 @@ public class DeviceControlActivity extends Activity {
     private final static String TAG = DeviceControlActivity.class.getSimpleName();
 
     private final String API_KEY = "A1E-a681b156def69c266fdfa1a95e82c6a67c6b";
-    private final String VARIABLE_ID = "5ae97900c03f973cd554f1b9";
+    private final String VARIABLE_ID1 = "5ae97900c03f973cd554f1b9";
+    private final String VARIABLE_ID2 = "5af3dee8c03f977f6bb4fcab";
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
 
@@ -95,7 +97,7 @@ public class DeviceControlActivity extends Activity {
     String[] dataArray;
     StringBuilder s = new StringBuilder();
     File path, file;
-    float avg, f1, f2, f3, f4, avg1;
+    float avg, rightFront, rightRear, leftRear, leftFront, avg1;
     private Button btnScan, btnClear, btnSave;
     private TextView mConnectionState, test;
     private TextView mTime, mS1, mS2, mS3, mS4, mAvg, mDataField;
@@ -348,10 +350,10 @@ public class DeviceControlActivity extends Activity {
                 mAvg.setText(dataArray[5]);
 
 
-                f1 = Float.valueOf(dataArray[1]);
-                f2 = Float.valueOf(dataArray[2]);
-                f3 = Float.valueOf(dataArray[3]);
-                f4 = Float.valueOf(dataArray[4]);
+                rightFront = Float.valueOf(dataArray[1]);
+                rightRear = Float.valueOf(dataArray[2]);
+                leftRear = Float.valueOf(dataArray[3]);
+                leftFront = Float.valueOf(dataArray[4]);
                 avg1 = Float.valueOf(dataArray[5]);
                 /*
                 mTime.append(dataArray[0]+"\n");
@@ -487,7 +489,6 @@ public class DeviceControlActivity extends Activity {
                     }
                 }
                 callAsynchronousTask();
-
                 //feedMultiple();
 
 
@@ -513,6 +514,8 @@ public class DeviceControlActivity extends Activity {
                     }
                 };
                 timer1.schedule(doAsynchronousTask, 0, 5000);
+
+
 
 
 
@@ -646,16 +649,19 @@ public class DeviceControlActivity extends Activity {
         });
     }
 
-   public class ApiUbidots extends AsyncTask<Float, Void, Void> {
-       @Override
-       protected Void doInBackground(Float... params) {
-           ApiClient apiClient = new ApiClient(API_KEY);
-           Variable pressure = apiClient.getVariable(VARIABLE_ID);
-///
-           pressure.saveValue(params[0]);
-           return null;
-       }
-   }
+    public class ApiUbidots extends AsyncTask<Float, Void, Void> {
+        @Override
+        protected Void doInBackground(Float... params) {
+            ApiClient apiClient = new ApiClient(API_KEY);
+            
+            Variable pressure = apiClient.getVariable(VARIABLE_ID1);
+            Variable test = apiClient.getVariable(VARIABLE_ID2);
+
+            pressure.saveValue(params[0]);
+            test.saveValue(params[0]);
+            return null;
+        }
+    }
 
     public void callAsynchronousTask() {
         final Handler handler = new Handler();
