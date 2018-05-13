@@ -859,7 +859,7 @@ public class ThirtySecondMode extends Activity {
 
             //j=0,a=1
 
-            if((rightRear-rightFront)>0.0 && (leftRear-leftFront)>0.0){
+            if((rightRear>rightFront) && (leftRear>leftFront) && iAvg>=10.0){
                 start=1;
                 if (catch_time == 1) {
                     String time1 = dataArray[0];
