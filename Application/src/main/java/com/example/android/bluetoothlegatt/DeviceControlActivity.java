@@ -653,7 +653,7 @@ public class DeviceControlActivity extends Activity {
         @Override
         protected Void doInBackground(Float... params) {
             ApiClient apiClient = new ApiClient(API_KEY);
-            
+
             Variable pressure = apiClient.getVariable(VARIABLE_ID1);
             Variable test = apiClient.getVariable(VARIABLE_ID2);
 

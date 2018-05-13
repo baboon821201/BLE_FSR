@@ -107,9 +107,9 @@ public class ThirtySecondMode extends Activity {
     Long tsLong1, tsLong2, timeP;
     long timeDelay;
     Date startTime ,endTime;
-    float i1, i2, i3, i4, iAvg;
+    float rightFront, rightRear, leftRear, leftFront, iAvg;
     int start = 0;
-    int plus_1 = 0;
+    //int plus_1 = 0;
     int count = 0;
     int catch_time = 1;
     float timeDelay_in_ms = 0;
@@ -583,7 +583,7 @@ public class ThirtySecondMode extends Activity {
                 L1 = set_L1();
                 data1.addDataSet(L1);
             }
-            data1.addEntry(new Entry(L1.getEntryCount(), i1), 0);
+            data1.addEntry(new Entry(L1.getEntryCount(), rightFront), 0);
             data1.notifyDataChanged();
 
             // let the chart know it's data has changed
@@ -607,7 +607,7 @@ public class ThirtySecondMode extends Activity {
                 L2 = set_L2();
                 data2.addDataSet(L2);
             }
-            data2.addEntry(new Entry(L2.getEntryCount(), i2), 0);
+            data2.addEntry(new Entry(L2.getEntryCount(), rightRear), 0);
             data2.notifyDataChanged();
 
             // let the chart know it's data has changed
@@ -631,7 +631,7 @@ public class ThirtySecondMode extends Activity {
                 L3 = set_L3();
                 data3.addDataSet(L3);
             }
-            data3.addEntry(new Entry(L3.getEntryCount(), i3), 0);
+            data3.addEntry(new Entry(L3.getEntryCount(), leftRear), 0);
             data3.notifyDataChanged();
 
             // let the chart know it's data has changed
@@ -655,7 +655,7 @@ public class ThirtySecondMode extends Activity {
                 L4 = set_L4();
                 data4.addDataSet(L4);
             }
-            data4.addEntry(new Entry(L4.getEntryCount(), i4), 0);
+            data4.addEntry(new Entry(L4.getEntryCount(), leftFront), 0);
             data4.notifyDataChanged();
 
             // let the chart know it's data has changed
@@ -822,10 +822,10 @@ public class ThirtySecondMode extends Activity {
             }
 
             //long timeStamp1 = 0, timeStamp2 = 0;
-            i1 = Float.valueOf(dataArray[1]);   //右上
-            i2 = Float.valueOf(dataArray[2]);   //右下
-            i3 = Float.valueOf(dataArray[3]);   //左下
-            i4 = Float.valueOf(dataArray[4]);   //左上
+            rightFront = Float.valueOf(dataArray[1]);   //右上
+            rightRear = Float.valueOf(dataArray[2]);   //右下
+            leftRear = Float.valueOf(dataArray[3]);   //左下
+            leftFront = Float.valueOf(dataArray[4]);   //左上
             iAvg = Float.valueOf(dataArray[5]);
 
            // FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -859,7 +859,7 @@ public class ThirtySecondMode extends Activity {
 
             //j=0,a=1
 
-            if((i2>i1) && (i3>i4)){
+            if((rightRear>rightFront) && (leftRear>leftFront)){
                 start=1;
                 if (catch_time == 1) {
                     String time1 = dataArray[0];
@@ -886,7 +886,7 @@ public class ThirtySecondMode extends Activity {
             }
             if(iAvg<=10.0){
                 if(start==1){
-                    plus_1++;
+                    //plus_1++;
                     start = 0;
 
                     String time2 = dataArray[0];
@@ -908,7 +908,7 @@ public class ThirtySecondMode extends Activity {
                     String diff = String.valueOf(timeDelay_in_ms);
                     Log.d(TAG, diff);
 
-                    count = count + plus_1;
+                    count++;
                     l = Integer.toString(count);
                     mCounter.append(l + "\n");
                     mDelay.append(diff + "\n");
@@ -924,7 +924,7 @@ public class ThirtySecondMode extends Activity {
 
                     s2.append(times_timeDelay);
 
-                    plus_1 = 0;
+                    //plus_1 = 0;
                     catch_time = 1;
                     /*
                     //String str = String.valueOf(timeDelay);
@@ -1154,7 +1154,7 @@ public class ThirtySecondMode extends Activity {
                 mDelay.setText("");
                 //s.setLength(0);
                 start = 0;
-                plus_1 = 0;
+                //plus_1 = 0;
                 count = 0;
                 clear=true;
                 btnScan.setEnabled(true);
