@@ -41,7 +41,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,8 +58,6 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageMetadata;
@@ -73,7 +70,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.DateFormat;
-import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -81,8 +77,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
  * For a given BLE device, this Activity provides the user interface to connect, display data,
@@ -107,7 +101,7 @@ public class ThirtySecondMode extends Activity {
     Long tsLong1, tsLong2, timeP;
     long timeDelay;
     Date startTime ,endTime;
-    float rightFront, rightRear, leftRear, leftFront, iAvg;
+    float topRight, bottomRight, topLeft, bottomLeft, iAvg;
     int start=0;
     //int plus_1 = 0;
     int count = 0;
@@ -583,7 +577,7 @@ public class ThirtySecondMode extends Activity {
                 L1 = set_L1();
                 data1.addDataSet(L1);
             }
-            data1.addEntry(new Entry(L1.getEntryCount(), rightFront), 0);
+            data1.addEntry(new Entry(L1.getEntryCount(), topRight), 0);
             data1.notifyDataChanged();
 
             // let the chart know it's data has changed
@@ -607,7 +601,7 @@ public class ThirtySecondMode extends Activity {
                 L2 = set_L2();
                 data2.addDataSet(L2);
             }
-            data2.addEntry(new Entry(L2.getEntryCount(), rightRear), 0);
+            data2.addEntry(new Entry(L2.getEntryCount(), bottomRight), 0);
             data2.notifyDataChanged();
 
             // let the chart know it's data has changed
@@ -631,7 +625,7 @@ public class ThirtySecondMode extends Activity {
                 L3 = set_L3();
                 data3.addDataSet(L3);
             }
-            data3.addEntry(new Entry(L3.getEntryCount(), leftRear), 0);
+            data3.addEntry(new Entry(L3.getEntryCount(), topLeft), 0);
             data3.notifyDataChanged();
 
             // let the chart know it's data has changed
@@ -655,7 +649,7 @@ public class ThirtySecondMode extends Activity {
                 L4 = set_L4();
                 data4.addDataSet(L4);
             }
-            data4.addEntry(new Entry(L4.getEntryCount(), leftFront), 0);
+            data4.addEntry(new Entry(L4.getEntryCount(), bottomLeft), 0);
             data4.notifyDataChanged();
 
             // let the chart know it's data has changed
@@ -822,10 +816,10 @@ public class ThirtySecondMode extends Activity {
             }
 
             //long timeStamp1 = 0, timeStamp2 = 0;
-            rightFront = Float.valueOf(dataArray[1]);   //右上
-            rightRear = Float.valueOf(dataArray[2]);   //右下
-            leftRear = Float.valueOf(dataArray[3]);   //左下
-            leftFront = Float.valueOf(dataArray[4]);   //左上
+            topRight = Float.valueOf(dataArray[1]);   //右上
+            bottomRight = Float.valueOf(dataArray[2]);   //右下
+            topLeft = Float.valueOf(dataArray[3]);   //左下
+            bottomLeft = Float.valueOf(dataArray[4]);   //左上
             iAvg = Float.valueOf(dataArray[5]);
 
            // FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -859,7 +853,7 @@ public class ThirtySecondMode extends Activity {
 
             //j=0,a=1
 
-            if((rightRear>=rightFront) && (leftRear>=leftFront) && iAvg>=250.0){
+            if((bottomRight >= topRight) && (topLeft >= bottomLeft) && iAvg>=250.0){
                 start=1;
                 if (catch_time == 1) {
                     time1 = dataArray[0];
