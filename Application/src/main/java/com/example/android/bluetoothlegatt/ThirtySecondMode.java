@@ -101,7 +101,7 @@ public class ThirtySecondMode extends Activity {
     Long tsLong1, tsLong2, timeP;
     long timeDelay;
     Date startTime ,endTime;
-    float topRight, bottomRight, topLeft, bottomLeft, iAvg;
+    float topRight, bottomRight, bottomLeft, topLeft, iAvg;
     int start=0;
     //int plus_1 = 0;
     int count = 0;
@@ -625,7 +625,7 @@ public class ThirtySecondMode extends Activity {
                 L3 = set_L3();
                 data3.addDataSet(L3);
             }
-            data3.addEntry(new Entry(L3.getEntryCount(), topLeft), 0);
+            data3.addEntry(new Entry(L3.getEntryCount(), bottomLeft), 0);
             data3.notifyDataChanged();
 
             // let the chart know it's data has changed
@@ -649,7 +649,7 @@ public class ThirtySecondMode extends Activity {
                 L4 = set_L4();
                 data4.addDataSet(L4);
             }
-            data4.addEntry(new Entry(L4.getEntryCount(), bottomLeft), 0);
+            data4.addEntry(new Entry(L4.getEntryCount(), topLeft), 0);
             data4.notifyDataChanged();
 
             // let the chart know it's data has changed
@@ -818,8 +818,8 @@ public class ThirtySecondMode extends Activity {
             //long timeStamp1 = 0, timeStamp2 = 0;
             topRight = Float.valueOf(dataArray[1]);   //右上
             bottomRight = Float.valueOf(dataArray[2]);   //右下
-            topLeft = Float.valueOf(dataArray[3]);   //左下
-            bottomLeft = Float.valueOf(dataArray[4]);   //左上
+            bottomLeft = Float.valueOf(dataArray[3]);   //左下
+            topLeft = Float.valueOf(dataArray[4]);   //左上
             iAvg = Float.valueOf(dataArray[5]);
 
            // FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -853,7 +853,7 @@ public class ThirtySecondMode extends Activity {
 
             //j=0,a=1
 
-            if((bottomRight >= topRight) && (topLeft >= bottomLeft) && iAvg>=250.0){
+            if((bottomRight >= topRight) && (bottomLeft >= topLeft) && iAvg>=250.0){
                 start=1;
                 if (catch_time == 1) {
                     time1 = dataArray[0];

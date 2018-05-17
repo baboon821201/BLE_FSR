@@ -6,22 +6,22 @@
     density="xxhdpi"
     format="10"
     plugin-version="3.1.2"
-    timestamp="1526550254119"
+    timestamp="1526563074493"
     token="-7662299653332318984"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="1590" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="128" />
+        duration="0" />
     <task
         name="verifier"
-        duration="79" />
+        duration="0" />
 
     <artifact
         location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
@@ -65,7 +65,7 @@
 
     <build
         build-mode="FULL"
-        timestamp="1526550254119"
+        timestamp="1526563074493"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Lab70826\StudioProject\BLE_FSR\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
