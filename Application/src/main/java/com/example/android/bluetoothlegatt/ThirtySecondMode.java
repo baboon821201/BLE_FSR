@@ -99,7 +99,7 @@ public class ThirtySecondMode extends Activity {
     boolean stop=true;
     boolean clear=false;
     NestedScrollView nestedScrollView1;
-    String time, filename1, filename2, l, ts1;
+    String time, filename1, filename2, l, ts1, time1, time2, diff;
     String[] dataArray;
     StringBuilder s1 = new StringBuilder();
     StringBuilder s2 = new StringBuilder();
@@ -108,7 +108,7 @@ public class ThirtySecondMode extends Activity {
     long timeDelay;
     Date startTime ,endTime;
     float rightFront, rightRear, leftRear, leftFront, iAvg;
-    int start = 0;
+    int start=0;
     //int plus_1 = 0;
     int count = 0;
     int catch_time = 1;
@@ -859,10 +859,10 @@ public class ThirtySecondMode extends Activity {
 
             //j=0,a=1
 
-            if((rightRear>rightFront) && (leftRear>leftFront) && iAvg>=10.0){
+            if((rightRear>=rightFront) && (leftRear>=leftFront) && iAvg>=250.0){
                 start=1;
                 if (catch_time == 1) {
-                    String time1 = dataArray[0];
+                    time1 = dataArray[0];
 
                     DateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
                     try {
@@ -883,13 +883,11 @@ public class ThirtySecondMode extends Activity {
                     //Log.d(TAG, ts);
 */
                 }
-            }
-            if(iAvg<=10.0){
-                if(start==1){
+            }else{
+                if((iAvg<250.0) && (start==1)){
                     //plus_1++;
-                    start = 0;
 
-                    String time2 = dataArray[0];
+                    time2 = dataArray[0];
 
                     DateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
                     try {
@@ -905,11 +903,12 @@ public class ThirtySecondMode extends Activity {
 
                     timeDelay = endTime.getTime() - startTime.getTime();
                     timeDelay_in_ms = (float)timeDelay / 1000;
-                    String diff = String.valueOf(timeDelay_in_ms);
+                    diff = String.valueOf(timeDelay_in_ms);
                     Log.d(TAG, diff);
 
                     count++;
                     l = Integer.toString(count);
+                    Log.d(TAG, l);
                     mCounter.append(l + "\n");
                     mDelay.append(diff + "\n");
 
@@ -923,7 +922,7 @@ public class ThirtySecondMode extends Activity {
                     String times_timeDelay = l + "," +diff + "\n";
 
                     s2.append(times_timeDelay);
-
+                    start = 0;
                     //plus_1 = 0;
                     catch_time = 1;
                     /*
@@ -942,6 +941,7 @@ public class ThirtySecondMode extends Activity {
 */
                 }
             }
+
 
 
 
@@ -1154,6 +1154,7 @@ public class ThirtySecondMode extends Activity {
                 mDelay.setText("");
                 //s.setLength(0);
                 start = 0;
+                catch_time = 1;
                 //plus_1 = 0;
                 count = 0;
                 clear=true;
