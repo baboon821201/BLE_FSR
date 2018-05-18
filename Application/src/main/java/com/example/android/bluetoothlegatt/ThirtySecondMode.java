@@ -90,8 +90,9 @@ public class ThirtySecondMode extends Activity {
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
 
-    boolean stop=true;
-    boolean clear=false;
+    boolean stop = true;
+    boolean start = false;
+    boolean catch_time = true;
     NestedScrollView nestedScrollView1;
     String time, filename1, filename2, l, ts1, time1, time2, diff;
     String[] dataArray;
@@ -102,10 +103,7 @@ public class ThirtySecondMode extends Activity {
     long timeDelay;
     Date startTime ,endTime;
     float topRight, bottomRight, bottomLeft, topLeft, iAvg;
-    int start=0;
-    //int plus_1 = 0;
     int count = 0;
-    int catch_time = 1;
     float timeDelay_in_ms = 0;
     float t1 = 0;
     float t2 = 0;
@@ -853,32 +851,32 @@ public class ThirtySecondMode extends Activity {
 
             //j=0,a=1
 
-            if((bottomRight >= topRight) && (bottomLeft >= topLeft) && iAvg>=250.0){
-                start=1;
-                if (catch_time == 1) {
-                    time1 = dataArray[0];
+            if((bottomRight >= topRight) && (bottomLeft >= topLeft) && iAvg>=250.0 && !start && catch_time){
+                start = true;
+                //if (catch_time) {
+                time1 = dataArray[0];
 
-                    DateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
-                    try {
-                        startTime = sdf.parse(time1);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
+                DateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
+                try {
+                    startTime = sdf.parse(time1);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
-                    //startTime = new Date(System.currentTimeMillis());
-                    //SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
-                    String dateString = sdf.format(startTime);
-                    Log.d(TAG, dateString);
-                    catch_time = 0;
+                //startTime = new Date(System.currentTimeMillis());
+                //SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
+                String dateString = sdf.format(startTime);
+                Log.d(TAG, dateString);
+                catch_time = false;
 /*
                     tsLong1 = System.currentTimeMillis();
                     t1 = tsLong1.intValue();
                     String ts = tsLong1.toString();
                     //Log.d(TAG, ts);
 */
-                }
+                //}
             }else{
-                if((iAvg<250.0) && (start==1)){
+                if((iAvg<250.0) && (start)){
                     //plus_1++;
 
                     time2 = dataArray[0];
@@ -916,9 +914,9 @@ public class ThirtySecondMode extends Activity {
                     String times_timeDelay = l + "," +diff + "\n";
 
                     s2.append(times_timeDelay);
-                    start = 0;
+                    start = false;
                     //plus_1 = 0;
-                    catch_time = 1;
+                    catch_time = true;
                     /*
                     //String str = String.valueOf(timeDelay);
                     tsLong2 = System.currentTimeMillis();
@@ -1147,11 +1145,10 @@ public class ThirtySecondMode extends Activity {
                 mCounter.setText("");
                 mDelay.setText("");
                 //s.setLength(0);
-                start = 0;
-                catch_time = 1;
+                start = false;
+                catch_time = true;
                 //plus_1 = 0;
                 count = 0;
-                clear=true;
                 btnScan.setEnabled(true);
                 btnSave.setEnabled(false);
                 btnClear.setEnabled(false);
