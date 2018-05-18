@@ -851,8 +851,7 @@ public class ThirtySecondMode extends Activity {
 
             //j=0,a=1
 
-            if((bottomRight >= topRight) && (bottomLeft >= topLeft) && iAvg>=250.0 && !start && catch_time){
-                start = true;
+            if((bottomRight > topRight) && (bottomLeft > topLeft) && iAvg>=250.0 && !start && catch_time){
                 //if (catch_time) {
                 time1 = dataArray[0];
 
@@ -867,6 +866,7 @@ public class ThirtySecondMode extends Activity {
                 //SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
                 String dateString = sdf.format(startTime);
                 Log.d(TAG, dateString);
+                start = true;
                 catch_time = false;
 /*
                     tsLong1 = System.currentTimeMillis();
