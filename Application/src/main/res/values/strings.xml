@@ -59,6 +59,8 @@
     <string name="time_delay_s">Time Delay (s)</string>
     <string name="_30">30</string>
     <string name="_30_000">30.000</string>
+    <string name="lite_version">Lite Version</string>
+    <string name="full_version">Full Version</string>
 
 
 </resources>

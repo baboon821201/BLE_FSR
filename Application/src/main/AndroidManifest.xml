@@ -51,8 +51,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ChooseMode"/>
+        <activity android:name=".ThirtySecondLiteOrFull"/>
+        <activity android:name=".ThirtySecondLite"/>
         <activity android:name=".ThirtySecondMode"/>
         <activity android:name=".DeviceControlActivity"/>
+
 
 
         <service android:name=".BluetoothLeService" android:enabled="true"/>

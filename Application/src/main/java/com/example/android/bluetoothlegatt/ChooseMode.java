@@ -15,10 +15,8 @@ public class ChooseMode extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.choose_mode);
         initView();
-
         btnGeneral.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,7 +30,6 @@ public class ChooseMode extends Activity {
                 deliverToThirtySecond();
             }
         });
-
     }
 
     private void initView(){
@@ -52,7 +49,7 @@ public class ChooseMode extends Activity {
     public void deliverToThirtySecond(){
         Bundle bundle = getIntent().getExtras();
         Intent intent = new Intent();
-        intent.setClass(this, ThirtySecondMode.class);
+        intent.setClass(this, ThirtySecondLiteOrFull.class);
         assert bundle != null;
         intent.putExtras(bundle);
         startActivity(intent);

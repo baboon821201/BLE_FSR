@@ -1084,6 +1084,8 @@ public class ThirtySecondMode extends Activity {
                                 characteristic, true);
                     }
                 }
+                b.setText("Stop Scan");
+                stop = false;
 
                 timer.start();
                 //feedMultiple();
@@ -1114,10 +1116,6 @@ public class ThirtySecondMode extends Activity {
                     }
                 });
                 thread.start();
-
-                b.setText("Stop Scan");
-                stop = false;
-
             }else{
                 //mDataField.setText("No Pressure");
                 timer.cancel();
