@@ -122,7 +122,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="This version shows FSR pressure and the avreage pressure in 5 figures, and calculus the time delay and times. "
+        android:text="This version shows all FSR pressures and the avreage pressure in 5 figures, and calculus the time delay and times. "
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline13"
         app:layout_constraintEnd_toEndOf="parent"

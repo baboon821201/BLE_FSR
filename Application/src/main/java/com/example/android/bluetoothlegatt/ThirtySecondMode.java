@@ -1182,7 +1182,7 @@ public class ThirtySecondMode extends Activity {
                         path1.mkdirs();
                         OutputStream outputStream = new FileOutputStream(file1, true);
                         //String s1 = "Time" + ",\t\t" + "sensor1" + ",\t" + "sensor2" + ",\t" + "sensor3" + ",\t" + "sensor4" + ",\t" + "Average" + ",\n";
-                        String title1 = "Time" + "," + "Right Front" + "," + "Right Rear"+ "," + "Left Rear"+ "," + "Left Front"+ "," + "Average" + "\n";
+                        String title1 = "Time" + "," + "Top Right" + "," + "Bottom Right"+ "," + "Bottom Left"+ "," + "Top Left"+ "," + "Average" + "\n";
                         s1.toString();
                         //String dataArrayString = saveData;
                         String all1 = title1 + s1;
