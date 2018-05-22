@@ -88,8 +88,6 @@ public class DeviceScanActivity extends ListActivity {
             return;
         }
 
-
-
         int Permission_All = 1;
         String[] Permissions = {Manifest.permission.ACCESS_COARSE_LOCATION,
                                 Manifest.permission.ACCESS_FINE_LOCATION,
@@ -99,46 +97,8 @@ public class DeviceScanActivity extends ListActivity {
         if (!hasPermissions(this, Permissions)){
             ActivityCompat.requestPermissions(this, Permissions, Permission_All);
         }
-
-        if (Build.VERSION.SDK_INT >= 23){
-            final LocationManager LocManager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
-            //檢查手機的定位功能是否已開啟
-            if (LocManager.isProviderEnabled( LocationManager.GPS_PROVIDER )){
-                if ( android.support.v4.app.ActivityCompat.checkSelfPermission(DeviceScanActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION)
-                        == PackageManager.PERMISSION_GRANTED ){
-                    //已經授權APP使用定位服務，接著的動作
-                }
-                else{
-                    //尚未授權使用定位服務時，向使用者詢問。
-                    //其結果會在 onRequestPermissionsResult 進行動作
-                    android.support.v4.app.ActivityCompat.requestPermissions(DeviceScanActivity.this,
-                            new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
-                            ACCESS_COARSE_LOCATION_REQUEST_CODE);
-                }
-            }
-            else{
-                //詢問是否要開啟手機定位功能
-                AlertDialog.Builder ad = new AlertDialog.Builder(this);
-                ad.setTitle("Need Location Service");
-                ad.setMessage("Please make the Location enabled，otherwise you can't find any BLE device.");
-                ad.setCancelable(false); // 避免點選畫面其他地方而關閉 AlertDialog
-                ad.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i){
-                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                    }
-                });
-                ad.setNegativeButton("No", new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i){
-                        finish();
-                    }
-                });
-                ad.show();
-            }
-        }
-
-
+        statusCheck();
+        
         /*
 
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
@@ -210,6 +170,33 @@ public class DeviceScanActivity extends ListActivity {
    //        }
    //    }
    //}
+
+
+    public void statusCheck(){
+        final LocationManager manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        assert manager != null;
+        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            buildAlertMessageNoGps();
+        }
+    }
+
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+    }
 
 
     @Override
