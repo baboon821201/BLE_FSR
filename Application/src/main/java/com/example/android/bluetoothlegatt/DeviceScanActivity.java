@@ -88,17 +88,9 @@ public class DeviceScanActivity extends ListActivity {
             return;
         }
 
-        int Permission_All = 1;
-        String[] Permissions = {Manifest.permission.ACCESS_COARSE_LOCATION,
-                                Manifest.permission.ACCESS_FINE_LOCATION,
-                                Manifest.permission.READ_EXTERNAL_STORAGE,
-                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                                Manifest.permission.INTERNET};
-        if (!hasPermissions(this, Permissions)){
-            ActivityCompat.requestPermissions(this, Permissions, Permission_All);
-        }
-        statusCheck();
-        
+
+
+
         /*
 
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
@@ -171,6 +163,19 @@ public class DeviceScanActivity extends ListActivity {
    //    }
    //}
 
+    public void checkPermissions(){
+        int Permission_All = 1;
+        String[] Permissions = {Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.INTERNET};
+        if (!hasPermissions(this, Permissions)){
+            ActivityCompat.requestPermissions(this, Permissions, Permission_All);
+        }else{
+            statusCheck();
+        }
+    }
 
     public void statusCheck(){
         final LocationManager manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
@@ -240,6 +245,8 @@ public class DeviceScanActivity extends ListActivity {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             }
+        }else{
+            checkPermissions();
         }
 
         // Initializes list view adapter.
