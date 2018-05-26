@@ -92,7 +92,7 @@ public class ThirtySecondMode extends Activity {
 
     boolean stop = true;
     boolean start = false;
-    boolean catch_time = true;
+    //boolean catch_time = true;
     NestedScrollView nestedScrollView1;
     String time, filename1, filename2, l, ts1, time1, time2, diff;
     String[] dataArray;
@@ -848,10 +848,10 @@ public class ThirtySecondMode extends Activity {
             //        });
 
 
-
             //j=0,a=1
 
-            if((bottomRight > topRight) && (bottomLeft > topLeft) && iAvg>=250.0 && !start && catch_time){
+            if(bottomRight>10.0 && topRight>10.0 && bottomLeft>10.0 && topLeft>10.0
+                    && bottomRight>topRight && bottomLeft>topLeft && iAvg>=250.0 && !start){
                 //if (catch_time) {
                 time1 = dataArray[0];
 
@@ -867,7 +867,7 @@ public class ThirtySecondMode extends Activity {
                 String dateString = sdf.format(startTime);
                 Log.d(TAG, dateString);
                 start = true;
-                catch_time = false;
+                //catch_time = false;
 /*
                     tsLong1 = System.currentTimeMillis();
                     t1 = tsLong1.intValue();
@@ -876,7 +876,7 @@ public class ThirtySecondMode extends Activity {
 */
                 //}
             }else{
-                if((iAvg<250.0) && (start)){
+                if((iAvg<250.0) && start){
                     //plus_1++;
 
                     time2 = dataArray[0];
@@ -916,7 +916,7 @@ public class ThirtySecondMode extends Activity {
                     s2.append(times_timeDelay);
                     start = false;
                     //plus_1 = 0;
-                    catch_time = true;
+                    //catch_time = true;
                     /*
                     //String str = String.valueOf(timeDelay);
                     tsLong2 = System.currentTimeMillis();
@@ -1144,7 +1144,7 @@ public class ThirtySecondMode extends Activity {
                 mDelay.setText("");
                 //s.setLength(0);
                 start = false;
-                catch_time = true;
+                //catch_time = true;
                 //plus_1 = 0;
                 count = 0;
                 btnScan.setEnabled(true);
