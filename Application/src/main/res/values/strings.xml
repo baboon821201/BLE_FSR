@@ -61,6 +61,7 @@
     <string name="_30_000">30.000</string>
     <string name="lite_version">Lite Version</string>
     <string name="full_version">Full Version</string>
+    <string name="_30_seconds_test_mode">30 Seconds Test Mode</string>
 
 
 </resources>

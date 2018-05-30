@@ -641,6 +641,7 @@
     <string name="_30">30</string>
     <string name="_30_000">30.000</string>
     <string name="_30_second_test_mode">30 Second Test Mode</string>
+    <string name="_30_seconds_test_mode">30 Seconds Test Mode</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
     <string name="abc_action_menu_overflow_description">More options</string>

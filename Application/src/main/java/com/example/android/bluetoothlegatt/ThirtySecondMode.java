@@ -102,7 +102,7 @@ public class ThirtySecondMode extends Activity {
     Long tsLong1, tsLong2, timeP;
     long timeDelay;
     Date startTime ,endTime;
-    float topRight, bottomRight, bottomLeft, topLeft, iAvg;
+    float topRight=0, bottomRight=0, bottomLeft=0, topLeft=0, iAvg=0;
     int count = 0;
     float timeDelay_in_ms = 0;
     float t1 = 0;
