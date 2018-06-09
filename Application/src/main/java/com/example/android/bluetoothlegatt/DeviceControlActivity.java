@@ -48,17 +48,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.ubidots.ApiClient;
-import com.ubidots.DataSource;
 import com.ubidots.Variable;
-
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -70,7 +66,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -97,7 +92,7 @@ public class DeviceControlActivity extends Activity {
     String[] dataArray;
     StringBuilder s = new StringBuilder();
     File path, file;
-    float avg, rightFront, rightRear, leftRear, leftFront, avg1;
+    float avg, topRight=0, buttomRight=0, buttomLeft=0, topLeft=0, iAvg=0;
     private Button btnScan, btnClear, btnSave;
     private TextView mConnectionState, test;
     private TextView mTime, mS1, mS2, mS3, mS4, mAvg, mDataField;
@@ -350,11 +345,11 @@ public class DeviceControlActivity extends Activity {
                 mAvg.setText(dataArray[5]);
 
 
-                rightFront = Float.valueOf(dataArray[1]);
-                rightRear = Float.valueOf(dataArray[2]);
-                leftRear = Float.valueOf(dataArray[3]);
-                leftFront = Float.valueOf(dataArray[4]);
-                avg1 = Float.valueOf(dataArray[5]);
+                topRight = Float.valueOf(dataArray[1]);
+                buttomRight = Float.valueOf(dataArray[2]);
+                buttomLeft = Float.valueOf(dataArray[3]);
+                topLeft = Float.valueOf(dataArray[4]);
+                iAvg = Float.valueOf(dataArray[5]);
                 /*
                 mTime.append(dataArray[0]+"\n");
                 mS1.append(dataArray[1]+"\n");
@@ -500,7 +495,7 @@ public class DeviceControlActivity extends Activity {
                         handler.post(new Runnable() {
                             public void run() {
                                 try {
-                                    if(avg1 == 0.0){
+                                    if(iAvg == 0.0){
                                         Toast.makeText(DeviceControlActivity.this, "No Pressure!", Toast.LENGTH_SHORT).show();
                                         Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
                                         myVibrator.vibrate(500);
