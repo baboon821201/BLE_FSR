@@ -689,9 +689,9 @@ public class ThirtySecondMode extends Activity {
         }
 
     }
-
+//topRight=0, bottomRight=0, bottomLeft=0, topLeft=0, iAvg=0;
     private LineDataSet set_L1() {
-        LineDataSet set = new LineDataSet(null, "Right Front");
+        LineDataSet set = new LineDataSet(null, "Top Right");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(Color.RED);
         set.setCircleColor(Color.WHITE);
@@ -707,7 +707,7 @@ public class ThirtySecondMode extends Activity {
     }
 
     private LineDataSet set_L2() {
-        LineDataSet set = new LineDataSet(null, "Right Rear");
+        LineDataSet set = new LineDataSet(null, "Bottom Right");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(Color.BLUE);
         set.setCircleColor(Color.WHITE);
@@ -723,7 +723,7 @@ public class ThirtySecondMode extends Activity {
     }
 
     private LineDataSet set_L3() {
-        LineDataSet set = new LineDataSet(null, "Left Rear");
+        LineDataSet set = new LineDataSet(null, "Bottom Left");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(Color.YELLOW);
         set.setCircleColor(Color.WHITE);
@@ -739,7 +739,7 @@ public class ThirtySecondMode extends Activity {
     }
 
     private LineDataSet set_L4() {
-        LineDataSet set = new LineDataSet(null, "Left Front");
+        LineDataSet set = new LineDataSet(null, "Top Left");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(Color.GREEN);
         set.setCircleColor(Color.WHITE);

@@ -92,7 +92,9 @@ public class DeviceControlActivity extends Activity {
     String[] dataArray;
     StringBuilder s = new StringBuilder();
     File path, file;
-    float avg, topRight=0, buttomRight=0, buttomLeft=0, topLeft=0, iAvg=0;
+    float avg ;
+    float topRight=0, buttomRight=0, buttomLeft=0, topLeft=0, iAvg=0;
+
     private Button btnScan, btnClear, btnSave;
     private TextView mConnectionState, test;
     private TextView mTime, mS1, mS2, mS3, mS4, mAvg, mDataField;
@@ -486,7 +488,7 @@ public class DeviceControlActivity extends Activity {
                 callAsynchronousTask();
                 //feedMultiple();
 
-
+                //topRight=0, buttomRight=0, buttomLeft=0, topLeft=0, iAvg=0
                 final Handler handler = new Handler();
                 timer1 = new Timer();
                 doAsynchronousTask = new TimerTask() {
@@ -650,10 +652,10 @@ public class DeviceControlActivity extends Activity {
             ApiClient apiClient = new ApiClient(API_KEY);
 
             Variable pressure = apiClient.getVariable(VARIABLE_ID1);
-            Variable test = apiClient.getVariable(VARIABLE_ID2);
+            //Variable test = apiClient.getVariable(VARIABLE_ID2);
 
             pressure.saveValue(params[0]);
-            test.saveValue(params[0]);
+            //test.saveValue(params[0]);
             return null;
         }
     }
@@ -668,8 +670,7 @@ public class DeviceControlActivity extends Activity {
                     public void run() {
                         try {
                             ApiUbidots apiUbidots = new ApiUbidots();
-                            avg = Float.valueOf(dataArray[5]);
-                            apiUbidots.execute(avg);
+                            apiUbidots.execute(topRight, buttomRight, buttomLeft, topLeft, iAvg);
 
 
                         } catch (Exception e) {

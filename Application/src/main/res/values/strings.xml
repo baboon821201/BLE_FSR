@@ -62,6 +62,10 @@
     <string name="lite_version">Lite Version</string>
     <string name="full_version">Full Version</string>
     <string name="_30_seconds_test_mode">30 Seconds Test Mode</string>
+    <string name="top_left">Top Left:</string>
+    <string name="top_right">Top Right:</string>
+    <string name="buttom_left">Buttom Left:</string>
+    <string name="buttom_right">Buttom Right:</string>
 
 
 </resources>
