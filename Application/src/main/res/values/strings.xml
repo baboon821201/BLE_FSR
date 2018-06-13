@@ -66,6 +66,10 @@
     <string name="top_right">Top Right:</string>
     <string name="buttom_left">Buttom Left:</string>
     <string name="buttom_right">Buttom Right:</string>
+    <string name="simple_sitting_posture_detection_mode">Simple Sitting Posture Detection Mode</string>
+    <string name="_30_seconds_sitting_and_standing_test_mode">30 Seconds \nSitting and Standing Test Mode</string>
+    <string name="this_version_shows_only_one_figure_of_the_average_pressure_but_still_can_calculus_the_time_delay_and_times_if_your_phone_using_a_low_level_cpu_this_version_could_be_fit_on_your_phone">This version shows only one figure of the average pressure, but still can calculus the time delay and times. If your phone is using a low level CPU, this version could be fit on your phone.</string>
+    <string name="this_version_shows_all_fsr_pressures_and_the_avreage_pressure_in_5_figures_and_calculus_the_time_delay_and_times">This version shows all FSR pressures and the avreage pressure in 5 figures, and calculus the time delay and times.</string>
 
 
 </resources>

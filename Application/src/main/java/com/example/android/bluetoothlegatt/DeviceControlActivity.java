@@ -94,10 +94,10 @@ public class DeviceControlActivity extends Activity {
     File path, file;
     float avg ;
     float topRight=0, buttomRight=0, buttomLeft=0, topLeft=0, iAvg=0;
-
+    float tL_bL=0, tR_bR=0, tL_tR=0, bL_bR=0;
     private Button btnScan, btnClear, btnSave;
     private TextView mConnectionState, test;
-    private TextView mTime, mS1, mS2, mS3, mS4, mAvg, mDataField;
+    private TextView mTime, mS1, mS2, mS3, mS4, mAvg, mDataField, mShowAlert;
     private String mDeviceName;
     private String mDeviceAddress;
     private ProgressBar DataUploadProgress;
@@ -257,6 +257,8 @@ public class DeviceControlActivity extends Activity {
         mS3 = (TextView)findViewById(R.id.showS3);
         mS4 = (TextView)findViewById(R.id.showS4);
         mAvg = (TextView)findViewById(R.id.showAvg);
+        mShowAlert = (TextView)findViewById(R.id.showAlert);
+
 
         btnScan=(Button)findViewById(R.id.scan);
         btnScan.setOnClickListener(StartScanClickListener);
@@ -352,6 +354,22 @@ public class DeviceControlActivity extends Activity {
                 buttomLeft = Float.valueOf(dataArray[3]);
                 topLeft = Float.valueOf(dataArray[4]);
                 iAvg = Float.valueOf(dataArray[5]);
+
+                //tL_bL=0, tR_bR=0, tL_tR=0, bR_bL=0
+
+                //Left
+                tL_bL = topLeft + buttomLeft;
+
+                //Right
+                tR_bR = topRight + buttomRight;
+
+                //Top
+                tL_tR = topLeft + topRight;
+
+                //Buttom
+                bL_bR = buttomLeft + buttomRight;
+
+
                 /*
                 mTime.append(dataArray[0]+"\n");
                 mS1.append(dataArray[1]+"\n");
@@ -488,7 +506,8 @@ public class DeviceControlActivity extends Activity {
                 callAsynchronousTask();
                 //feedMultiple();
 
-                //topRight=0, buttomRight=0, buttomLeft=0, topLeft=0, iAvg=0
+                //tL_bL=0, tR_bR=0, tL_tR=0, bL_bR=0
+
                 final Handler handler = new Handler();
                 timer1 = new Timer();
                 doAsynchronousTask = new TimerTask() {
@@ -497,10 +516,45 @@ public class DeviceControlActivity extends Activity {
                         handler.post(new Runnable() {
                             public void run() {
                                 try {
-                                    if(iAvg == 0.0){
-                                        Toast.makeText(DeviceControlActivity.this, "No Pressure!", Toast.LENGTH_SHORT).show();
+                                    /*
+                                    if(tL_bL>1650.0 && tR_bR<1650.0 && tL_tR<1650.0 && bL_bR>1650.0 && iAvg<850.0){
+                                        mShowAlert.setText("Too Much Pressure On Left!");
                                         Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
                                         myVibrator.vibrate(500);
+                                    }else if(tL_bL<1650.0 && tR_bR>1650.0 && tL_tR<1650.0 && bL_bR>1650.0 && iAvg<850.0){
+                                        mShowAlert.setText("Too Much Pressure On Right!");
+                                        Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
+                                        myVibrator.vibrate(500);
+                                    }else if(tL_bL>1650.0 && tR_bR>1650.0 && tL_tR>1650.0 && bL_bR>1650.0 && iAvg>850.0){
+                                        mShowAlert.setText("Too Much Pressure On Front!");
+                                        Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
+                                        myVibrator.vibrate(500);
+                                    }else if(tL_bL>1650.0 && tR_bR>1650.0 && tL_tR<1650.0 && bL_bR>1650.0 && iAvg<850.0){
+                                        mShowAlert.setText("Too Much Pressure On Back!");
+                                        Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
+                                        myVibrator.vibrate(500);
+                                    }else{
+                                        mShowAlert.setText(" ");
+                                    }
+                                    */
+                                    if(topLeft>830.0 && topRight<830.0 && (buttomLeft>830.0 || buttomRight>830.0) && iAvg<850.0){
+                                        mShowAlert.setText("Too Much Pressure On Left!");
+                                        Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
+                                        myVibrator.vibrate(500);
+                                    }else if(topLeft<830.0 && topRight>830.0 && (buttomLeft>830.0 || buttomRight>830.0) && iAvg<850.0){
+                                        mShowAlert.setText("Too Much Pressure On Right!");
+                                        Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
+                                        myVibrator.vibrate(500);
+                                    }else if(topLeft>830.0 && topRight>830.0 && buttomLeft>830.0 && buttomRight>830.0 && iAvg>850.0){
+                                        mShowAlert.setText("Too Much Pressure On Front!");
+                                        Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
+                                        myVibrator.vibrate(500);
+                                    }else if(topLeft<830.0 && topRight<830.0 && buttomLeft>830.0 && buttomRight>830.0 && iAvg<850.0){
+                                        mShowAlert.setText("Too Much Pressure On Back!");
+                                        Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
+                                        myVibrator.vibrate(500);
+                                    }else{
+                                        mShowAlert.setText(" ");
                                     }
                                 } catch (Exception e) {
                                     android.util.Log.i("Error", "Error");
@@ -510,11 +564,7 @@ public class DeviceControlActivity extends Activity {
                         });
                     }
                 };
-                timer1.schedule(doAsynchronousTask, 0, 5000);
-
-
-
-
+                timer1.schedule(doAsynchronousTask, 0, 2500);
 
                 b.setText("Stop Scan");
                 stop = false;
@@ -574,7 +624,7 @@ public class DeviceControlActivity extends Activity {
                         path.mkdirs();
                         OutputStream outputStream = new FileOutputStream(file, true);
                         //String s1 = "Time" + ",\t\t" + "sensor1" + ",\t" + "sensor2" + ",\t" + "sensor3" + ",\t" + "sensor4" + ",\t" + "Average" + ",\n";
-                        String s1 = "Time" + "," + "Right Front" + "," + "Right Rear"+ "," + "Left Rear"+ "," + "Left Front"+ "," + "Average" + "\n";
+                        String s1 = "Time" + "," + "Top Right" + "," + "Buttom Right"+ "," + "Buttom Left"+ "," + "Top Left"+ "," + "Average" + "\n";
                         s.toString();
                         //String dataArrayString = saveData;
                         String all = s1 + s;
@@ -646,9 +696,9 @@ public class DeviceControlActivity extends Activity {
         });
     }
 
-    public class ApiUbidots extends AsyncTask<Float, Void, Void> {
+    public class ApiUbidots extends AsyncTask<Float, Void, Void[]> {
         @Override
-        protected Void doInBackground(Float... params) {
+        protected Void[] doInBackground(Float... params) {
             ApiClient apiClient = new ApiClient(API_KEY);
 
             Variable pressure = apiClient.getVariable(VARIABLE_ID1);
@@ -670,7 +720,7 @@ public class DeviceControlActivity extends Activity {
                     public void run() {
                         try {
                             ApiUbidots apiUbidots = new ApiUbidots();
-                            apiUbidots.execute(topRight, buttomRight, buttomLeft, topLeft, iAvg);
+                            apiUbidots.execute(iAvg);
 
 
                         } catch (Exception e) {
