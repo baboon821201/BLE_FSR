@@ -1,11 +1,13 @@
 package com.example.android.bluetoothlegatt;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -19,13 +21,18 @@ import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.NestedScrollView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleExpandableListAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,6 +81,7 @@ public class ThirtySecondLite extends Activity {
     String[] dataArray;
     StringBuilder s1 = new StringBuilder();
     StringBuilder s2 = new StringBuilder();
+    String genderSelect, ageInput, heightInput, weightInput, basicInformation;
     File path1, path2, file1, file2;
     Long tsLong1, tsLong2, timeP;
     long timeDelay;
@@ -217,6 +225,7 @@ public class ThirtySecondLite extends Activity {
         mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
         mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 
+        showDialog();
         //改
         // Sets up UI references.
 
@@ -243,6 +252,54 @@ public class ThirtySecondLite extends Activity {
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
     }
+
+    private void showDialog()
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        alert.setTitle("Please Input Your Basic Information");
+        // 使用你設計的layout
+        final View inputView = inflater.inflate(R.layout.input_basic_information, null);
+        alert.setView(inputView);
+
+        final Spinner gender = (Spinner)inputView.findViewById(R.id.gender_select);
+        final String[] genders = {"Man", "Woman"};
+        final ArrayAdapter<String> genderList = new ArrayAdapter<>(ThirtySecondLite.this,
+                android.R.layout.simple_spinner_dropdown_item,
+                genders);
+        gender.setAdapter(genderList);
+        gender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                genderSelect = genders[position];
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        final EditText input1 = (EditText)inputView.findViewById(R.id.age);
+        final EditText input2 = (EditText)inputView.findViewById(R.id.height);
+        final EditText input3 = (EditText)inputView.findViewById(R.id.weight);
+
+        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // 在此處理 input1 and input2
+
+                ageInput = input1.getText().toString();
+                heightInput = input2.getText().toString();
+                weightInput = input3.getText().toString();
+                basicInformation = "Gender" + "_" + genderSelect + "-" + "Age" + "_" + ageInput + "-"
+                        + "Height" + "_" + heightInput + "-" + "Weight" + "_" + weightInput;
+            }
+        });
+
+        alert.show();
+    }
+
 
     private void initData(){
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -1047,7 +1104,7 @@ public class ThirtySecondLite extends Activity {
         public void onClick(View v) {
             Button b = (Button) v;
             if(b.getText().equals("Start Scan")){
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss");
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 Calendar c = Calendar.getInstance();
                 String t = df.format(c.getTime());
                 time = t;
@@ -1160,7 +1217,7 @@ public class ThirtySecondLite extends Activity {
             if(b.getText().equals("Save Data")){
                 boolean hasExternalStorage = isExternalStorageWritable();
                 if(hasExternalStorage){
-                    filename1 = time + ".csv";
+                    filename1 = time + "_" + basicInformation + ".csv";
                     Log.d(TAG, "filename = " + filename1);
 
                     path1 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/All Data/");
@@ -1185,7 +1242,7 @@ public class ThirtySecondLite extends Activity {
                     }
                     //Toast.makeText(DeviceControlActivity.this, "Save in:" + path  + "/"+ filename, Toast.LENGTH_LONG).show();
 
-                    filename2 = time + "_test" + ".csv";
+                    filename2 = time + basicInformation + "_test" + ".csv";
                     Log.d(TAG, "filename = " + filename2);
 
                     path2 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/Test Data/");
