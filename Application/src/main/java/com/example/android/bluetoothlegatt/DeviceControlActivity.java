@@ -507,7 +507,7 @@ public class DeviceControlActivity extends Activity {
                 //feedMultiple();
 
                 //tL_bL=0, tR_bR=0, tL_tR=0, bL_bR=0
-
+/*
                 final Handler handler = new Handler();
                 timer1 = new Timer();
                 doAsynchronousTask = new TimerTask() {
@@ -516,27 +516,6 @@ public class DeviceControlActivity extends Activity {
                         handler.post(new Runnable() {
                             public void run() {
                                 try {
-                                    /*
-                                    if(tL_bL>1650.0 && tR_bR<1650.0 && tL_tR<1650.0 && bL_bR>1650.0 && iAvg<850.0){
-                                        mShowAlert.setText("Too Much Pressure On Left!");
-                                        Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
-                                        myVibrator.vibrate(500);
-                                    }else if(tL_bL<1650.0 && tR_bR>1650.0 && tL_tR<1650.0 && bL_bR>1650.0 && iAvg<850.0){
-                                        mShowAlert.setText("Too Much Pressure On Right!");
-                                        Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
-                                        myVibrator.vibrate(500);
-                                    }else if(tL_bL>1650.0 && tR_bR>1650.0 && tL_tR>1650.0 && bL_bR>1650.0 && iAvg>850.0){
-                                        mShowAlert.setText("Too Much Pressure On Front!");
-                                        Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
-                                        myVibrator.vibrate(500);
-                                    }else if(tL_bL>1650.0 && tR_bR>1650.0 && tL_tR<1650.0 && bL_bR>1650.0 && iAvg<850.0){
-                                        mShowAlert.setText("Too Much Pressure On Back!");
-                                        Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
-                                        myVibrator.vibrate(500);
-                                    }else{
-                                        mShowAlert.setText(" ");
-                                    }
-                                    */
                                     if(topLeft>830.0 && topRight<830.0 && (buttomLeft>830.0 || buttomRight>830.0) && iAvg<850.0){
                                         mShowAlert.setText("Too Much Pressure On Left!");
                                         Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
@@ -565,6 +544,7 @@ public class DeviceControlActivity extends Activity {
                     }
                 };
                 timer1.schedule(doAsynchronousTask, 0, 2500);
+*/
 
                 b.setText("Stop Scan");
                 stop = false;
@@ -578,7 +558,7 @@ public class DeviceControlActivity extends Activity {
                 btnScan.setEnabled(false);
                 btnClear.setEnabled(true);
                 btnSave.setEnabled(true);
-                timer1.cancel();
+                //timer1.cancel();
             }
         }
     };
