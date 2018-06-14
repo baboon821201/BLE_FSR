@@ -892,8 +892,7 @@ public class ThirtySecondLite extends Activity {
 
             //j=0,a=1
 
-            if(bottomRight>10.0 && topRight>10.0 && bottomLeft>10.0 && topLeft>10.0
-                    && bottomRight>topRight && bottomLeft>topLeft && iAvg>=250.0 && !start){
+            if(bottomRight>10.0 && topRight>10.0 && bottomLeft>10.0 && topLeft>10.0 && iAvg>=250.0 && !start){
                 //if (catch_time) {
                 time1 = dataArray[0];
 
@@ -1201,6 +1200,8 @@ public class ThirtySecondLite extends Activity {
                 mChart4.clearValues();
                 */
                 mChart5.clearValues();
+                mChart5.moveViewToX(0);
+
                 s1.setLength(0);
                 s2.setLength(0);
                 //uploadInfoText.setText("");

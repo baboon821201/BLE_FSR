@@ -906,8 +906,7 @@ public class ThirtySecondMode extends Activity {
 
             //j=0,a=1
 
-            if(bottomRight>10.0 && topRight>10.0 && bottomLeft>10.0 && topLeft>10.0
-                    && bottomRight>topRight && bottomLeft>topLeft && iAvg>=250.0 && !start){
+            if(bottomRight>10.0 && topRight>10.0 && bottomLeft>10.0 && topLeft>10.0 && iAvg>=250.0 && !start){
                 //if (catch_time) {
                 time1 = dataArray[0];
 
@@ -1208,10 +1207,20 @@ public class ThirtySecondMode extends Activity {
                 btnClear.setEnabled(false);
 
                 mChart1.clearValues();
+                mChart1.moveViewToX(0);
+                
                 mChart2.clearValues();
+                mChart2.moveViewToX(0);
+
                 mChart3.clearValues();
+                mChart3.moveViewToX(0);
+
                 mChart4.clearValues();
+                mChart4.moveViewToX(0);
+
                 mChart5.clearValues();
+                mChart5.moveViewToX(0);
+
                 s1.setLength(0);
                 s2.setLength(0);
                 //uploadInfoText.setText("");
