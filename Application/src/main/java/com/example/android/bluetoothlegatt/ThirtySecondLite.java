@@ -292,7 +292,7 @@ public class ThirtySecondLite extends Activity {
                 ageInput = input1.getText().toString();
                 heightInput = input2.getText().toString();
                 weightInput = input3.getText().toString();
-                basicInformation ="Age" + "_" + ageInput + "-"
+                basicInformation = "Gender" + "_" + genderSelect + "-" + "Age" + "_" + ageInput + "-"
                         + "Height" + "_" + heightInput + "-" + "Weight" + "_" + weightInput;
             }
         });
@@ -1102,10 +1102,17 @@ public class ThirtySecondLite extends Activity {
         public void onClick(View v) {
             Button b = (Button) v;
             if(b.getText().equals("Start Scan")){
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 Calendar c = Calendar.getInstance();
                 String t = df.format(c.getTime());
                 time = t;
+
+                SimpleDateFormat df1 = new SimpleDateFormat("HH_mm_ss_SSS");
+                Calendar c1 = Calendar.getInstance();
+                String t1 = df1.format(c1.getTime());
+                ts1 = t1;
+
+
                 if (mGattCharacteristics != null) {
                     final BluetoothGattCharacteristic characteristic =FSR;
                     final int charaProp = characteristic.getProperties();
@@ -1217,10 +1224,10 @@ public class ThirtySecondLite extends Activity {
             if(b.getText().equals("Save Data")){
                 boolean hasExternalStorage = isExternalStorageWritable();
                 if(hasExternalStorage){
-                    filename1 = basicInformation + "-all_data" + ".csv";
+                    filename1 = ts1 + "-" + basicInformation + "-all_data" + ".csv";
                     Log.d(TAG, "filename = " + filename1);
 
-                    path1 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/" + genderSelect + "/" + time + "/");
+                    path1 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/" + time + "/" + genderSelect + "/" + ts1 + "/");
                     file1 = new File(path1, filename1);
                     Log.d(TAG, "path = " + path1);
 
@@ -1242,7 +1249,7 @@ public class ThirtySecondLite extends Activity {
                     }
                     //Toast.makeText(DeviceControlActivity.this, "Save in:" + path  + "/"+ filename, Toast.LENGTH_LONG).show();
 
-                    filename2 = basicInformation + "-test_data" + ".csv";
+                    filename2 = ts1 + "-" + basicInformation + "-test_data" + ".csv";
                     Log.d(TAG, "filename = " + filename2);
 
                     //path2 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/" + genderSelect + "/" + time + "/");
@@ -1280,12 +1287,12 @@ public class ThirtySecondLite extends Activity {
                 String all = s1 + s2;
                             */
                 String name1 = filename1.toString();
-                String filePath1 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/" + genderSelect + "/" + time + "/" + name1;
+                String filePath1 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/" + time + "/" + genderSelect + "/" + ts1 + "/" + name1;
 
                 uploadData1(filePath1);
 
                 String name2 = filename2.toString();
-                String filePath2 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/" + genderSelect + "/" + time + "/" + name2;
+                String filePath2 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/" + time + "/" + genderSelect + "/" + ts1 + "/" + name2;
 
                 uploadData2(filePath2);
 
@@ -1312,7 +1319,7 @@ public class ThirtySecondLite extends Activity {
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("data/csv")
                 .build();
-        dataRef = mStorageRef.child("/Thirty Second Mode/" + genderSelect + "/" + time + "/" + filename1);
+        dataRef = mStorageRef.child("/Thirty Second Mode/" + time + "/" + genderSelect + "/" + ts1 + "/" + filename1);
         UploadTask uploadTask = dataRef.putFile(file, metadata);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -1345,7 +1352,7 @@ public class ThirtySecondLite extends Activity {
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("data/csv")
                 .build();
-        dataRef = mStorageRef.child("/Thirty Second Mode/" + genderSelect + "/" + time + "/" + filename2);
+        dataRef = mStorageRef.child("/Thirty Second Mode/" + time + "/" + genderSelect + "/" + ts1 + "/" + filename2);
         UploadTask uploadTask = dataRef.putFile(file, metadata);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
