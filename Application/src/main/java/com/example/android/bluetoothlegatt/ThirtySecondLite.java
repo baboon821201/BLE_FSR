@@ -259,6 +259,7 @@ public class ThirtySecondLite extends Activity {
         LayoutInflater inflater = getLayoutInflater();
 
         alert.setTitle("Please Input Your Basic Information");
+        alert.setCancelable(false);
         // 使用你設計的layout
         final View inputView = inflater.inflate(R.layout.input_basic_information, null);
         alert.setView(inputView);
@@ -280,7 +281,6 @@ public class ThirtySecondLite extends Activity {
             }
         });
 
-
         final EditText input1 = (EditText)inputView.findViewById(R.id.age);
         final EditText input2 = (EditText)inputView.findViewById(R.id.height);
         final EditText input3 = (EditText)inputView.findViewById(R.id.weight);
@@ -292,11 +292,10 @@ public class ThirtySecondLite extends Activity {
                 ageInput = input1.getText().toString();
                 heightInput = input2.getText().toString();
                 weightInput = input3.getText().toString();
-                basicInformation = "Gender" + "_" + genderSelect + "-" + "Age" + "_" + ageInput + "-"
+                basicInformation ="Age" + "_" + ageInput + "-"
                         + "Height" + "_" + heightInput + "-" + "Weight" + "_" + weightInput;
             }
         });
-
         alert.show();
     }
 
@@ -1104,7 +1103,7 @@ public class ThirtySecondLite extends Activity {
         public void onClick(View v) {
             Button b = (Button) v;
             if(b.getText().equals("Start Scan")){
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
                 Calendar c = Calendar.getInstance();
                 String t = df.format(c.getTime());
                 time = t;
@@ -1217,10 +1216,10 @@ public class ThirtySecondLite extends Activity {
             if(b.getText().equals("Save Data")){
                 boolean hasExternalStorage = isExternalStorageWritable();
                 if(hasExternalStorage){
-                    filename1 = time + "_" + basicInformation + ".csv";
+                    filename1 = basicInformation + "-all_data" + ".csv";
                     Log.d(TAG, "filename = " + filename1);
 
-                    path1 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/All Data/");
+                    path1 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/" + genderSelect + "/" + time + "/");
                     file1 = new File(path1, filename1);
                     Log.d(TAG, "path = " + path1);
 
@@ -1242,15 +1241,15 @@ public class ThirtySecondLite extends Activity {
                     }
                     //Toast.makeText(DeviceControlActivity.this, "Save in:" + path  + "/"+ filename, Toast.LENGTH_LONG).show();
 
-                    filename2 = time + basicInformation + "_test" + ".csv";
+                    filename2 = basicInformation + "-test_data" + ".csv";
                     Log.d(TAG, "filename = " + filename2);
 
-                    path2 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/Test Data/");
-                    file2 = new File(path2, filename2);
-                    Log.d(TAG, "path = " + path2);
+                    //path2 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/" + genderSelect + "/" + time + "/");
+                    file2 = new File(path1, filename2);
+                    Log.d(TAG, "path = " + path1);
 
                     try {
-                        path2.mkdirs();
+                        path1.mkdirs();
                         OutputStream outputStream = new FileOutputStream(file2, true);
 
                         String title2 = "Times" + "," + "Time Delay(s)" + "\n";
@@ -1263,7 +1262,7 @@ public class ThirtySecondLite extends Activity {
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
-                        Log.w("ExternalStorage", "Error writing " + file1, e);
+                        Log.w("ExternalStorage", "Error writing " + file2, e);
                     }
                     //Toast.makeText(DeviceControlActivity.this, "Save in:" + path  + "/"+ filename, Toast.LENGTH_LONG).show();
 
@@ -1280,12 +1279,12 @@ public class ThirtySecondLite extends Activity {
                 String all = s1 + s2;
                             */
                 String name1 = filename1.toString();
-                String filePath1 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/All Data/" + name1;
+                String filePath1 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/" + genderSelect + "/" + time + "/" + name1;
 
                 uploadData1(filePath1);
 
                 String name2 = filename2.toString();
-                String filePath2 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/Test Data/" + name2;
+                String filePath2 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/" + genderSelect + "/" + time + "/" + name2;
 
                 uploadData2(filePath2);
 
@@ -1312,7 +1311,7 @@ public class ThirtySecondLite extends Activity {
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("data/csv")
                 .build();
-        dataRef = mStorageRef.child("Thirty Second Mode/All Data/" + filename1);
+        dataRef = mStorageRef.child("/Thirty Second Mode/" + genderSelect + "/" + time + "/" + filename1);
         UploadTask uploadTask = dataRef.putFile(file, metadata);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -1345,7 +1344,7 @@ public class ThirtySecondLite extends Activity {
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("data/csv")
                 .build();
-        dataRef = mStorageRef.child("Thirty Second Mode/Test Data/" + filename2);
+        dataRef = mStorageRef.child("/Thirty Second Mode/" + genderSelect + "/" + time + "/" + filename2);
         UploadTask uploadTask = dataRef.putFile(file, metadata);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override

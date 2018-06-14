@@ -13,7 +13,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/gender"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline28"
         app:layout_constraintEnd_toStartOf="@+id/guideline14"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/age"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline29"
         app:layout_constraintEnd_toStartOf="@+id/guideline14"
         app:layout_constraintTop_toTopOf="@+id/guideline28" />
@@ -39,7 +39,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/height"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline30"
         app:layout_constraintEnd_toStartOf="@+id/guideline14"
         app:layout_constraintTop_toTopOf="@+id/guideline29" />
@@ -52,7 +52,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/weight"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline31"
         app:layout_constraintEnd_toStartOf="@+id/guideline14"
         app:layout_constraintTop_toTopOf="@+id/guideline30" />
@@ -66,10 +66,9 @@
 
     <Spinner
         android:id="@+id/gender_select"
-        android:layout_width="113dp"
-        android:layout_height="wrap_content"
+        android:layout_width="95dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline28"
@@ -81,7 +80,6 @@
         android:layout_width="85dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:gravity="center"
@@ -96,7 +94,6 @@
         android:layout_width="85dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:gravity="center"
@@ -111,7 +108,6 @@
         android:layout_width="85dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:gravity="center"

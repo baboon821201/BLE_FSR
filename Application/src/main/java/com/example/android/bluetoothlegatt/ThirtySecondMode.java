@@ -17,11 +17,13 @@
 package com.example.android.bluetoothlegatt;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -35,13 +37,18 @@ import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.NestedScrollView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleExpandableListAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -98,6 +105,7 @@ public class ThirtySecondMode extends Activity {
     String[] dataArray;
     StringBuilder s1 = new StringBuilder();
     StringBuilder s2 = new StringBuilder();
+    String genderSelect, ageInput, heightInput, weightInput, basicInformation;
     File path1, path2, file1, file2;
     Long tsLong1, tsLong2, timeP;
     long timeDelay;
@@ -241,6 +249,7 @@ public class ThirtySecondMode extends Activity {
         mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
         mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 
+        showDialog();
         //改
         // Sets up UI references.
 
@@ -264,6 +273,53 @@ public class ThirtySecondMode extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+    }
+
+    private void showDialog()
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        alert.setTitle("Please Input Your Basic Information");
+        alert.setCancelable(false);
+        // 使用你設計的layout
+        final View inputView = inflater.inflate(R.layout.input_basic_information, null);
+        alert.setView(inputView);
+
+        final Spinner gender = (Spinner)inputView.findViewById(R.id.gender_select);
+        final String[] genders = {"Man", "Woman"};
+        final ArrayAdapter<String> genderList = new ArrayAdapter<>(ThirtySecondMode.this,
+                android.R.layout.simple_spinner_dropdown_item,
+                genders);
+        gender.setAdapter(genderList);
+        gender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                genderSelect = genders[position];
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        final EditText input1 = (EditText)inputView.findViewById(R.id.age);
+        final EditText input2 = (EditText)inputView.findViewById(R.id.height);
+        final EditText input3 = (EditText)inputView.findViewById(R.id.weight);
+
+        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // 在此處理 input1 and input2
+
+                ageInput = input1.getText().toString();
+                heightInput = input2.getText().toString();
+                weightInput = input3.getText().toString();
+                basicInformation ="Age" + "_" + ageInput + "-"
+                        + "Height" + "_" + heightInput + "-" + "Weight" + "_" + weightInput;
+            }
+        });
+
+        alert.show();
     }
 
     private void initData(){
@@ -1171,10 +1227,10 @@ public class ThirtySecondMode extends Activity {
             if(b.getText().equals("Save Data")){
                 boolean hasExternalStorage = isExternalStorageWritable();
                 if(hasExternalStorage){
-                    filename1 = time + ".csv";
+                    filename1 = basicInformation + "-all_data" + ".csv";
                     Log.d(TAG, "filename = " + filename1);
 
-                    path1 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/All Data/");
+                    path1 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/" + genderSelect + "/" + time + "/");
                     file1 = new File(path1, filename1);
                     Log.d(TAG, "path = " + path1);
 
@@ -1196,15 +1252,15 @@ public class ThirtySecondMode extends Activity {
                     }
                     //Toast.makeText(DeviceControlActivity.this, "Save in:" + path  + "/"+ filename, Toast.LENGTH_LONG).show();
 
-                    filename2 = time + "_test" + ".csv";
+                    filename2 = basicInformation + "-test_data" + ".csv";
                     Log.d(TAG, "filename = " + filename2);
 
-                    path2 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/Test Data/");
-                    file2 = new File(path2, filename2);
-                    Log.d(TAG, "path = " + path2);
+                    //path2 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/Test Data/");
+                    file2 = new File(path1, filename2);
+                    Log.d(TAG, "path = " + path1);
 
                     try {
-                        path2.mkdirs();
+                        path1.mkdirs();
                         OutputStream outputStream = new FileOutputStream(file2, true);
 
                         String title2 = "Times" + "," + "Time Delay(s)" + "\n";
@@ -1234,12 +1290,12 @@ public class ThirtySecondMode extends Activity {
                 String all = s1 + s2;
                             */
                 String name1 = filename1.toString();
-                String filePath1 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/All Data/" + name1;
+                String filePath1 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/" + genderSelect + "/" + time + "/" + name1;
 
                 uploadData1(filePath1);
 
                 String name2 = filename2.toString();
-                String filePath2 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/Test Data/" + name2;
+                String filePath2 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/" + genderSelect + "/" + time + "/" + name2;
 
                 uploadData2(filePath2);
 
@@ -1266,7 +1322,7 @@ public class ThirtySecondMode extends Activity {
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("data/csv")
                 .build();
-        dataRef = mStorageRef.child("Thirty Second Mode/All Data/" + filename1);
+        dataRef = mStorageRef.child("/Thirty Second Mode/" + genderSelect + "/" + time + "/" + filename1);
         UploadTask uploadTask = dataRef.putFile(file, metadata);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -1299,7 +1355,7 @@ public class ThirtySecondMode extends Activity {
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("data/csv")
                 .build();
-        dataRef = mStorageRef.child("Thirty Second Mode/Test Data/" + filename2);
+        dataRef = mStorageRef.child("/Thirty Second Mode/" + genderSelect + "/" + time + "/" + filename2);
         UploadTask uploadTask = dataRef.putFile(file, metadata);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
