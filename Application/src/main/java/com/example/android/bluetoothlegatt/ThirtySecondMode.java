@@ -105,7 +105,7 @@ public class ThirtySecondMode extends Activity {
     String[] dataArray;
     StringBuilder s1 = new StringBuilder();
     StringBuilder s2 = new StringBuilder();
-    String genderSelect, ageInput, heightInput, weightInput, basicInformation;
+    String genderSelect, idInput, ageInput, heightInput, weightInput, basicInformation;
     File path1, path2, file1, file2;
     Long tsLong1, tsLong2, timeP;
     long timeDelay;
@@ -302,19 +302,19 @@ public class ThirtySecondMode extends Activity {
 
             }
         });
-
-        final EditText input1 = (EditText)inputView.findViewById(R.id.age);
-        final EditText input2 = (EditText)inputView.findViewById(R.id.height);
-        final EditText input3 = (EditText)inputView.findViewById(R.id.weight);
+        final EditText input1 = (EditText)inputView.findViewById(R.id.id);
+        final EditText input2 = (EditText)inputView.findViewById(R.id.age);
+        final EditText input3 = (EditText)inputView.findViewById(R.id.height);
+        final EditText input4 = (EditText)inputView.findViewById(R.id.weight);
 
         alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 // 在此處理 input1 and input2
-
-                ageInput = input1.getText().toString();
-                heightInput = input2.getText().toString();
-                weightInput = input3.getText().toString();
-                basicInformation = "Gender" + "_" + genderSelect + "-" + "Age" + "_" + ageInput + "-"
+                idInput = input1.getText().toString();
+                ageInput = input2.getText().toString();
+                heightInput = input3.getText().toString();
+                weightInput = input4.getText().toString();
+                basicInformation = "ID" + "_" + idInput + "Gender" + "_" + genderSelect + "-" + "Age" + "_" + ageInput + "-"
                         + "Height" + "_" + heightInput + "-" + "Weight" + "_" + weightInput;
             }
         });
