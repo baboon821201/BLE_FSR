@@ -17,12 +17,14 @@
 package com.example.android.bluetoothlegatt;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Service;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -35,14 +37,19 @@ import android.os.IBinder;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.SimpleExpandableListAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -85,10 +92,11 @@ public class DeviceControlActivity extends Activity {
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
 
+    String genderSelect, idInput, ageInput, heightInput, weightInput, basicInformation;
     boolean stop=true;
     boolean clear=false;
     ScrollView scrollView;
-    String time, filename;
+    String time, filename, ts1;
     String[] dataArray;
     StringBuilder s = new StringBuilder();
     File path, file;
@@ -154,10 +162,12 @@ public class DeviceControlActivity extends Activity {
             if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action)) {
                 mConnected = true;
                 updateConnectionState(R.string.connected);
+                btnScan.setEnabled(true);
                 invalidateOptionsMenu();
             } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
                 mConnected = false;
                 updateConnectionState(R.string.disconnected);
+                btnScan.setEnabled(false);
                 invalidateOptionsMenu();
                 clearUI();
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
@@ -225,6 +235,8 @@ public class DeviceControlActivity extends Activity {
         mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
         mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 
+        showDialog();
+
         //改
         // Sets up UI references.
 
@@ -245,6 +257,54 @@ public class DeviceControlActivity extends Activity {
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
     }
 
+    private void showDialog()
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        alert.setTitle("Please Input Your Basic Information");
+        alert.setCancelable(false);
+        // 使用你設計的layout
+        final View inputView = inflater.inflate(R.layout.input_basic_information, null);
+        alert.setView(inputView);
+
+        final EditText input1 = (EditText)inputView.findViewById(R.id.id);
+        final Spinner gender = (Spinner)inputView.findViewById(R.id.gender_select);
+        final String[] genders = {"Man", "Woman"};
+        final ArrayAdapter<String> genderList = new ArrayAdapter<>(DeviceControlActivity.this,
+                android.R.layout.simple_spinner_dropdown_item,
+                genders);
+        gender.setAdapter(genderList);
+        gender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                genderSelect = genders[position];
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        final EditText input2 = (EditText)inputView.findViewById(R.id.age);
+        final EditText input3 = (EditText)inputView.findViewById(R.id.height);
+        final EditText input4 = (EditText)inputView.findViewById(R.id.weight);
+
+        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // 在此處理 input1 and input2
+                idInput = input1.getText().toString();
+                ageInput = input2.getText().toString();
+                heightInput = input3.getText().toString();
+                weightInput = input4.getText().toString();
+                basicInformation = "ID" + "_" + idInput + "-" + "Gender" + "_" + genderSelect + "-" + "Age" + "_" + ageInput + "-"
+                        + "Height" + "_" + heightInput + "-" + "Weight" + "_" + weightInput;
+            }
+        });
+
+        alert.show();
+    }
+
     private void initData(){
         mStorageRef = FirebaseStorage.getInstance().getReference();
     }
@@ -262,17 +322,13 @@ public class DeviceControlActivity extends Activity {
 
         btnScan=(Button)findViewById(R.id.scan);
         btnScan.setOnClickListener(StartScanClickListener);
+        btnScan.setEnabled(false);
         btnSave=(Button)findViewById(R.id.save);
         btnSave.setEnabled(false);
         btnSave.setOnClickListener(SaveDataClickListener);
         btnClear = (Button)findViewById(R.id.clear);
         btnClear.setEnabled(false);
         btnClear.setOnClickListener(ClearClickListener);
-
-        DataUploadProgress = (ProgressBar) findViewById(R.id.upload_progress);
-        uploadInfoText = (TextView)findViewById(R.id.uploadInfoText);
-
-
     }
 
     @Override
@@ -480,10 +536,16 @@ public class DeviceControlActivity extends Activity {
         public void onClick(View v) {
             Button b = (Button) v;
             if(b.getText().equals("Start Scan")){
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss");
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 Calendar c = Calendar.getInstance();
                 String t = df.format(c.getTime());
                 time = t;
+
+                SimpleDateFormat df1 = new SimpleDateFormat("HH_mm_ss_SSS");
+                Calendar c1 = Calendar.getInstance();
+                String t1 = df1.format(c1.getTime());
+                ts1 = t1;
+
                 if (mGattCharacteristics != null) {
                     final BluetoothGattCharacteristic characteristic =FSR;
                     final int charaProp = characteristic.getProperties();
@@ -580,7 +642,7 @@ public class DeviceControlActivity extends Activity {
                 btnSave.setEnabled(false);
                 btnClear.setEnabled(false);
 
-                uploadInfoText.setText("");
+                //uploadInfoText.setText("");
             }
         }
     };
@@ -593,10 +655,9 @@ public class DeviceControlActivity extends Activity {
             if(b.getText().equals("Save Data")){
                 boolean hasExternalStorage = isExternalStorageWritable();
                 if(hasExternalStorage){
-                    filename = time + ".csv";
+                    filename = ts1 + "-" + basicInformation + ".csv";
                     Log.d(TAG, "filename = " + filename);
-
-                    path = Environment.getExternalStoragePublicDirectory("/FSR/General Scan Mode/");
+                    path = Environment.getExternalStoragePublicDirectory("/FSR/General Scan Mode/" + time + "/" + genderSelect + "/" + ts1 + "/");
                     file = new File(path, filename);
                     Log.d(TAG, "path = " + path);
 
@@ -627,12 +688,12 @@ public class DeviceControlActivity extends Activity {
                 String all = s1 + s2;
                             */
                 String name = filename.toString();
-                String filePath = Environment.getExternalStorageDirectory().toString() + "/FSR/General Scan Mode/" + name;
+                String filePath = Environment.getExternalStorageDirectory().toString() + "/FSR/General Scan Mode/" + time + "/" + genderSelect + "/" + ts1 + "/" + name;
 
                 uploadData(filePath);
 
                 Toast.makeText(DeviceControlActivity.this, "Save in:" + filePath, Toast.LENGTH_LONG).show();
-                DataUploadProgress.setVisibility(View.VISIBLE);
+                //DataUploadProgress.setVisibility(View.VISIBLE);
                 btnSave.setEnabled(false);
             }
         }
@@ -652,26 +713,30 @@ public class DeviceControlActivity extends Activity {
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("data/csv")
                 .build();
-        dataRef = mStorageRef.child("General Mode/" + filename);
+        dataRef = mStorageRef.child("General Mode/" + time + "/" + genderSelect + "/" + ts1 + "/" + filename);
         UploadTask uploadTask = dataRef.putFile(file, metadata);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                uploadInfoText.setText(exception.getMessage());
+                //uploadInfoText.setText(exception.getMessage());
+                Toast.makeText(DeviceControlActivity.this, exception.getMessage(), Toast.LENGTH_LONG).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                uploadInfoText.setText(R.string.up_load_success);
+                //uploadInfoText.setText(R.string.up_load_success);
+                Toast.makeText(DeviceControlActivity.this, "Test Data Up Load Success", Toast.LENGTH_SHORT).show();
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                /*
                 int progress = (int)((100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount());
                 DataUploadProgress.setProgress(progress);
                 if(progress >= 100){
                     DataUploadProgress.setVisibility(View.GONE);
                 }
+                */
             }
         });
     }

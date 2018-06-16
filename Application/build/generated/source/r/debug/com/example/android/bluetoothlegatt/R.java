@@ -3366,14 +3366,12 @@ public final class R {
     public static final int topPanel=0x7f0700ec;
     public static final int uniform=0x7f0700ed;
     public static final int up=0x7f0700ee;
-    public static final int uploadInfoText=0x7f0700ef;
-    public static final int upload_progress=0x7f0700f0;
-    public static final int useLogo=0x7f0700f1;
-    public static final int weight=0x7f0700f2;
-    public static final int wide=0x7f0700f3;
-    public static final int withText=0x7f0700f4;
-    public static final int wrap=0x7f0700f5;
-    public static final int wrap_content=0x7f0700f6;
+    public static final int useLogo=0x7f0700ef;
+    public static final int weight=0x7f0700f0;
+    public static final int wide=0x7f0700f1;
+    public static final int withText=0x7f0700f2;
+    public static final int wrap=0x7f0700f3;
+    public static final int wrap_content=0x7f0700f4;
   }
   public static final class integer {
     public static final int abc_config_activityDefaultDur=0x7f080000;

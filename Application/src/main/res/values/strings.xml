@@ -74,6 +74,7 @@
     <string name="height">Height:</string>
     <string name="weight">Weight:</string>
     <string name="sitting_posture_pressure_distribution_mode">Sitting Posture Pressure Distribution Mode</string>
+    <string name="clear_data">Clear Data</string>
 
 
 </resources>

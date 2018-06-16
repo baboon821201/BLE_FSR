@@ -2,6 +2,7 @@ package com.example.android.bluetoothlegatt;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Service;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.content.BroadcastReceiver;
@@ -18,6 +19,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.IBinder;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.NestedScrollView;
 import android.util.Log;
@@ -154,10 +156,12 @@ public class ThirtySecondLite extends Activity {
             if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action)) {
                 mConnected = true;
                 updateConnectionState(R.string.connected);
+                btnScan.setEnabled(true);
                 invalidateOptionsMenu();
             } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
                 mConnected = false;
                 updateConnectionState(R.string.disconnected);
+                btnScan.setEnabled(false);
                 invalidateOptionsMenu();
                 clearUI();
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
@@ -294,7 +298,7 @@ public class ThirtySecondLite extends Activity {
                 ageInput = input2.getText().toString();
                 heightInput = input3.getText().toString();
                 weightInput = input4.getText().toString();
-                basicInformation = "ID" + "_" + idInput + "Gender" + "_" + genderSelect + "-" + "Age" + "_" + ageInput + "-"
+                basicInformation = "ID" + "_" + idInput + "-" + "Gender" + "_" + genderSelect + "-" + "Age" + "_" + ageInput + "-"
                         + "Height" + "_" + heightInput + "-" + "Weight" + "_" + weightInput;
             }
         });
@@ -323,6 +327,7 @@ public class ThirtySecondLite extends Activity {
 
         btnScan=(Button)findViewById(R.id.scan1);
         btnScan.setOnClickListener(StartScanClickListener);
+        btnScan.setEnabled(false);
         btnSave=(Button)findViewById(R.id.save1);
         btnSave.setEnabled(false);
         btnSave.setOnClickListener(SaveDataClickListener);
@@ -1095,6 +1100,8 @@ public class ThirtySecondLite extends Activity {
             btnClear.setEnabled(true);
             btnSave.setEnabled(true);
             stop = true;
+            Vibrator myVibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
+            myVibrator.vibrate(1000);
         }
     };
 
