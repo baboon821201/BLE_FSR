@@ -3446,7 +3446,7 @@ public final class R {
     public static final int _30=0x7f0b0001;
     public static final int _30_000=0x7f0b0002;
     public static final int _30_second_test_mode=0x7f0b0003;
-    public static final int _30_seconds_sitting_and_standing_test_mode=0x7f0b0004;
+    public static final int _30_seconds_sitting_test_mode=0x7f0b0004;
     public static final int _30_seconds_test_mode=0x7f0b0005;
     public static final int abc_action_bar_home_description=0x7f0b0006;
     public static final int abc_action_bar_up_description=0x7f0b0007;
@@ -3538,7 +3538,7 @@ public final class R {
     public static final int save_data=0x7f0b005d;
     public static final int search_menu_title=0x7f0b005e;
     public static final int seconds=0x7f0b005f;
-    public static final int sitting_posture_pressure_distribution_mode=0x7f0b0060;
+    public static final int sitting_pressure_distribution_mode=0x7f0b0060;
     public static final int start_scan=0x7f0b0061;
     public static final int status_bar_notification_info_overflow=0x7f0b0062;
     public static final int this_version_shows_all_fsr_pressures_and_the_avreage_pressure_in_5_figures_and_calculus_the_time_delay_and_times=0x7f0b0063;

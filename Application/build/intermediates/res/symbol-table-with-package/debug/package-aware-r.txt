@@ -1009,7 +1009,7 @@ int string _0 0x7f0b0000
 int string _30 0x7f0b0001
 int string _30_000 0x7f0b0002
 int string _30_second_test_mode 0x7f0b0003
-int string _30_seconds_sitting_and_standing_test_mode 0x7f0b0004
+int string _30_seconds_sitting_test_mode 0x7f0b0004
 int string _30_seconds_test_mode 0x7f0b0005
 int string abc_action_bar_home_description 0x7f0b0006
 int string abc_action_bar_up_description 0x7f0b0007
@@ -1101,7 +1101,7 @@ int string s 0x7f0b005c
 int string save_data 0x7f0b005d
 int string search_menu_title 0x7f0b005e
 int string seconds 0x7f0b005f
-int string sitting_posture_pressure_distribution_mode 0x7f0b0060
+int string sitting_pressure_distribution_mode 0x7f0b0060
 int string start_scan 0x7f0b0061
 int string status_bar_notification_info_overflow 0x7f0b0062
 int string this_version_shows_all_fsr_pressures_and_the_avreage_pressure_in_5_figures_and_calculus_the_time_delay_and_times 0x7f0b0063
