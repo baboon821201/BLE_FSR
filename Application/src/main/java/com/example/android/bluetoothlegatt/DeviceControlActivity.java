@@ -317,7 +317,7 @@ public class DeviceControlActivity extends Activity {
         mS3 = (TextView)findViewById(R.id.showS3);
         mS4 = (TextView)findViewById(R.id.showS4);
         mAvg = (TextView)findViewById(R.id.showAvg);
-        mShowAlert = (TextView)findViewById(R.id.showAlert);
+        //mShowAlert = (TextView)findViewById(R.id.showAlert);
 
 
         btnScan=(Button)findViewById(R.id.scan);
@@ -629,7 +629,7 @@ public class DeviceControlActivity extends Activity {
         @Override
         public void onClick(View v) {
             Button b = (Button) v;
-            if(b.getText().equals("Clear Previous Data")){
+            if(b.getText().equals("Clear Data")){
                 mTime.setText("");
                 mS1.setText("");
                 mS2.setText("");

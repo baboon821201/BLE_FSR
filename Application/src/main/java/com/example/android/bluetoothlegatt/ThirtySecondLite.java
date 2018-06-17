@@ -1191,7 +1191,7 @@ public class ThirtySecondLite extends Activity {
         @Override
         public void onClick(View v) {
             Button b = (Button) v;
-            if(b.getText().equals("Clear Previous Data")){
+            if(b.getText().equals("Clear Data")){
                 //mTime.setText("");
                 //mS1.setText("");
                 //mS2.setText("");
