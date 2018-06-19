@@ -75,6 +75,9 @@
     <string name="weight">Weight:</string>
     <string name="sitting_pressure_distribution_mode">Sitting Pressure Distribution Mode</string>
     <string name="clear_data">Clear Data</string>
+    <string name="years_old">years old</string>
+    <string name="kg">kg</string>
+    <string name="cm">cm</string>
 
 
 </resources>
