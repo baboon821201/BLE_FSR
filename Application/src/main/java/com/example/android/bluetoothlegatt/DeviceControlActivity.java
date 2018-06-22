@@ -657,7 +657,7 @@ public class DeviceControlActivity extends Activity {
                 if(hasExternalStorage){
                     filename = ts1 + "-" + basicInformation + ".csv";
                     Log.d(TAG, "filename = " + filename);
-                    path = Environment.getExternalStoragePublicDirectory("/FSR/General Scan Mode/" + time + "/" + genderSelect + "/" + ts1 + "/");
+                    path = Environment.getExternalStoragePublicDirectory("/FSR/General Scan Mode/" + time + "/" + genderSelect + "/");
                     file = new File(path, filename);
                     Log.d(TAG, "path = " + path);
 
@@ -688,7 +688,7 @@ public class DeviceControlActivity extends Activity {
                 String all = s1 + s2;
                             */
                 String name = filename.toString();
-                String filePath = Environment.getExternalStorageDirectory().toString() + "/FSR/General Scan Mode/" + time + "/" + genderSelect + "/" + ts1 + "/" + name;
+                String filePath = Environment.getExternalStorageDirectory().toString() + "/FSR/General Scan Mode/" + time + "/" + genderSelect + "/" + name;
 
                 uploadData(filePath);
 
@@ -713,7 +713,7 @@ public class DeviceControlActivity extends Activity {
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("data/csv")
                 .build();
-        dataRef = mStorageRef.child("General Mode/" + time + "/" + genderSelect + "/" + ts1 + "/" + filename);
+        dataRef = mStorageRef.child("General Mode/" + time + "/" + genderSelect + "/" + filename);
         UploadTask uploadTask = dataRef.putFile(file, metadata);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override

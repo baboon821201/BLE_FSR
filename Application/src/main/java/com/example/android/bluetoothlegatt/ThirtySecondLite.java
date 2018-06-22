@@ -1236,7 +1236,7 @@ public class ThirtySecondLite extends Activity {
                     filename1 = ts1 + "-" + basicInformation + "-all_data" + ".csv";
                     Log.d(TAG, "filename = " + filename1);
 
-                    path1 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/" + time + "/" + genderSelect + "/" + ts1 + "/");
+                    path1 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/" + time + "/" + genderSelect + "/All Data/");
                     file1 = new File(path1, filename1);
                     Log.d(TAG, "path = " + path1);
 
@@ -1261,12 +1261,12 @@ public class ThirtySecondLite extends Activity {
                     filename2 = ts1 + "-" + basicInformation + "-test_data" + ".csv";
                     Log.d(TAG, "filename = " + filename2);
 
-                    //path2 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/" + genderSelect + "/" + time + "/");
-                    file2 = new File(path1, filename2);
-                    Log.d(TAG, "path = " + path1);
+                    path2 = Environment.getExternalStoragePublicDirectory("/FSR/Thirty Second Mode/" + time + "/" + genderSelect + "/Test Data/");
+                    file2 = new File(path2, filename2);
+                    Log.d(TAG, "path = " + path2);
 
                     try {
-                        path1.mkdirs();
+                        path2.mkdirs();
                         OutputStream outputStream = new FileOutputStream(file2, true);
 
                         String title2 = "Times" + "," + "Time Delay(s)" + "\n";
@@ -1296,12 +1296,12 @@ public class ThirtySecondLite extends Activity {
                 String all = s1 + s2;
                             */
                 String name1 = filename1.toString();
-                String filePath1 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/" + time + "/" + genderSelect + "/" + ts1 + "/" + name1;
+                String filePath1 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/" + time + "/" + genderSelect + "/All Data/" + name1;
 
                 uploadData1(filePath1);
 
                 String name2 = filename2.toString();
-                String filePath2 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/" + time + "/" + genderSelect + "/" + ts1 + "/" + name2;
+                String filePath2 = Environment.getExternalStorageDirectory().toString() + "/FSR/Thirty Second Mode/" + time + "/" + genderSelect + "/Test Data/" + name2;
 
                 uploadData2(filePath2);
 
@@ -1328,7 +1328,7 @@ public class ThirtySecondLite extends Activity {
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("data/csv")
                 .build();
-        dataRef = mStorageRef.child("/Thirty Second Mode/" + time + "/" + genderSelect + "/" + ts1 + "/" + filename1);
+        dataRef = mStorageRef.child("/Thirty Second Mode/" + time + "/" + genderSelect + "/All Data/" + filename1);
         UploadTask uploadTask = dataRef.putFile(file, metadata);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -1361,7 +1361,7 @@ public class ThirtySecondLite extends Activity {
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setContentType("data/csv")
                 .build();
-        dataRef = mStorageRef.child("/Thirty Second Mode/" + time + "/" + genderSelect + "/" + ts1 + "/" + filename2);
+        dataRef = mStorageRef.child("/Thirty Second Mode/" + time + "/" + genderSelect + "/Test Data/" + filename2);
         UploadTask uploadTask = dataRef.putFile(file, metadata);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
